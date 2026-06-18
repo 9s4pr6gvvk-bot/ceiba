@@ -30,7 +30,7 @@
     --max: 1160px;
   }
 
-  html{ scroll-behavior:smooth; scroll-padding-top:96px; }
+  html{ scroll-behavior:smooth; scroll-padding-top:90px; }
   body{
     font-family:'Outfit',sans-serif;
     font-weight:300;
@@ -46,28 +46,21 @@
   img{ display:block; max-width:100%; }
 
   /* ── NAV ── */
-  nav.main{ position:fixed; top:0; left:0; right:0; z-index:100; background:linear-gradient(to bottom, rgba(18,23,16,.22) 0%, rgba(18,23,16,0) 100%); transition:background .4s ease, box-shadow .3s ease; }
-  nav.main.scrolled{ background:rgba(243,238,226,.97); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid var(--border); box-shadow:0 2px 20px rgba(34,30,20,.07); }
-  .nav-inner{ max-width:var(--max); margin:0 auto; padding:12px 40px; min-height:68px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
-  .brand{ display:flex; align-items:center; gap:12px; text-decoration:none; }
-  .brand-mark{ display:flex; align-items:center; justify-content:center; width:42px; height:42px; border-radius:50%; background:rgba(255,255,255,.92); flex-shrink:0; }
-  .brand-mark svg{ width:32px; height:32px; }
-  .brand-name{ display:block; font-family:'Cormorant Garamond',serif; font-size:18px; font-weight:600; letter-spacing:.16em; color:#fff; line-height:1; transition:color .4s ease; }
-  nav.main.scrolled .brand-name{ color:var(--text); }
-  .brand-tag{ display:block; font-size:8px; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.68); margin-top:5px; font-family:'Outfit',sans-serif; transition:color .4s ease; }
-  nav.main.scrolled .brand-tag{ color:var(--subtle); }
-  .nav-links{ display:flex; list-style:none; gap:26px; align-items:center; }
-  .nav-links a{ font-size:12px; font-weight:400; letter-spacing:.07em; text-transform:uppercase; color:rgba(255,255,255,.8); text-decoration:none; transition:color .25s ease; }
-  nav.main.scrolled .nav-links a{ color:var(--muted); }
-  .nav-links a:hover{ color:#fff; }
-  nav.main.scrolled .nav-links a:hover{ color:var(--text); }
-  .nav-links a.active{ color:var(--gold-soft); }
-  nav.main.scrolled .nav-links a.active{ color:var(--gold); }
-  .nav-cta{ background:var(--forest) !important; color:rgba(255,255,255,.92) !important; padding:11px 20px !important; border-radius:1px; }
-  .nav-cta:hover{ background:var(--forest-mid) !important; color:#fff !important; }
+  nav.main{ position:sticky; top:0; z-index:100; background:rgba(243,238,226,.97); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid var(--border); transition:box-shadow .3s ease; }
+  nav.main.scrolled{ box-shadow:0 6px 28px rgba(34,30,20,.08); }
+  .nav-inner{ max-width:var(--max); margin:0 auto; padding:0 40px; height:78px; display:flex; align-items:center; justify-content:space-between; gap:40px; }
+  .brand{ display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--forest); }
+  .brand svg{ width:34px; height:34px; flex-shrink:0; }
+  .brand-name{ display:block; font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:600; letter-spacing:.16em; color:var(--text); line-height:1; }
+  .nav-links{ display:flex; list-style:none; gap:34px; align-items:center; }
+  .nav-links a{ font-size:12px; font-weight:500; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .2s ease; }
+  .nav-links a:hover{ color:var(--text); }
+  .nav-links a.active{ color:var(--gold); }
+  .nav-divider{ width:1px; height:20px; background:var(--border); flex-shrink:0; }
+  .nav-cta{ background:var(--forest); color:#fff; padding:12px 24px; font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; font-weight:500; text-decoration:none; border-radius:2px; transition:background .2s ease, transform .15s ease; white-space:nowrap; }
+  .nav-cta:hover{ background:var(--forest-mid); transform:translateY(-1px); }
   .hamburger{ display:none; flex-direction:column; gap:5px; cursor:pointer; padding:6px; background:none; border:none; }
-  .hamburger span{ display:block; width:20px; height:1.5px; background:#fff; transition:background .3s ease; }
-  nav.main.scrolled .hamburger span{ background:var(--text); }
+  .hamburger span{ display:block; width:20px; height:1.5px; background:var(--text); }
   .mob-menu{ display:none; position:fixed; inset:0; background:var(--forest); z-index:200; flex-direction:column; align-items:center; justify-content:center; gap:1.7rem; }
   .mob-menu.open{ display:flex; }
   .mob-menu a{ font-family:'Cormorant Garamond',serif; font-size:1.7rem; color:rgba(255,255,255,.82); text-decoration:none; }
@@ -101,7 +94,7 @@
   .seam-mark svg{ width:13px; height:13px; }
 
   /* ── HERO ── */
-  .hero{ position:relative; background:var(--bg); overflow:hidden; display:flex; flex-direction:column; justify-content:center; min-height:94vh; }
+  .hero{ position:relative; background:var(--bg); overflow:hidden; display:flex; flex-direction:column; justify-content:center; min-height:86vh; }
   .hero-photo{ position:absolute; inset:0; order:2; }
   .hero-photo img{
     width:100%; height:100%; object-fit:cover; object-position:center 38%; display:block;
@@ -111,13 +104,13 @@
   @keyframes heroZoom{ from{ transform:scale(1.06); } to{ transform:scale(1); } }
   .hero-scrim{
     position:absolute; inset:0; z-index:1; order:2; pointer-events:none;
-    background:radial-gradient(ellipse 46% 60% at 24% 50%,
-      rgba(243,238,226,.96) 0%,
-      rgba(243,238,226,.82) 35%,
-      rgba(243,238,226,.45) 58%,
-      rgba(243,238,226,0) 78%);
+    background:linear-gradient(to right,
+      rgba(243,238,226,.97) 0%,
+      rgba(243,238,226,.82) 32%,
+      rgba(243,238,226,.42) 55%,
+      rgba(243,238,226,0) 72%);
   }
-  .hero-inner{ position:relative; z-index:2; max-width:var(--max); margin:0 auto; padding:128px 40px 88px; width:100%; order:1; }
+  .hero-inner{ position:relative; z-index:2; max-width:var(--max); margin:0 auto; padding:86px 40px 88px; width:100%; order:1; }
   .hero-text{ max-width:560px; }
   .hero-eyebrow{ display:block; font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--gold); margin-bottom:20px; font-weight:500; }
   .hero h1{ font-size:clamp(2.6rem,4.6vw,4.6rem); line-height:1.12; color:var(--text); margin-bottom:22px; }
@@ -283,7 +276,7 @@
     .hero{ min-height:auto; }
     .hero-scrim{ display:none; }
     .hero-photo{ position:relative; width:100%; height:320px; order:2; -webkit-mask-image:none; mask-image:none; margin-top:30px; }
-    .hero-inner{ padding:104px 24px 0; }
+    .hero-inner{ padding:48px 24px 0; }
     .intro-inner{ grid-template-columns:1fr; }
     .intro-left{ border-right:none; border-bottom:1px solid var(--border); padding:46px 40px; flex-direction:row; flex-wrap:wrap; gap:38px; }
     .intro-right{ padding:46px 40px; }
@@ -309,10 +302,12 @@
     .contact-right{ padding:54px 40px; }
     .footer-grid{ grid-template-columns:1fr 1fr; }
     .nav-links{ display:none; }
+    .nav-divider{ display:none; }
+    .nav-cta{ display:none; }
     .hamburger{ display:flex; }
   }
   @media (max-width:640px){
-    .hero-inner{ padding:88px 20px 0; }
+    .hero-inner{ padding:40px 20px 0; }
     .hero h1{ font-size:2.4rem; }
     .hero-photo{ height:240px; }
     .intro-left{ padding:38px 20px; }
@@ -346,32 +341,28 @@
   <nav class="main" id="mainNav">
     <div class="nav-inner">
       <a href="#top" class="brand">
-        <span class="brand-mark">
         <svg viewBox="0 0 100 100" fill="none">
-          <circle cx="50" cy="50" r="47" stroke="#B97F3D" stroke-width="1.3"/>
-          <path d="M50 21c-13 7-22 19-16 30 4 7 10 5 16 9 6-4 12-2 16-9 6-11-3-23-16-30z" fill="#2E3B2A"/>
-          <rect x="47" y="58" width="6" height="17" fill="#2E3B2A"/>
-          <path d="M50 75c-7 4-13 6-20 11" stroke="#2E3B2A" stroke-width="2.2" stroke-linecap="round"/>
-          <path d="M50 75c7 4 13 6 20 11" stroke="#2E3B2A" stroke-width="2.2" stroke-linecap="round"/>
-          <path d="M50 75v13" stroke="#2E3B2A" stroke-width="2.2" stroke-linecap="round"/>
+          <circle cx="50" cy="50" r="47" stroke="#B97F3D" stroke-width="1.6"/>
+          <path d="M50 21c-13 7-22 19-16 30 4 7 10 5 16 9 6-4 12-2 16-9 6-11-3-23-16-30z" fill="currentColor"/>
+          <rect x="47" y="58" width="6" height="17" fill="currentColor"/>
+          <path d="M50 75c-7 4-13 6-20 11" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M50 75c7 4 13 6 20 11" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M50 75v13" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
         </svg>
-        </span>
-        <span>
-          <span class="brand-name">CEIBA</span>
-          <span class="brand-tag">Transformational Coaching &amp; Change</span>
-        </span>
+        <span class="brand-name">CEIBA</span>
       </a>
       <ul class="nav-links">
-        <li><a href="#top" class="active">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#ways">Coaching</a></li>
         <li><a href="#organisations">Organisations</a></li>
         <li><a href="#method">The Ceiba Method&trade;</a></li>
-        <li><a href="#">Resources</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a href="#contact" class="nav-cta">Book a Discovery Call</a></li>
       </ul>
-      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <div style="display:flex; align-items:center; gap:24px;">
+        <span class="nav-divider"></span>
+        <a href="#contact" class="nav-cta">Book a Discovery Call</a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
     </div>
   </nav>
 
@@ -382,7 +373,6 @@
     <a href="#ways" data-close>Coaching</a>
     <a href="#organisations" data-close>Organisations</a>
     <a href="#method" data-close>The Ceiba Method&trade;</a>
-    <a href="#" data-close>Resources</a>
     <a href="#contact" data-close>Contact</a>
     <a href="#contact" data-close>Book a Discovery Call</a>
   </div>
@@ -390,7 +380,7 @@
   <!-- HERO -->
   <header class="hero" id="top">
     <div class="hero-photo">
-      <img src="https://images.unsplash.com/photo-1528183429752-a97d0bf99b5a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="A large tree with sweeping roots and sunlight through its canopy" loading="eager" />
+      <img src="https://images.unsplash.com/photo-1463097366893-15ebd10df5ff?q=80&w=1331&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="A large tree with sweeping roots and sunlight through its canopy" loading="eager" />
     </div>
     <div class="hero-scrim" aria-hidden="true"></div>
     <div class="hero-inner">
