@@ -195,7 +195,7 @@
   .aud-figure-img{ position:absolute; inset:0; background-size:cover; background-position:center; transform:scale(1.05); transition:transform 1.2s var(--ease); }
   .aud-panel:hover .aud-figure-img{ transform:scale(1.12); }
   .aud-figure-tone{ position:absolute; inset:0; }
-  .aud-panel.individuals .aud-figure-img{ background-color:#cbbd9d; background-image:url('https://images.unsplash.com/photo-1550504630-cc20eca3b23e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); }
+  .aud-panel.individuals .aud-figure-img{ background-color:#cbbd9d; background-image:url('https://images.unsplash.com/photo-1511376979163-f804dff7ad7b?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); }
   .aud-panel.individuals .aud-figure-tone{ background:linear-gradient(115deg, rgba(31,68,52,.12), rgba(192,138,62,.18)); }
   .aud-panel.org .aud-figure-img{ background-color:#16352a; background-image:url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1200&auto=format&fit=crop'); }
   .aud-panel.org .aud-figure-tone{ background:linear-gradient(115deg, rgba(22,53,42,.55), rgba(22,53,42,.2)); }
@@ -250,11 +250,13 @@
   .quote{ position:relative; overflow:hidden; padding:140px 40px; text-align:center; }
   .quote-bg{ position:absolute; inset:0; background-color:#cfc4a6; background-image:url('https://images.unsplash.com/photo-1545350089-47b3d117a92c?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); background-size:cover; background-position:center; transform:scale(1.05); filter:saturate(.85) brightness(.9); }
   .quote-overlay{ position:absolute; inset:0; background:
+      radial-gradient(ellipse 60% 55% at 50% 48%, rgba(40,58,42,.08) 0%, rgba(17,34,27,.22) 65%, rgba(17,34,27,.42) 100%),
+      radial-gradient(circle at 50% 38%, rgba(217,185,139,.1) 0%, rgba(217,185,139,0) 45%),
       linear-gradient(to bottom,
         var(--white) 0%,
         rgba(251,249,243,.5) 16%,
         rgba(22,40,32,.48) 38%,
-        rgba(17,34,27,.6) 50%,
+        rgba(17,34,27,.58) 50%,
         rgba(22,40,32,.48) 62%,
         rgba(234,226,206,.5) 84%,
         var(--bg-alt) 100%); }
@@ -562,7 +564,14 @@
         <div class="aud-figure-tone" aria-hidden="true"></div>
       </div>
       <div class="aud-body reveal">
-        <div class="aud-ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3.2" stroke="#9CBBA4" stroke-width="1.3"/><circle cx="17" cy="9" r="2.6" stroke="#9CBBA4" stroke-width="1.3"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6" stroke="#9CBBA4" stroke-width="1.3"/><path d="M16 14c2.8 0 5 2.2 5 5.5" stroke="#9CBBA4" stroke-width="1.3"/></svg></div>
+        <div class="aud-ico"><svg viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="7.2" r="3" stroke="#9CBBA4" stroke-width="1.3"/>
+          <path d="M6.5 19.5c0-3.3 2.5-5.7 5.5-5.7s5.5 2.4 5.5 5.7" stroke="#9CBBA4" stroke-width="1.3"/>
+          <circle cx="4.6" cy="9.4" r="2.1" stroke="#9CBBA4" stroke-width="1.2"/>
+          <path d="M1 18.3c0-2.4 1.6-4.1 3.6-4.1.9 0 1.7.3 2.4.9" stroke="#9CBBA4" stroke-width="1.2"/>
+          <circle cx="19.4" cy="9.4" r="2.1" stroke="#9CBBA4" stroke-width="1.2"/>
+          <path d="M23 18.3c0-2.4-1.6-4.1-3.6-4.1-.9 0-1.7.3-2.4.9" stroke="#9CBBA4" stroke-width="1.2"/>
+        </svg></div>
         <div class="aud-label">For Organisations</div>
         <h3 class="aud-title">Help your people thrive through change.</h3>
         <ul class="aud-list">
