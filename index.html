@@ -161,17 +161,15 @@
   .method-divider{ width:9px; height:9px; border-radius:50%; background:var(--gold); margin:16px auto 0; }
   .method-sub{ margin-top:18px; font-size:14.5px; color:var(--muted); max-width:420px; margin-left:auto; margin-right:auto; line-height:1.8; }
 
-  .method-grid{ max-width:var(--max); margin:0 auto; padding:0 40px; position:relative; display:grid; grid-template-columns:repeat(4,1fr); gap:28px; }
-  .method-line{ position:absolute; top:-2px; left:calc(12.5% + 24px); right:calc(12.5% + 24px); height:1px; background:linear-gradient(to right, transparent, var(--border) 8%, var(--border) 92%, transparent); z-index:0; }
+  .method-grid{ max-width:var(--max); margin:50px auto 0; padding:0 40px; position:relative; display:grid; grid-template-columns:repeat(4,1fr); gap:28px; }
+  .method-line{ display:none; }
 
-  .method-grid{ margin-top:50px; }
-  .m-card{ position:relative; z-index:1; text-align:center; background:var(--white); border:1px solid var(--border-lt); border-radius:6px; padding:54px 24px 32px; transition:transform .4s var(--ease), box-shadow .4s var(--ease), border-color .4s var(--ease); }
+  .m-card{ position:relative; z-index:1; text-align:center; background:var(--white); border:1px solid var(--border-lt); border-radius:8px; padding:34px 24px 32px; transition:transform .4s var(--ease), box-shadow .4s var(--ease), border-color .4s var(--ease); }
   .m-card:hover{ transform:translateY(-7px); box-shadow:0 24px 48px -18px rgba(31,68,52,.18); border-color:var(--border); }
 
-  .m-badge{ position:absolute; top:-26px; left:50%; transform:translateX(-50%); width:48px; height:48px; border-radius:50%; background:var(--forest); color:#fff; font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-weight:600; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 18px -4px rgba(31,68,52,.45), 0 0 0 5px var(--bg); border:1px solid var(--gold-soft); letter-spacing:0; z-index:2; }
-  .m-badge-label{ position:absolute; top:24px; left:50%; transform:translateX(-50%); font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:var(--subtle); white-space:nowrap; }
+  .m-num{ position:absolute; top:18px; right:22px; font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-weight:500; color:#6E746A; letter-spacing:.02em; }
 
-  .m-ring{ width:96px; height:96px; border-radius:50%; border:1px solid var(--sage); display:flex; align-items:center; justify-content:center; margin:10px auto 24px; position:relative; transition:border-color .4s var(--ease); background:radial-gradient(circle at 50% 40%, rgba(255,255,255,.5), transparent 70%); overflow:hidden; }
+  .m-ring{ width:96px; height:96px; border-radius:50%; border:1px solid var(--sage); display:flex; align-items:center; justify-content:center; margin:0 auto 24px; position:relative; transition:border-color .4s var(--ease); background:radial-gradient(circle at 50% 40%, rgba(255,255,255,.5), transparent 70%); overflow:hidden; }
   .m-card:hover .m-ring{ border-color:var(--gold); }
   .m-ring svg{ width:42px; height:42px; }
   .m-ring.is-photo{ background:none; }
@@ -180,9 +178,9 @@
   .m-ring.is-photo::after{ content:''; position:absolute; inset:0; border-radius:50%; box-shadow:inset 0 0 0 1px rgba(255,255,255,.25); }
 
   .m-name{ font-family:'Cormorant Garamond',serif; font-size:1.55rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text); margin-bottom:5px; }
-  .m-stage{ display:block; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-deep); font-weight:500; margin-bottom:18px; }
+  .m-stage{ display:block; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:#946022; font-weight:500; margin-bottom:18px; }
   .m-words{ font-size:12.5px; color:var(--muted); line-height:1.85; margin-bottom:16px; padding-bottom:16px; border-bottom:1px solid var(--border-lt); }
-  .m-ask{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.08rem; color:var(--forest-mid); line-height:1.4; }
+  .m-ask{ font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:500; font-size:1.08rem; color:var(--forest); line-height:1.45; }
 
   /* ── AUDIENCE (Who I work with) ── */
   .aud{ display:grid; grid-template-columns:1fr 1fr; background:var(--white); }
@@ -362,7 +360,6 @@
     .hero-inner{ padding:56px 40px; }
     .branch-bleed{ width:200px; left:-16px; top:-60px; opacity:.7; }
     .method-grid{ grid-template-columns:1fr 1fr; gap:56px 24px; padding:0 24px; }
-    .method-line{ display:none; }
     .aud{ grid-template-columns:1fr; }
     .aud-panel, .aud-panel.org{ grid-template-columns:1fr; }
     .aud-panel.org .aud-figure{ order:1; }
@@ -483,11 +480,9 @@
         <p class="method-sub">Four stages of grounded growth — each building on the one before.</p>
       </div>
       <div class="method-grid">
-        <div class="method-line" aria-hidden="true"></div>
 
         <div class="m-card reveal">
-          <div class="m-badge">1</div>
-          <span class="m-badge-label">Step One</span>
+          <span class="m-num">01</span>
           <div class="m-ring is-photo">
             <img src="https://images.unsplash.com/photo-1560808193-0d6ef54659ad?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" loading="lazy" />
           </div>
@@ -498,8 +493,7 @@
         </div>
 
         <div class="m-card reveal">
-          <div class="m-badge">2</div>
-          <span class="m-badge-label">Step Two</span>
+          <span class="m-num">02</span>
           <div class="m-ring is-photo">
             <img src="https://images.unsplash.com/photo-1628888169062-3dc685cb6e1b?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" loading="lazy" />
           </div>
@@ -510,8 +504,7 @@
         </div>
 
         <div class="m-card reveal">
-          <div class="m-badge">3</div>
-          <span class="m-badge-label">Step Three</span>
+          <span class="m-num">03</span>
           <div class="m-ring is-photo">
             <img src="https://images.unsplash.com/photo-1496641536537-0f24489402ee?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" loading="lazy" />
           </div>
@@ -522,8 +515,7 @@
         </div>
 
         <div class="m-card reveal">
-          <div class="m-badge">4</div>
-          <span class="m-badge-label">Step Four</span>
+          <span class="m-num">04</span>
           <div class="m-ring is-photo">
             <img src="https://images.unsplash.com/photo-1520121401995-928cd50d4e27?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" loading="lazy" />
           </div>
