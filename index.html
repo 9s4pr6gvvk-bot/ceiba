@@ -66,11 +66,17 @@
   nav.main::after{ content:''; position:absolute; inset:0; z-index:0; pointer-events:none; background:rgba(244,239,227,.98); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid var(--border); box-shadow:0 10px 40px -16px rgba(31,68,52,.22); opacity:0; transition:opacity .45s var(--ease); }
   nav.main.scrolled::before{ opacity:0; }
   nav.main.scrolled::after{ opacity:1; }
-  .nav-inner{ position:relative; z-index:1; max-width:var(--max); margin:0 auto; padding:0 40px; height:190px; display:flex; align-items:center; justify-content:space-between; gap:40px; }
+  .nav-inner{ position:relative; z-index:1; max-width:var(--max); margin:0 auto; padding:0 40px; height:190px; display:flex; align-items:center; justify-content:space-between; gap:40px; transition:height .45s var(--ease); }
+  nav.main.scrolled .nav-inner{ height:96px; }
 
   .brand{ display:flex; align-items:center; text-decoration:none; transition:transform .3s var(--ease); }
   .brand:hover{ transform:translateY(-1px); }
-  .brand-logo{ height:174px; width:auto; display:block; }
+  .brand-logo-wrap{ display:grid; align-items:center; }
+  .brand-logo{ grid-area:1/1; width:auto; display:block; opacity:1; transition:height .5s var(--ease), opacity .4s var(--ease); }
+  .brand-logo.logo-default{ height:174px; }
+  .brand-logo.logo-scrolled{ height:70px; opacity:0; }
+  nav.main.scrolled .brand-logo.logo-default{ height:70px; opacity:0; }
+  nav.main.scrolled .brand-logo.logo-scrolled{ opacity:1; }
 
   .nav-links{ display:flex; list-style:none; gap:30px; align-items:center; }
   .nav-links > li > a{ position:relative; font-size:11.5px; font-weight:500; letter-spacing:.13em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .25s; padding:4px 0; }
@@ -376,7 +382,10 @@
     .util-in{ padding:7px 20px; font-size:10.5px; }
     .util-tag{ display:none; }
     .nav-inner{ padding:0 20px; height:150px; }
-    .brand-logo{ height:134px; width:auto; }
+    nav.main.scrolled .nav-inner{ height:82px; }
+    .brand-logo.logo-default{ height:134px; }
+    .brand-logo.logo-scrolled{ height:58px; }
+    nav.main.scrolled .brand-logo.logo-default{ height:58px; }
     .hero{ min-height:0; margin-top:-150px; padding-top:150px; }
     .hero-scrim{ background:
         linear-gradient(160deg, var(--bg) 0%, rgba(244,239,227,.97) 50%, rgba(244,239,227,.85) 75%, rgba(244,239,227,.55) 100%); }
@@ -417,7 +426,10 @@
   <nav class="main" id="mainNav">
     <div class="nav-inner">
       <a href="#top" class="brand" aria-label="CEIBA home">
-        <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/ceiba/refs/heads/main/Ceiba%20logo%20stacked%202%20(1).png" alt="CEIBA — Transformational Coaching &amp; Change" class="brand-logo" />
+        <div class="brand-logo-wrap">
+          <img class="brand-logo logo-default" src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/ceiba/refs/heads/main/Ceiba%20logo%20stacked%202%20(1).png" alt="CEIBA — Transformational Coaching &amp; Change" />
+          <img class="brand-logo logo-scrolled" src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/ceiba/refs/heads/main/Ceiba%20not%20stacked%20png.png" alt="CEIBA — Transformational Coaching &amp; Change" />
+        </div>
       </a>
       <ul class="nav-links">
         <li><a href="#top" class="active">Home</a></li>
@@ -747,7 +759,9 @@
 
   <script>
     const nav = document.getElementById('mainNav');
-    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 12); }, { passive:true });
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive:true });
 
     const hamburger = document.getElementById('hamburger');
     const mobMenu = document.getElementById('mobMenu');
