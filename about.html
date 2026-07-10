@@ -145,8 +145,8 @@
 
   /* sticky image side */
   .story-image-col{ position:sticky; top:220px; }
-  .story-img-frame{ border-radius:6px; overflow:hidden; box-shadow:0 30px 60px -20px rgba(31,68,52,.3); margin-bottom:24px; }
-  .story-img-frame img{ width:100%; height:460px; object-fit:cover; object-position:center; }
+  .story-img-frame{ border-radius:6px; overflow:hidden; box-shadow:0 30px 60px -20px rgba(31,68,52,.3); margin-bottom:24px; aspect-ratio:3/4; }
+  .story-img-frame img{ width:100%; height:100%; object-fit:cover; object-position:center 22%; }
   .story-img-caption{ font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--subtle); padding-left:4px; }
 
   /* ── SECTION 3: PERSONAL NOTE ── */
@@ -345,7 +345,7 @@
       <div class="story-image-col reveal">
         <div class="story-img-frame">
           <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/ceiba/refs/heads/main/IMG_2645.jpg"
-               alt="Gerry Spencer" style="object-position:center top;" />
+               alt="Gerry Spencer" />
         </div>
         <p class="story-img-caption">Gerry Spencer — founder of CEIBA</p>
       </div>
