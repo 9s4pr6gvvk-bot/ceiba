@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About Gerry Spencer | CEIBA Transformational Coaching</title>
+<meta name="description" content="Meet Gerry Spencer — life and transformational coach, founder of the CEIBA Method. Over two decades of experience helping people navigate change." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+
+  :root{
+    --bg:        #F4EFE3;
+    --bg-warm:   #EFE8D8;
+    --bg-alt:    #EAE2CE;
+    --white:     #FBF9F3;
+    --forest:    #1F4434;
+    --forest-deep:#16352A;
+    --forest-mid:#3A6B52;
+    --sage:      #9CBBA4;
+    --sage-soft: #C3D4C4;
+    --text:      #232A24;
+    --muted:     #5E665C;
+    --subtle:    #6E746A;
+    --border:    #D8CDB4;
+    --border-lt: #E6DDC8;
+    --gold:      #C08A3E;
+    --gold-deep: #946022;
+    --gold-soft: #D9B98B;
+    --max: 1240px;
+    --ease: cubic-bezier(.22,.61,.36,1);
+  }
+
+  html{ scroll-behavior:smooth; scroll-padding-top:190px; }
+  body{
+    font-family:'Outfit',sans-serif; font-weight:300;
+    background:var(--bg); color:var(--text);
+    line-height:1.72; overflow-x:hidden;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  }
+  h1,h2,h3,h4{ font-family:'Cormorant Garamond',serif; font-weight:500; color:var(--text); }
+  em{ font-style:italic; color:var(--gold); }
+  a{ color:inherit; }
+  img{ display:block; max-width:100%; }
+  ::selection{ background:var(--sage); color:var(--forest-deep); }
+
+  .reveal{ opacity:0; transform:translateY(22px); transition:opacity .9s var(--ease), transform .9s var(--ease); }
+  .reveal.in{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1 !important; transform:none !important; } }
+
+  /* ── UTILITY BAR ── */
+  .util{ background:var(--forest-deep); color:rgba(255,255,255,.62); font-size:11.5px; letter-spacing:.08em; }
+  .util-in{ max-width:var(--max); margin:0 auto; padding:8px 40px; display:flex; justify-content:space-between; align-items:center; gap:20px; }
+  .util a{ color:rgba(255,255,255,.78); text-decoration:none; transition:color .2s; }
+  .util a:hover{ color:#fff; }
+  .util-right{ display:flex; gap:22px; align-items:center; }
+  .util-tag{ text-transform:uppercase; letter-spacing:.18em; font-size:10px; color:var(--gold-soft); }
+
+  /* ── NAV ── */
+  nav.main{ position:sticky; top:0; z-index:100; background:transparent; border-bottom:1px solid transparent; isolation:isolate; }
+  nav.main::before{ content:''; position:absolute; top:0; left:0; right:0; bottom:-46px; z-index:0; pointer-events:none; background:linear-gradient(to bottom, rgba(244,239,227,.98) 0%, rgba(244,239,227,.84) 38%, rgba(244,239,227,.40) 68%, rgba(244,239,227,0) 100%); opacity:1; transition:opacity .45s cubic-bezier(.22,.61,.36,1); }
+  nav.main::after{ content:''; position:absolute; inset:0; z-index:0; pointer-events:none; background:rgba(244,239,227,.98); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid var(--border); box-shadow:0 10px 40px -16px rgba(31,68,52,.22); opacity:0; transition:opacity .45s cubic-bezier(.22,.61,.36,1); }
+  nav.main.scrolled::before{ opacity:0; }
+  nav.main.scrolled::after{ opacity:1; }
+  .nav-inner{ position:relative; z-index:1; max-width:var(--max); margin:0 auto; padding:0 40px; height:190px; display:flex; align-items:center; justify-content:space-between; gap:40px; }
+  .brand{ display:flex; align-items:center; text-decoration:none; transition:transform .3s var(--ease); }
+  .brand:hover{ transform:translateY(-1px); }
+  .brand-logo{ height:174px; width:auto; display:block; }
+  .nav-links{ display:flex; list-style:none; gap:30px; align-items:center; }
+  .nav-links > li > a{ position:relative; font-size:11.5px; font-weight:500; letter-spacing:.13em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .25s; padding:4px 0; }
+  .nav-links > li > a::after{ content:''; position:absolute; left:0; right:100%; bottom:-2px; height:1.5px; background:var(--gold); transition:right .3s var(--ease); }
+  .nav-links > li > a:hover{ color:var(--text); }
+  .nav-links > li > a:hover::after{ right:0; }
+  .nav-links > li > a.active{ color:var(--forest); }
+  .nav-links > li > a.active::after{ right:0; }
+  .nav-cta{ background:var(--forest); color:#fff !important; padding:13px 26px; font-size:11px; letter-spacing:.13em; text-transform:uppercase; font-weight:500; text-decoration:none; border-radius:2px; transition:background .25s, transform .2s var(--ease), box-shadow .25s; white-space:nowrap; }
+  .nav-cta::after{ display:none; }
+  .nav-cta:hover{ background:var(--forest-mid); transform:translateY(-2px); box-shadow:0 10px 24px -8px rgba(31,68,52,.5); }
+  .hamburger{ display:none; flex-direction:column; gap:5px; cursor:pointer; padding:8px; background:none; border:none; }
+  .hamburger span{ display:block; width:24px; height:1.5px; background:var(--text); }
+  .mob-menu{ display:none; position:fixed; inset:0; background:var(--forest-deep); z-index:200; flex-direction:column; align-items:center; justify-content:center; gap:1.6rem; }
+  .mob-menu.open{ display:flex; }
+  .mob-menu a{ font-family:'Cormorant Garamond',serif; font-size:1.9rem; color:rgba(255,255,255,.88); text-decoration:none; }
+  .mob-menu a.mob-cta{ font-family:'Outfit',sans-serif; font-size:.8rem; letter-spacing:.16em; text-transform:uppercase; border:1px solid var(--gold); color:var(--gold-soft); padding:14px 30px; border-radius:2px; }
+  .mob-close{ position:absolute; top:26px; right:32px; background:none; border:none; color:rgba(255,255,255,.6); font-size:32px; cursor:pointer; }
+
+  /* ── SHARED ── */
+  .wrap{ max-width:var(--max); margin:0 auto; padding:0 40px; }
+  .kicker{ display:inline-flex; align-items:center; gap:11px; font-size:11px; letter-spacing:.28em; text-transform:uppercase; color:var(--gold-deep); font-weight:500; margin-bottom:20px; }
+  .kicker::before{ content:''; width:26px; height:1px; background:var(--gold); opacity:.6; }
+  .lede{ font-size:15.5px; font-weight:300; color:var(--muted); line-height:1.95; }
+  .lede + .lede{ margin-top:16px; }
+  .btn{ display:inline-flex; align-items:center; justify-content:center; font-family:'Outfit',sans-serif; font-size:11px; letter-spacing:.16em; text-transform:uppercase; font-weight:500; text-decoration:none; padding:16px 34px; cursor:pointer; border:none; border-radius:2px; transition:background .25s, transform .2s var(--ease), box-shadow .25s; }
+  .btn:hover{ transform:translateY(-2px); }
+  .btn-fill{ background:var(--forest); color:rgba(255,255,255,.96); box-shadow:0 4px 14px -6px rgba(31,68,52,.4); }
+  .btn-fill:hover{ background:var(--forest-mid); }
+  .btn-gold{ background:var(--gold); color:#fff; box-shadow:0 4px 14px -6px rgba(192,138,62,.5); }
+  .btn-gold:hover{ background:var(--gold-deep); }
+
+  /* ── HERO ── */
+  .about-hero{ position:relative; display:flex; align-items:center; overflow:hidden; background:var(--white); }
+  .about-hero-inner{ position:relative; z-index:3; max-width:var(--max); margin:0 auto; padding:56px 40px; width:100%; height:100%; box-sizing:border-box; display:grid; grid-template-columns:1.1fr 1fr; gap:56px; align-items:center; }
+  .about-hero-eyebrow{ display:inline-flex; align-items:center; gap:12px; font-size:11px; letter-spacing:.26em; text-transform:uppercase; color:var(--gold-deep); margin-bottom:22px; font-weight:500; }
+  .about-hero-eyebrow::before{ content:''; width:26px; height:1px; background:var(--gold); }
+  .about-hero h1{ font-size:clamp(2.4rem,3.6vw,4.4rem); line-height:1.08; color:var(--text); margin-bottom:22px; letter-spacing:-.015em; }
+  .about-hero h1 em{ color:var(--gold); display:block; }
+  .about-hero-sub{ font-size:14.5px; color:var(--muted); letter-spacing:.04em; max-width:440px; line-height:1.8; }
+  .about-hero-sub strong{ color:var(--text); font-weight:400; }
+  .about-hero-photo{ position:relative; border-radius:6px; overflow:hidden; box-shadow:0 30px 60px -20px rgba(31,68,52,.25); width:100%; max-width:380px; aspect-ratio:3/4; margin-left:auto; }
+  .about-hero-photo img{ width:100%; height:100%; object-fit:cover; object-position:center; transform:scale(1.06); animation:heroZoom 26s cubic-bezier(.22,.61,.36,1) forwards; }
+  @keyframes heroZoom{ from{ transform:scale(1.06);} to{ transform:scale(1);} }
+  @media (min-width:1081px){
+    .about-hero{ height:calc(100vh - var(--header-h, 230px)); min-height:520px; }
+  }
+  @media (max-width:1080px){
+    .about-hero-inner{ grid-template-columns:1fr; gap:40px; padding:64px 40px; }
+    .about-hero-photo{ order:-1; max-width:340px; aspect-ratio:3/4; margin:0 auto; }
+  }
+
+  /* ── SECTION 1: THE PROFESSIONAL ── */
+  .professional{ background:var(--white); border-bottom:1px solid var(--border); }
+  .professional-grid{ max-width:var(--max); margin:0 auto; padding:104px 40px 96px; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
+  .professional-left h2{ font-size:clamp(1.9rem,2.8vw,2.6rem); line-height:1.2; margin-bottom:32px; }
+  .professional-creds{ display:flex; flex-wrap:wrap; gap:10px; margin-top:40px; }
+  .cred-pill{ font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--forest-mid); background:rgba(156,187,164,.18); border:1px solid rgba(156,187,164,.5); padding:8px 16px; border-radius:20px; font-weight:400; }
+
+  /* ── SECTION 2: WHERE CEIBA BEGAN ── */
+  .ceiba-story{ background:var(--bg); }
+  .ceiba-story-head{ max-width:var(--max); margin:0 auto; padding:104px 40px 64px; }
+  .ceiba-story-head h2{ font-size:clamp(1.9rem,2.8vw,2.6rem); line-height:1.2; max-width:680px; margin-bottom:32px; }
+
+  .ceiba-story-body{ max-width:var(--max); margin:0 auto; padding:0 40px; display:grid; grid-template-columns:1.1fr 1fr; gap:72px; align-items:start; padding-bottom:0; }
+  .story-text p{ font-size:15.5px; color:var(--muted); line-height:1.95; margin-bottom:20px; }
+
+  /* pull quote */
+  .story-pull{ position:relative; padding:56px 56px; background:var(--bg-alt); border-left:3px solid var(--gold); margin:36px 0; border-radius:0 6px 6px 0; }
+  .story-pull blockquote{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.55rem; line-height:1.5; color:var(--forest); font-weight:500; }
+
+  /* what I believe box */
+  .believe-box{ background:var(--forest); color:#fff; padding:64px 56px; border-radius:6px; margin-top:40px; }
+  .believe-box .believe-label{ font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold-soft); font-weight:500; margin-bottom:20px; display:block; }
+  .believe-box p{ font-size:15.5px; color:rgba(255,255,255,.82); line-height:1.95; }
+
+  /* sticky image side */
+  .story-image-col{ position:sticky; top:220px; }
+  .story-img-frame{ border-radius:6px; overflow:hidden; box-shadow:0 30px 60px -20px rgba(31,68,52,.3); margin-bottom:24px; }
+  .story-img-frame img{ width:100%; height:460px; object-fit:cover; object-position:center; }
+  .story-img-caption{ font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--subtle); padding-left:4px; }
+
+  /* ── SECTION 3: PERSONAL NOTE ── */
+  .personal{ background:var(--white); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:96px 0; }
+  .personal-in{ max-width:var(--max); margin:0 auto; padding:0 40px; display:grid; grid-template-columns:1fr 1.1fr; gap:72px; align-items:center; }
+  .personal-card{ background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:56px 52px; }
+  .personal-card-title{ font-family:'Cormorant Garamond',serif; font-size:1.6rem; color:var(--text); margin-bottom:22px; font-style:italic; }
+  .personal-card p{ font-size:15.5px; color:var(--muted); line-height:1.95; }
+  .personal-photos{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .personal-photo{ border-radius:6px; overflow:hidden; box-shadow:0 12px 30px -12px rgba(31,68,52,.22); background:var(--bg-alt); aspect-ratio:3/4; display:flex; align-items:center; justify-content:center; }
+  .personal-photo img{ width:100%; height:100%; object-fit:cover; }
+  .personal-photo-placeholder{ opacity:.35; }
+  .personal-photo-placeholder svg{ width:48px; height:48px; }
+
+  /* ── CLOSING CTA ── */
+  .about-cta{ background:var(--bg-alt); border-top:1px solid var(--border); padding:104px 40px; text-align:center; }
+  .about-cta h2{ font-size:clamp(2rem,3.2vw,3rem); line-height:1.15; margin-bottom:20px; }
+  .about-cta p{ font-size:16px; color:var(--muted); max-width:560px; margin:0 auto 36px; line-height:1.85; }
+
+  /* ── FOOTER ── */
+  footer{ background:var(--forest-deep); padding:76px 0 34px; }
+  .footer-top{ max-width:var(--max); margin:0 auto; padding:0 40px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:40px; padding-bottom:44px; border-bottom:1px solid rgba(255,255,255,.1); }
+  .footer-brand{ display:flex; align-items:center; }
+  .footer-logo{ height:auto; width:210px; display:block; filter:brightness(0) invert(1) opacity(.92); }
+  .footer-nav{ display:flex; gap:26px; flex-wrap:wrap; align-items:center; }
+  .footer-nav a{ font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.6); text-decoration:none; transition:color .2s; }
+  .footer-nav a:hover{ color:#fff; }
+  .footer-social{ display:flex; gap:12px; }
+  .footer-social a{ width:38px; height:38px; border-radius:50%; border:1px solid rgba(255,255,255,.25); display:flex; align-items:center; justify-content:center; transition:border-color .25s,background .25s; }
+  .footer-social a:hover{ background:rgba(255,255,255,.1); border-color:var(--gold-soft); }
+  .footer-social svg{ width:16px; height:16px; }
+  .footer-bottom{ max-width:var(--max); margin:0 auto; padding:24px 40px 0; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:11.5px; color:rgba(255,255,255,.42); }
+  .footer-bottom a{ color:rgba(255,255,255,.42); text-decoration:none; }
+  .footer-bottom a:hover{ color:#fff; }
+
+  /* ── MODAL ── */
+  .modal-overlay{ position:fixed; inset:0; z-index:300; display:none; align-items:center; justify-content:center; padding:24px; }
+  .modal-overlay.open{ display:flex; }
+  .modal-scrim{ position:absolute; inset:0; background:rgba(17,28,22,.7); backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px); opacity:0; transition:opacity .35s var(--ease); }
+  .modal-overlay.open .modal-scrim{ opacity:1; }
+  .modal-box{ position:relative; z-index:1; background:var(--white); width:100%; max-width:480px; max-height:88vh; overflow-y:auto; border-radius:8px; box-shadow:0 40px 80px -20px rgba(17,28,22,.5); padding:48px 40px 40px; opacity:0; transform:translateY(18px) scale(.98); transition:opacity .35s var(--ease), transform .35s var(--ease); }
+  .modal-overlay.open .modal-box{ opacity:1; transform:none; }
+  .modal-close{ position:absolute; top:18px; right:18px; width:34px; height:34px; border-radius:50%; border:1px solid var(--border); background:var(--bg); display:flex; align-items:center; justify-content:center; cursor:pointer; transition:background .2s; }
+  .modal-close:hover{ background:var(--bg-alt); }
+  .modal-close svg{ width:14px; height:14px; }
+  .modal-kicker{ font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold-deep); font-weight:500; margin-bottom:10px; }
+  .modal-title{ font-family:'Cormorant Garamond',serif; font-size:1.7rem; color:var(--text); margin-bottom:10px; line-height:1.25; }
+  .modal-sub{ font-size:13.5px; color:var(--muted); line-height:1.7; margin-bottom:28px; }
+  .modal-field{ margin-bottom:18px; }
+  .modal-field label{ display:block; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--subtle); margin-bottom:7px; font-weight:500; }
+  .modal-field input,.modal-field textarea{ width:100%; font-family:'Outfit',sans-serif; font-size:14.5px; color:var(--text); background:var(--bg); border:1px solid var(--border); border-radius:4px; padding:12px 14px; transition:border-color .2s; }
+  .modal-field input:focus,.modal-field textarea:focus{ outline:none; border-color:var(--forest-mid); background:var(--white); }
+  .modal-field textarea{ resize:vertical; min-height:80px; font-family:'Outfit',sans-serif; }
+  .modal-submit{ width:100%; margin-top:6px; }
+  .modal-note{ font-size:11.5px; color:var(--subtle); text-align:center; margin-top:16px; line-height:1.6; }
+  .modal-status{ display:none; text-align:center; padding:20px 0; }
+  .modal-status.show{ display:block; }
+  .modal-status svg{ width:40px; height:40px; color:var(--forest-mid); margin:0 auto 16px; }
+  .modal-status h4{ font-family:'Cormorant Garamond',serif; font-size:1.4rem; color:var(--text); margin-bottom:8px; }
+  .modal-status p{ font-size:13.5px; color:var(--muted); line-height:1.7; }
+  .modal-status.error svg{ color:#B14B3C; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width:1080px){
+    .nav-links{ display:none; } .nav-cta{ display:none; } .hamburger{ display:flex; }
+    .professional-grid{ grid-template-columns:1fr; gap:48px; }
+    .ceiba-story-body{ grid-template-columns:1fr; gap:48px; }
+    .story-image-col{ position:static; }
+    .personal-in{ grid-template-columns:1fr; gap:44px; }
+  }
+  @media (max-width:640px){
+    .util-tag{ display:none; }
+    .nav-inner{ padding:0 20px; height:150px; }
+    .brand-logo{ height:134px; width:auto; }
+    .about-hero-inner{ padding:48px 20px; }
+    .about-hero h1{ font-size:2.4rem; }
+    .ceiba-story-head, .about-cta{ padding-left:24px; padding-right:24px; }
+    .professional-grid, .ceiba-story-body, .personal-in{ padding-left:24px; padding-right:24px; }
+    .professional-grid{ padding-top:72px; padding-bottom:64px; }
+    .believe-box{ padding:44px 30px; }
+    .story-pull{ padding:36px 30px; }
+    .personal-card{ padding:40px 28px; }
+    .personal-photos{ grid-template-columns:1fr; }
+    .footer-top{ flex-direction:column; }
+    .footer-bottom{ flex-direction:column; gap:6px; }
+    .about-cta{ padding:72px 24px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- UTILITY BAR -->
+  <div class="util">
+    <div class="util-in">
+      <a href="mailto:hello@ceibamethod.com">hello@ceibamethod.com</a>
+      <div class="util-right">
+        <span class="util-tag">Clarity · Change · Possibility</span>
+        <a href="#" data-open-modal>Book a Discovery Call →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="main" id="mainNav">
+    <div class="nav-inner">
+      <a href="index.html" class="brand" aria-label="CEIBA home">
+        <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/ceiba/refs/heads/main/Ceiba%20logo%20stacked%202%20(1).png" alt="CEIBA" class="brand-logo" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="index.html#method">The CEIBA Method&trade;</a></li>
+        <li><a href="index.html#work">Work With Me</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <a href="#" class="nav-cta" data-open-modal>Book a Discovery Call</a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="mob-menu" id="mobMenu">
+    <button class="mob-close" id="mobClose" aria-label="Close menu">&times;</button>
+    <a href="index.html" data-close>Home</a>
+    <a href="about.html" data-close>About</a>
+    <a href="index.html#method" data-close>The CEIBA Method&trade;</a>
+    <a href="index.html#work" data-close>Work With Me</a>
+    <a href="index.html#contact" data-close>Contact</a>
+    <a href="#" class="mob-cta" data-open-modal data-close>Book a Discovery Call</a>
+  </div>
+
+  <!-- HERO -->
+  <header class="about-hero" id="top">
+    <div class="about-hero-inner">
+      <div>
+        <span class="about-hero-eyebrow">About Gerry Spencer</span>
+        <h1>Rooted in experience.<br />Focused on what's <em>possible.</em></h1>
+        <p class="about-hero-sub"><strong>Gerry Spencer</strong> &mdash; Life &amp; Transformational Coach &middot; Founder of The CEIBA Method&trade;</p>
+      </div>
+      <div class="about-hero-photo">
+        <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/ceiba/refs/heads/main/IMG_2645.jpg" alt="Gerry Spencer, founder of CEIBA, seated against a tree in nature" />
+      </div>
+    </div>
+  </header>
+
+  <!-- SECTION 1: THE PROFESSIONAL -->
+  <section class="professional">
+    <div class="professional-grid">
+      <div class="reveal">
+        <span class="kicker">The Professional</span>
+        <h2>Over two decades of experience — working with individuals, organisations and everything life brings in between.</h2>
+        <div class="professional-creds">
+          <span class="cred-pill">ICF Qualified Coach</span>
+          <span class="cred-pill">NLP Master Practitioner</span>
+          <span class="cred-pill">Management &amp; Leadership</span>
+          <span class="cred-pill">Business Owner</span>
+          <span class="cred-pill">Wellbeing in the Workplace</span>
+        </div>
+      </div>
+      <div class="reveal">
+        <p class="lede">I have spent over two decades working with people navigating change — individuals finding their way through significant life transitions, and organisations supporting their people through uncertainty and growth. As a management trainer, a leadership coach, a business owner and a mother, I have worked across every context where human beings need to find their ground again.</p>
+        <p class="lede">Across all of it, one belief has remained constant: people are more capable than they realise, and real growth always begins from the inside out.</p>
+        <p class="lede">I bring both professional experience and genuine personal insight to every coaching relationship. What drives me is simple — helping people reconnect with who they are, find their direction, and move forward with real confidence and clarity.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: WHERE CEIBA BEGAN -->
+  <section class="ceiba-story">
+    <div class="ceiba-story-head reveal">
+      <span class="kicker">Where CEIBA Began</span>
+      <h2>A road in Costa Rica. An ancient tree.<br />A moment that stayed with me.</h2>
+    </div>
+
+    <div class="ceiba-story-body">
+      <div class="story-text reveal">
+        <p>I was travelling solo around Costa Rica — the first time I had done anything like that since my younger years. I arrived mentally exhausted and in the middle of a significant period of change in my own life. I was already working on a new business but hadn't yet found the heart of what I was building.</p>
+        <p>One morning I rode my bike down an old road and into the dense forest, and I came across a tree that took my breath away. The roots were enormous — spreading across the ground in every direction, heavy and ancient. The trunk was vast. And when I looked up, the canopy was catching the light high above me with the leaves shining right at the top. It was a real moment for me.</p>
+
+        <div class="story-pull">
+          <blockquote>&ldquo;I mentioned to a Costa Rican woman nearby that it was the most amazing tree I had ever seen. She said its name: <em>CEIBA.</em>&rdquo;</blockquote>
+        </div>
+
+        <p>Returning home, it kept coming to me. What struck me was something simple — that everything visible above the ground is a direct reflection of what exists beneath it. The roots go as deep as the tree grows tall. You cannot separate the two.</p>
+        <p>That felt true about people too. And it became the foundation of everything CEIBA is.</p>
+
+        <div class="believe-box">
+          <span class="believe-label">What I believe</span>
+          <p>The creativity, the movement, the possibility we want to reach for — all of it depends on the foundations we have built inside ourselves. The self-knowledge. The grounding. The clarity about who we actually are and what genuinely matters. When change shakes those foundations, everything becomes harder. When we rebuild them, everything becomes possible again. That is the work CEIBA does.</p>
+        </div>
+      </div>
+
+      <div class="story-image-col reveal">
+        <div class="story-img-frame">
+          <img src="https://images.unsplash.com/photo-1643400812282-4ef456a7b352?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+               alt="Costa Rica — where CEIBA was born" />
+        </div>
+        <p class="story-img-caption">Costa Rica — where CEIBA was born</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: PERSONAL NOTE -->
+  <section class="personal">
+    <div class="personal-in">
+      <div class="personal-photos reveal">
+        <div class="personal-photo">
+          <div class="personal-photo-placeholder">
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="16" r="8" stroke="#3A6B52" stroke-width="1.5"/><path d="M8 42c0-8.8 7.2-16 16-16s16 7.2 16 16" stroke="#3A6B52" stroke-width="1.5"/></svg>
+          </div>
+        </div>
+        <div class="personal-photo">
+          <div class="personal-photo-placeholder">
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="16" r="8" stroke="#3A6B52" stroke-width="1.5"/><path d="M8 42c0-8.8 7.2-16 16-16s16 7.2 16 16" stroke="#3A6B52" stroke-width="1.5"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="personal-card reveal">
+        <p class="personal-card-title">A personal note</p>
+        <p>Outside of coaching you will find me outdoors — especially by the sea. Looking for new places and adventure, playing tennis and finding humour in all of those places with family and friends.</p>
+        <p style="margin-top:16px;">I have always loved trees and the quiet majesty of them. The CEIBA was not a coincidence. It was a recognition.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING CTA -->
+  <section class="about-cta">
+    <div class="reveal">
+      <h2>I&rsquo;d love to have a <em>conversation.</em></h2>
+      <p>The discovery call is free, relaxed and without obligation. Just an honest conversation about where you are and whether CEIBA feels right for you.</p>
+      <a href="#" class="btn btn-fill" data-open-modal>Book Your Free Discovery Call</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/ceiba/refs/heads/main/Ceiba%20logo%20stacked%202%20(1).png" alt="CEIBA" class="footer-logo" />
+      </div>
+      <nav class="footer-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="index.html#method">The CEIBA Method&trade;</a>
+        <a href="index.html#work">Work With Me</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <div class="footer-social">
+        <a href="mailto:hello@ceibamethod.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="#fff" stroke-width="1.3"/><path d="M4 7l8 6 8-6" stroke="#fff" stroke-width="1.3"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#fff" stroke-width="1.3"/><path d="M8 10.5V17M8 7.6v.01M12 17v-4.2c0-1.3 1-2.3 2.2-2.3s2.2 1 2.2 2.3V17M12 10.5V17" stroke="#fff" stroke-width="1.3" stroke-linecap="round"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="#fff" stroke-width="1.3"/><circle cx="12" cy="12" r="4" stroke="#fff" stroke-width="1.3"/><circle cx="17" cy="7" r="1" fill="#fff"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 CEIBA &middot; hello@ceibamethod.com</span>
+      <span><a href="#">Privacy Policy</a> &middot; <a href="#">Terms</a> &middot; <a href="https://www.franks-media.co.uk" target="_blank" rel="noopener">Website designed by Franks Media</a></span>
+    </div>
+  </footer>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="bookingModal" aria-hidden="true">
+    <div class="modal-scrim" data-modal-close></div>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalCloseBtn" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+      <div id="modalFormWrap">
+        <div class="modal-kicker">CEIBA</div>
+        <h3 class="modal-title" id="modalTitle">Book a free discovery call</h3>
+        <p class="modal-sub">Tell me a little about you and I'll be in touch within one working day to arrange a time. No commitment, no pressure.</p>
+        <form id="bookingForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div class="modal-field"><label for="bf-name">Name</label><input type="text" id="bf-name" name="name" required autocomplete="name" /></div>
+          <div class="modal-field"><label for="bf-email">Email</label><input type="email" id="bf-email" name="email" required autocomplete="email" /></div>
+          <div class="modal-field"><label for="bf-phone">Phone <span style="text-transform:none;letter-spacing:0">(optional)</span></label><input type="tel" id="bf-phone" name="phone" autocomplete="tel" /></div>
+          <div class="modal-field"><label for="bf-message">What's bringing you here? <span style="text-transform:none;letter-spacing:0">(optional)</span></label><textarea id="bf-message" name="message" placeholder="A few words about what you're navigating right now…"></textarea></div>
+          <input type="hidden" name="_subject" value="New discovery call request — CEIBA website" />
+          <button type="submit" class="btn btn-gold modal-submit">Send Request</button>
+          <p class="modal-note">Your details are kept private and used only to arrange your call.</p>
+        </form>
+      </div>
+      <div class="modal-status" id="modalSuccess">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z" stroke="currentColor" stroke-width="1.3"/><path d="M8 12.5l2.7 2.7L16 9.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h4>Thank you</h4>
+        <p>Your request has been sent. I'll be in touch within one working day to arrange a time that works for you.</p>
+      </div>
+      <div class="modal-status error" id="modalError">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.3"/><path d="M12 8v5M12 16h.01" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+        <h4>Something went wrong</h4>
+        <p>Please try again, or email <a href="mailto:hello@ceibamethod.com" style="color:var(--forest-mid)">hello@ceibamethod.com</a> directly.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 12); }, { passive:true });
+
+    const utilBar = document.querySelector('.util');
+    function setHeaderHeight(){
+      const h = utilBar.offsetHeight + nav.offsetHeight;
+      document.documentElement.style.setProperty('--header-h', h + 'px');
+    }
+    setHeaderHeight();
+    window.addEventListener('resize', setHeaderHeight);
+    if (document.fonts && document.fonts.ready) { document.fonts.ready.then(setHeaderHeight); }
+
+    const hamburger = document.getElementById('hamburger');
+    const mobMenu = document.getElementById('mobMenu');
+    const mobClose = document.getElementById('mobClose');
+    const closeMob = () => { mobMenu.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); };
+    hamburger.addEventListener('click', () => { mobMenu.classList.add('open'); hamburger.setAttribute('aria-expanded','true'); });
+    mobClose.addEventListener('click', closeMob);
+    mobMenu.querySelectorAll('[data-close]').forEach(a => a.addEventListener('click', closeMob));
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold:0.12, rootMargin:'0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    const modal = document.getElementById('bookingModal');
+    const modalFormWrap = document.getElementById('modalFormWrap');
+    const modalSuccess = document.getElementById('modalSuccess');
+    const modalError = document.getElementById('modalError');
+    const bookingForm = document.getElementById('bookingForm');
+    let lastFocused = null;
+    function openModal(e){ if(e)e.preventDefault(); lastFocused=document.activeElement; modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; modalFormWrap.style.display=''; modalSuccess.classList.remove('show'); modalError.classList.remove('show'); setTimeout(()=>document.getElementById('bf-name').focus(),350); }
+    function closeModal(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; if(lastFocused)lastFocused.focus(); }
+    document.querySelectorAll('[data-open-modal]').forEach(el => el.addEventListener('click', openModal));
+    document.getElementById('modalCloseBtn').addEventListener('click', closeModal);
+    modal.querySelectorAll('[data-modal-close]').forEach(el => el.addEventListener('click', closeModal));
+    document.addEventListener('keydown', e => { if(e.key==='Escape'&&modal.classList.contains('open'))closeModal(); });
+    bookingForm.addEventListener('submit', async function(e){
+      e.preventDefault();
+      const btn=bookingForm.querySelector('.modal-submit'); const orig=btn.textContent;
+      btn.textContent='Sending…'; btn.disabled=true;
+      try{
+        const res=await fetch(bookingForm.action,{method:'POST',body:new FormData(bookingForm),headers:{'Accept':'application/json'}});
+        if(res.ok){ modalFormWrap.style.display='none'; modalSuccess.classList.add('show'); bookingForm.reset(); }
+        else{ modalFormWrap.style.display='none'; modalError.classList.add('show'); }
+      }catch{ modalFormWrap.style.display='none'; modalError.classList.add('show'); }
+      finally{ btn.textContent=orig; btn.disabled=false; }
+    });
+  </script>
+</body>
+</html>
