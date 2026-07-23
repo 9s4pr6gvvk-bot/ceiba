@@ -151,13 +151,13 @@
   .origin-main p{ font-size:16px; color:var(--muted); line-height:1.95; max-width:60ch; }
 
   /* portrait, offset and overlapping the rail */
-  .origin-plate{ position:relative; margin:64px 0 0 -136px; width:calc(100% + 136px); display:grid; grid-template-columns:1.15fr .85fr; gap:0; align-items:end; }
   .origin-plate-img{ aspect-ratio:4/5; overflow:hidden; background:var(--bg-warm); }
   .origin-plate-img img{ width:100%; height:100%; object-fit:cover; object-position:center 20%; transform:scale(1.01); transition:transform 1.4s var(--ease); }
   .origin-plate:hover .origin-plate-img img{ transform:scale(1.05); }
-  .origin-plate-side{ padding:0 0 40px 48px; }
-  .origin-plate-side p{ font-size:15px; line-height:1.9; }
-  .origin-plate-cap{ margin-top:26px; font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); }
+  .origin-plate{ position:relative; margin:64px 0 0 -136px; width:calc(100% + 136px); display:grid; grid-template-columns:1.15fr .85fr; gap:0; align-items:start; }
+  .origin-plate-side{ padding:48px 0 0 56px; border-top:1px solid var(--border); display:flex; flex-direction:column; height:100%; }
+  .origin-plate-side p{ font-size:15.5px; color:var(--muted); line-height:1.95; font-weight:300; }
+  .origin-plate-cap{ margin-top:auto; padding-top:36px; font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); }
   .origin-plate-cap::before{ content:''; display:block; width:26px; height:1px; background:var(--gold); margin-bottom:12px; }
 
   /* ══ THE NAMING — scale-contrast reveal ══ */
@@ -172,11 +172,10 @@
   /* ══ THE MIRROR — roots as deep as the tree is tall ══ */
   .mirror{ background:var(--bg); padding:96px 40px 120px; }
   .mirror-in{ max-width:1180px; margin:0 auto; text-align:center; }
-  .mirror-up{ font-family:'Cormorant Garamond',serif; font-size:clamp(1.5rem,2.9vw,2.5rem); line-height:1.3; color:var(--forest); font-weight:500; }
-  .mirror-horizon{ position:relative; height:1px; background:linear-gradient(to right, transparent, var(--border) 12%, var(--border) 88%, transparent); margin:28px auto; max-width:760px; }
+  .mirror-statement{ font-family:'Cormorant Garamond',serif; font-size:clamp(1.8rem,3.4vw,3rem); line-height:1.25; color:var(--forest); font-weight:500; max-width:22ch; margin:0 auto; }
+  .mirror-horizon{ position:relative; height:1px; background:linear-gradient(to right, transparent, var(--border) 12%, var(--border) 88%, transparent); margin:36px auto; max-width:680px; }
   .mirror-horizon::after{ content:''; position:absolute; left:50%; top:-3px; width:7px; height:7px; border-radius:50%; background:var(--gold); transform:translateX(-50%); }
-  .mirror-down{ font-family:'Cormorant Garamond',serif; font-size:clamp(1.5rem,2.9vw,2.5rem); line-height:1.3; color:var(--forest); font-weight:500; transform:scaleY(-1); opacity:.16; -webkit-mask-image:linear-gradient(to bottom, transparent 0%, #000 100%); mask-image:linear-gradient(to bottom, transparent 0%, #000 100%); }
-  .mirror-note{ margin-top:52px; font-size:16px; color:var(--muted); line-height:1.95; max-width:52ch; margin-left:auto; margin-right:auto; }
+  .mirror-note{ font-size:16px; color:var(--muted); line-height:1.95; max-width:52ch; margin:0 auto; }
   .mirror-note strong{ color:var(--text); font-weight:400; }
 
   /* ══ CREED ══ */
@@ -385,11 +384,11 @@
 
         <div class="origin-plate reveal" data-d="2">
           <div class="origin-plate-img">
-            <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/ceiba/refs/heads/main/IMG_2645.jpg" alt="Gerry Spencer, founder of CEIBA" />
+            <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/ceiba/refs/heads/main/real%20ceiba%20tree%202.jpg" alt="The Ceiba tree, Costa Rica" />
           </div>
           <div class="origin-plate-side">
             <p>One morning I rode my bike down an old road into the forest and came across a huge tree. The roots spread across the ground in every direction, heavy and ancient. The trunk was vast. Looking up, the canopy caught the light, leaves shining right at the top.</p>
-            <p class="origin-plate-cap">Gerry Spencer &mdash; Founder</p>
+            <p class="origin-plate-cap">Ceiba pentandra &mdash; Costa Rica</p>
           </div>
         </div>
       </div>
@@ -411,9 +410,8 @@
   <!-- ══ THE MIRROR ══ -->
   <section class="mirror">
     <div class="mirror-in reveal">
-      <p class="mirror-up">The roots go as deep as the tree grows tall.</p>
+      <p class="mirror-statement">The roots go as deep as the tree grows tall.</p>
       <div class="mirror-horizon" aria-hidden="true"></div>
-      <p class="mirror-down" aria-hidden="true">The roots go as deep as the tree grows tall.</p>
       <p class="mirror-note">Back home, it kept coming to me — that everything visible above the ground reflects what exists beneath it. <strong>You can&rsquo;t separate the two.</strong> That felt true about people too. It became the foundation of everything CEIBA is.</p>
     </div>
   </section>
