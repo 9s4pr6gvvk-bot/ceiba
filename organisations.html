@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Organisational Coaching &amp; Programmes | CEIBA</title>
+<meta name="description" content="Coaching and development programmes for organisations navigating change. Individual, leadership and team coaching grounded in The CEIBA Method." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+  :root{
+    --bg:#F4EFE3; --bg-warm:#EFE8D8; --bg-alt:#EAE2CE; --white:#FBF9F3;
+    --forest:#1F4434; --forest-deep:#16352A; --forest-mid:#3A6B52;
+    --sage:#9CBBA4; --sage-soft:#C3D4C4;
+    --text:#232A24; --muted:#5E665C; --subtle:#6E746A;
+    --border:#D8CDB4; --border-lt:#E6DDC8;
+    --gold:#C08A3E; --gold-deep:#946022; --gold-soft:#D9B98B;
+    --max:1240px; --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  html{ scroll-behavior:smooth; scroll-padding-top:190px; }
+  body{ font-family:'Outfit',sans-serif; font-weight:300; background:var(--bg); color:var(--text); line-height:1.72; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3,h4{ font-family:'Cormorant Garamond',serif; font-weight:500; }
+  em{ font-style:italic; color:var(--gold); }
+  a{ color:inherit; }
+  img{ display:block; max-width:100%; }
+  ::selection{ background:var(--sage); color:var(--forest-deep); }
+  .reveal{ opacity:0; transform:translateY(20px); transition:opacity .9s var(--ease), transform .9s var(--ease); }
+  .reveal.in{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion:reduce){ .reveal{ opacity:1 !important; transform:none !important; } }
+
+  /* ── UTILITY ── */
+  .util{ background:var(--forest-deep); color:rgba(255,255,255,.62); font-size:11.5px; letter-spacing:.08em; }
+  .util-in{ max-width:var(--max); margin:0 auto; padding:8px 40px; display:flex; justify-content:space-between; align-items:center; }
+  .util a{ color:rgba(255,255,255,.78); text-decoration:none; transition:color .2s; }
+  .util a:hover{ color:#fff; }
+  .util-right{ display:flex; gap:22px; align-items:center; }
+  .util-tag{ text-transform:uppercase; letter-spacing:.18em; font-size:10px; color:var(--gold-soft); }
+
+  /* ── NAV ── */
+  nav.main{ position:sticky; top:0; z-index:100; background:transparent; border-bottom:1px solid transparent; isolation:isolate; }
+  nav.main::before{ content:''; position:absolute; top:0; left:0; right:0; bottom:-46px; z-index:0; pointer-events:none; background:linear-gradient(to bottom, rgba(244,239,227,.98) 0%, rgba(244,239,227,.84) 38%, rgba(244,239,227,.40) 68%, rgba(244,239,227,0) 100%); opacity:1; transition:opacity .45s var(--ease); }
+  nav.main::after{ content:''; position:absolute; inset:0; z-index:0; pointer-events:none; background:rgba(244,239,227,.98); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid var(--border); box-shadow:0 10px 40px -16px rgba(31,68,52,.22); opacity:0; transition:opacity .45s var(--ease); }
+  nav.main.scrolled::before{ opacity:0; }
+  nav.main.scrolled::after{ opacity:1; }
+  .nav-inner{ position:relative; z-index:1; max-width:var(--max); margin:0 auto; padding:0 40px; height:190px; display:flex; align-items:center; justify-content:space-between; gap:40px; transition:height .45s var(--ease); }
+  nav.main.scrolled .nav-inner{ height:96px; }
+  .brand{ display:flex; align-items:center; text-decoration:none; }
+  .brand-logo-wrap{ display:grid; align-items:center; }
+  .brand-logo{ grid-area:1/1; width:auto; display:block; opacity:1; transition:height .5s var(--ease), opacity .4s var(--ease); }
+  .brand-logo.logo-default{ height:174px; }
+  .brand-logo.logo-scrolled{ height:70px; opacity:0; }
+  nav.main.scrolled .brand-logo.logo-default{ height:70px; opacity:0; }
+  nav.main.scrolled .brand-logo.logo-scrolled{ opacity:1; }
+  .nav-links{ display:flex; list-style:none; gap:30px; align-items:center; }
+  .nav-links > li > a{ position:relative; font-size:11.5px; font-weight:500; letter-spacing:.13em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .25s; padding:4px 0; }
+  .nav-links > li > a::after{ content:''; position:absolute; left:0; right:100%; bottom:-2px; height:1.5px; background:var(--gold); transition:right .3s var(--ease); }
+  .nav-links > li > a:hover{ color:var(--text); }
+  .nav-links > li > a:hover::after,.nav-links > li > a.active::after{ right:0; }
+  .nav-links > li > a.active{ color:var(--forest); }
+  .nav-cta{ background:var(--forest); color:#fff !important; padding:13px 26px; font-size:11px; letter-spacing:.13em; text-transform:uppercase; font-weight:500; text-decoration:none; border-radius:2px; transition:background .25s, transform .2s var(--ease), box-shadow .25s; white-space:nowrap; }
+  .nav-cta::after{ display:none !important; }
+  .nav-cta:hover{ background:var(--forest-mid); transform:translateY(-2px); box-shadow:0 10px 24px -8px rgba(31,68,52,.5); }
+  .hamburger{ display:none; flex-direction:column; gap:5px; cursor:pointer; padding:8px; background:none; border:none; }
+  .hamburger span{ display:block; width:24px; height:1.5px; background:var(--text); }
+  .mob-menu{ display:none; position:fixed; inset:0; background:var(--forest-deep); z-index:200; flex-direction:column; align-items:center; justify-content:center; gap:1.6rem; }
+  .mob-menu.open{ display:flex; }
+  .mob-menu a{ font-family:'Cormorant Garamond',serif; font-size:1.9rem; color:rgba(255,255,255,.88); text-decoration:none; }
+  .mob-menu a.mob-cta{ font-family:'Outfit',sans-serif; font-size:.8rem; letter-spacing:.16em; text-transform:uppercase; border:1px solid var(--gold); color:var(--gold-soft); padding:14px 30px; border-radius:2px; }
+  .mob-close{ position:absolute; top:26px; right:32px; background:none; border:none; color:rgba(255,255,255,.6); font-size:32px; cursor:pointer; }
+
+  /* ── SHARED ── */
+  .kicker{ display:inline-flex; align-items:center; gap:11px; font-size:11px; letter-spacing:.28em; text-transform:uppercase; color:var(--gold-deep); font-weight:500; margin-bottom:20px; }
+  .kicker::before{ content:''; width:26px; height:1px; background:var(--gold); opacity:.6; }
+  .btn{ display:inline-flex; align-items:center; justify-content:center; font-family:'Outfit',sans-serif; font-size:11px; letter-spacing:.16em; text-transform:uppercase; font-weight:500; text-decoration:none; padding:16px 32px; cursor:pointer; border:none; border-radius:2px; transition:background .25s, transform .2s var(--ease), box-shadow .25s; }
+  .btn:hover{ transform:translateY(-2px); }
+  .btn-fill{ background:var(--forest); color:rgba(255,255,255,.96); }
+  .btn-fill:hover{ background:var(--forest-mid); }
+  .btn-gold{ background:var(--gold); color:#fff; box-shadow:0 4px 14px -6px rgba(192,138,62,.5); }
+  .btn-gold:hover{ background:var(--gold-deep); }
+  .btn-outline-light{ background:transparent; color:#fff; border:1px solid rgba(255,255,255,.6); }
+  .btn-outline-light:hover{ background:rgba(255,255,255,.1); border-color:#fff; }
+  .arrow-link{ display:inline-flex; align-items:center; gap:11px; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--text); text-decoration:none; font-weight:500; }
+  .arrow-link .ln{ width:30px; height:1px; background:var(--gold); transition:width .3s var(--ease); }
+  .arrow-link:hover .ln{ width:44px; }
+
+  /* ── HERO: Dark, architecturally composed ── */
+  .hero{ position:relative; min-height:calc(100vh - 37px); margin-top:-190px; padding-top:190px; display:flex; align-items:flex-end; overflow:hidden; background:var(--forest-deep); }
+  .hero-bg{ position:absolute; inset:0; background-size:cover; background-position:center 40%; background-image:url('https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); transform:scale(1.05); animation:hZoom 28s var(--ease) forwards; }
+  @keyframes hZoom{ from{ transform:scale(1.05); } to{ transform:scale(1); } }
+  .hero-scrim{ position:absolute; inset:0; pointer-events:none; background:
+    linear-gradient(to top, rgba(17,34,27,.95) 0%, rgba(17,34,27,.72) 38%, rgba(17,34,27,.22) 65%, rgba(17,34,27,.14) 100%),
+    linear-gradient(to right, var(--bg) 0%, rgba(244,239,227,.97) 24%, rgba(244,239,227,.72) 44%, rgba(244,239,227,.22) 60%, rgba(244,239,227,0) 76%),
+    linear-gradient(to bottom, rgba(17,34,27,.5) 0%, rgba(17,34,27,0) 28%); }
+  .hero-inner{ position:relative; z-index:3; max-width:var(--max); margin:0 auto; padding:0 40px 80px; width:100%; }
+  .hero-eyebrow{ display:inline-flex; align-items:center; gap:12px; font-size:10.5px; letter-spacing:.28em; text-transform:uppercase; color:var(--gold-deep); margin-bottom:22px; font-weight:500; }
+  .hero-eyebrow::before{ content:''; width:26px; height:1px; background:var(--gold); }
+  .hero h1{ font-size:clamp(2.6rem,4.8vw,5rem); line-height:1.04; color:#fff; max-width:700px; margin-bottom:22px; letter-spacing:-.018em; }
+  .hero h1 em{ color:var(--gold-soft); }
+  .hero-sub{ font-size:15.5px; color:rgba(255,255,255,.72); max-width:480px; line-height:1.8; margin-bottom:36px; font-weight:300; }
+  .hero-actions{ display:flex; gap:16px; align-items:center; flex-wrap:wrap; }
+
+  /* ── PROBLEM / STAKES ── */
+  .stakes{ background:var(--forest); }
+  .stakes-in{ max-width:var(--max); margin:0 auto; padding:88px 40px; display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:center; }
+  .stakes-left p{ font-size:clamp(1.35rem,2.1vw,1.9rem); font-family:'Cormorant Garamond',serif; font-weight:400; line-height:1.55; color:rgba(255,255,255,.92); }
+  .stakes-left p em{ color:var(--gold-soft); font-style:italic; }
+  .stakes-right{ padding-left:48px; border-left:1px solid rgba(255,255,255,.14); }
+  .stakes-right p{ font-size:15px; color:rgba(255,255,255,.72); line-height:1.9; margin-bottom:18px; }
+  .stakes-right p:last-child{ margin-bottom:0; }
+  .stakes-stat{ display:flex; gap:32px; margin-top:40px; padding-top:32px; border-top:1px solid rgba(255,255,255,.12); }
+  .stat-item{ flex:1; }
+  .stat-num{ font-family:'Cormorant Garamond',serif; font-size:2.8rem; font-weight:600; color:#fff; line-height:1; }
+  .stat-label{ font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.5); margin-top:8px; font-weight:400; }
+
+  /* ── WHAT I OFFER ── */
+  .offer{ background:var(--bg); padding:104px 0; }
+  .offer-head{ max-width:var(--max); margin:0 auto; padding:0 40px 64px; }
+  .offer-head h2{ font-size:clamp(2rem,2.8vw,2.8rem); line-height:1.15; max-width:600px; margin-top:8px; }
+  .offer-grid{ max-width:var(--max); margin:0 auto; padding:0 40px; display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .offer-card{ background:var(--white); padding:52px 44px; position:relative; overflow:hidden; transition:transform .4s var(--ease); }
+  .offer-card:hover{ transform:translateY(-4px); }
+  .offer-card-num{ font-family:'Cormorant Garamond',serif; font-size:5rem; font-weight:600; line-height:1; color:var(--bg-alt); position:absolute; right:32px; top:20px; letter-spacing:-.02em; transition:color .4s; }
+  .offer-card:hover .offer-card-num{ color:var(--sage-soft); }
+  .offer-card h3{ font-size:1.5rem; color:var(--forest); margin-bottom:16px; line-height:1.2; position:relative; }
+  .offer-card-sub{ font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-deep); font-weight:500; margin-bottom:28px; display:block; }
+  .offer-card p{ font-size:14.5px; color:var(--muted); line-height:1.9; position:relative; }
+  .offer-card ul{ list-style:none; margin-top:22px; display:flex; flex-direction:column; gap:0; position:relative; }
+  .offer-card ul li{ font-size:13.5px; color:var(--muted); padding:10px 0; border-bottom:1px solid var(--border-lt); line-height:1.5; display:flex; gap:10px; align-items:flex-start; }
+  .offer-card ul li:last-child{ border-bottom:none; }
+  .offer-card ul li::before{ content:''; width:4px; height:4px; border-radius:50%; background:var(--gold); flex-shrink:0; margin-top:8px; }
+
+  /* ── WHY CEIBA / DIFFERENTIATOR ── */
+  .why{ background:var(--bg-alt); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:104px 0; }
+  .why-in{ max-width:var(--max); margin:0 auto; padding:0 40px; display:grid; grid-template-columns:1fr 1.2fr; gap:88px; align-items:start; }
+  .why-left h2{ font-size:clamp(1.9rem,2.6vw,2.5rem); line-height:1.2; margin-bottom:28px; }
+  .why-left p{ font-size:15px; color:var(--muted); line-height:1.95; margin-bottom:18px; }
+  .why-pillars{ display:flex; flex-direction:column; gap:0; }
+  .pillar{ padding:24px 0; border-bottom:1px solid var(--border); display:grid; grid-template-columns:48px 1fr; gap:20px; align-items:start; }
+  .pillar:first-child{ border-top:1px solid var(--border); }
+  .pillar-icon{ width:40px; height:40px; border-radius:50%; background:var(--white); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px; }
+  .pillar-icon svg{ width:18px; height:18px; color:var(--forest-mid); }
+  .pillar h4{ font-size:1rem; font-family:'Outfit',sans-serif; font-weight:500; color:var(--text); margin-bottom:6px; letter-spacing:0; }
+  .pillar p{ font-size:13.5px; color:var(--muted); line-height:1.75; }
+
+  /* ── ENQUIRY ── */
+  .enquiry{ background:var(--forest-deep); padding:104px 0; }
+  .enquiry-in{ max-width:var(--max); margin:0 auto; padding:0 40px; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+  .enquiry-left h2{ font-size:clamp(1.9rem,2.8vw,2.7rem); line-height:1.18; color:#fff; margin-bottom:20px; }
+  .enquiry-left h2 em{ color:var(--gold-soft); }
+  .enquiry-left p{ font-size:15px; color:rgba(255,255,255,.85); line-height:1.9; margin-bottom:24px; }
+  .enquiry-left .btn{ margin-top:8px; }
+  .enquiry-note{ font-size:12.5px; color:rgba(255,255,255,.45); margin-top:18px; line-height:1.7; }
+  .enquiry-right{ border-left:1px solid rgba(255,255,255,.12); padding-left:80px; }
+  .enquiry-list{ list-style:none; display:flex; flex-direction:column; gap:0; }
+  .enquiry-list li{ display:flex; gap:16px; align-items:flex-start; padding:18px 0; border-bottom:1px solid rgba(255,255,255,.1); font-size:14.5px; color:rgba(255,255,255,.92); line-height:1.5; }
+  .enquiry-list li:last-child{ border-bottom:none; }
+  .enquiry-list .dot{ width:6px; height:6px; border-radius:50%; background:var(--gold); flex-shrink:0; margin-top:8px; }
+
+  /* ── CLOSING CTA ── */
+  .cta{ position:relative; overflow:hidden; padding:120px 0; text-align:center; }
+  .cta-bg{ position:absolute; inset:0; background-color:#16352a; background-image:url('https://images.unsplash.com/photo-1665345990873-98ff7b05b510?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); background-size:cover; background-position:center 75%; }
+  .cta-overlay{ position:absolute; inset:0; background:linear-gradient(135deg, rgba(22,53,42,.78), rgba(31,68,52,.7)); }
+  .cta-inner{ position:relative; z-index:2; max-width:680px; margin:0 auto; padding:0 40px; }
+  .cta h2{ font-size:clamp(2rem,3.4vw,3rem); line-height:1.2; color:#fff; }
+  .cta h2 em{ color:var(--gold-soft); }
+  .cta p{ margin-top:18px; font-size:16px; color:rgba(255,255,255,.78); line-height:1.85; }
+  .cta .btn{ margin-top:34px; }
+  .cta-alt{ display:block; margin-top:24px; font-size:12px; letter-spacing:.04em; }
+  .cta-alt a{ color:rgba(255,255,255,.55); text-decoration:none; border-bottom:1px solid rgba(255,255,255,.2); padding-bottom:2px; transition:color .2s; }
+  .cta-alt a:hover{ color:rgba(255,255,255,.85); }
+
+  /* ── FOOTER ── */
+  footer{ background:var(--forest-deep); padding:76px 0 34px; border-top:1px solid rgba(255,255,255,.08); }
+  .footer-top{ max-width:var(--max); margin:0 auto; padding:0 40px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:40px; padding-bottom:44px; border-bottom:1px solid rgba(255,255,255,.1); }
+  .footer-brand{ display:flex; align-items:center; }
+  .footer-logo{ height:auto; width:210px; display:block; filter:brightness(0) invert(1) opacity(.92); }
+  .footer-nav{ display:flex; gap:26px; flex-wrap:wrap; }
+  .footer-nav a{ font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.6); text-decoration:none; transition:color .2s; }
+  .footer-nav a:hover{ color:#fff; }
+  .footer-social{ display:flex; gap:12px; }
+  .footer-social a{ width:38px; height:38px; border-radius:50%; border:1px solid rgba(255,255,255,.25); display:flex; align-items:center; justify-content:center; transition:border-color .25s,background .25s; }
+  .footer-social a:hover{ background:rgba(255,255,255,.1); border-color:var(--gold-soft); }
+  .footer-social svg{ width:16px; height:16px; }
+  .footer-bottom{ max-width:var(--max); margin:0 auto; padding:24px 40px 0; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:11.5px; color:rgba(255,255,255,.42); }
+  .footer-bottom a{ color:rgba(255,255,255,.42); text-decoration:none; }
+
+  /* ── MODAL ── */
+  .modal-overlay{ position:fixed; inset:0; z-index:300; display:none; align-items:center; justify-content:center; padding:24px; }
+  .modal-overlay.open{ display:flex; }
+  .modal-scrim{ position:absolute; inset:0; background:rgba(17,28,22,.7); backdrop-filter:blur(3px); opacity:0; transition:opacity .35s var(--ease); }
+  .modal-overlay.open .modal-scrim{ opacity:1; }
+  .modal-box{ position:relative; z-index:1; background:var(--white); width:100%; max-width:480px; max-height:88vh; overflow-y:auto; border-radius:8px; box-shadow:0 40px 80px -20px rgba(17,28,22,.5); padding:48px 40px 40px; opacity:0; transform:translateY(18px) scale(.98); transition:opacity .35s var(--ease), transform .35s var(--ease); }
+  .modal-overlay.open .modal-box{ opacity:1; transform:none; }
+  .modal-close{ position:absolute; top:18px; right:18px; width:34px; height:34px; border-radius:50%; border:1px solid var(--border); background:var(--bg); display:flex; align-items:center; justify-content:center; cursor:pointer; }
+  .modal-close svg{ width:14px; height:14px; }
+  .modal-kicker{ font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold-deep); font-weight:500; margin-bottom:10px; }
+  .modal-title{ font-family:'Cormorant Garamond',serif; font-size:1.7rem; color:var(--text); margin-bottom:10px; line-height:1.25; }
+  .modal-sub{ font-size:13.5px; color:var(--muted); line-height:1.7; margin-bottom:28px; }
+  .modal-field{ margin-bottom:18px; }
+  .modal-field label{ display:block; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--subtle); margin-bottom:7px; font-weight:500; }
+  .modal-field input,.modal-field textarea{ width:100%; font-family:'Outfit',sans-serif; font-size:14.5px; color:var(--text); background:var(--bg); border:1px solid var(--border); border-radius:4px; padding:12px 14px; transition:border-color .2s; }
+  .modal-field input:focus,.modal-field textarea:focus{ outline:none; border-color:var(--forest-mid); background:var(--white); }
+  .modal-field textarea{ resize:vertical; min-height:80px; font-family:'Outfit',sans-serif; }
+  .modal-submit{ width:100%; margin-top:6px; }
+  .modal-note{ font-size:11.5px; color:var(--subtle); text-align:center; margin-top:16px; line-height:1.6; }
+  .modal-status{ display:none; text-align:center; padding:20px 0; }
+  .modal-status.show{ display:block; }
+  .modal-status svg{ width:40px; height:40px; color:var(--forest-mid); margin:0 auto 16px; }
+  .modal-status h4{ font-family:'Cormorant Garamond',serif; font-size:1.4rem; color:var(--text); margin-bottom:8px; }
+  .modal-status p{ font-size:13.5px; color:var(--muted); line-height:1.7; }
+  .modal-status.error svg{ color:#B14B3C; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width:1080px){
+    .nav-links{ display:none; } .nav-cta{ display:none; } .hamburger{ display:flex; }
+    .stakes-in{ grid-template-columns:1fr; gap:48px; }
+    .stakes-right{ padding-left:0; border-left:none; border-top:1px solid rgba(255,255,255,.14); padding-top:40px; }
+    .offer-grid{ grid-template-columns:1fr; }
+    .why-in{ grid-template-columns:1fr; gap:52px; }
+    .enquiry-in{ grid-template-columns:1fr; gap:48px; }
+    .enquiry-right{ padding-left:0; border-left:none; border-top:1px solid rgba(255,255,255,.12); padding-top:44px; }
+  }
+  @media (max-width:640px){
+    .util-tag{ display:none; }
+    .nav-inner{ padding:0 20px; height:150px; }
+    nav.main.scrolled .nav-inner{ height:82px; }
+    .brand-logo.logo-default{ height:134px; }
+    .brand-logo.logo-scrolled{ height:58px; }
+    nav.main.scrolled .brand-logo.logo-default{ height:58px; }
+    .hero{ margin-top:-150px; padding-top:150px; }
+    .hero-inner{ padding:0 24px 56px; }
+    .hero h1{ font-size:2.5rem; }
+    .hero-scrim{ background:linear-gradient(to top, rgba(17,34,27,.95) 0%, rgba(17,34,27,.82) 48%, rgba(17,34,27,.4) 100%); }
+    .stakes-stat{ flex-direction:column; gap:20px; }
+    .offer-head,.why-in,.enquiry-in{ padding-left:24px; padding-right:24px; }
+    .offer-grid{ background:none; gap:16px; padding:0 24px; }
+    .cta{ padding:88px 24px; }
+    .footer-top{ flex-direction:column; }
+    .footer-bottom{ flex-direction:column; gap:6px; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="util">
+    <div class="util-in">
+      <a href="mailto:hello@ceibamethod.com">hello@ceibamethod.com</a>
+      <div class="util-right">
+        <span class="util-tag">Clarity · Change · Possibility</span>
+        <a href="#" data-open-modal>Book a Discovery Call →</a>
+      </div>
+    </div>
+  </div>
+
+  <nav class="main" id="mainNav">
+    <div class="nav-inner">
+      <a href="index.html" class="brand" aria-label="CEIBA home">
+        <div class="brand-logo-wrap">
+          <img class="brand-logo logo-default" src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/ceiba/refs/heads/main/Ceiba%20logo%20stacked%202%20(1).png" alt="CEIBA" />
+          <img class="brand-logo logo-scrolled" src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/ceiba/refs/heads/main/Ceiba%20not%20stacked%20png.png" alt="CEIBA" />
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="index.html#method">The CEIBA Method&trade;</a></li>
+        <li><a href="organisations.html" class="active">Work With Me</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <a href="#" class="nav-cta" data-open-modal>Book a Discovery Call</a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="mob-menu" id="mobMenu">
+    <button class="mob-close" id="mobClose">&times;</button>
+    <a href="index.html" data-close>Home</a>
+    <a href="about.html" data-close>About</a>
+    <a href="index.html#method" data-close>The CEIBA Method&trade;</a>
+    <a href="organisations.html" data-close>Work With Me</a>
+    <a href="index.html#contact" data-close>Contact</a>
+    <a href="#" class="mob-cta" data-open-modal data-close>Book a Discovery Call</a>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-bg" role="img" aria-label="A professional meeting environment"></div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="hero-inner reveal">
+      <span class="hero-eyebrow">For Organisations</span>
+      <h1>Your people are your <em>performance.</em></h1>
+      <p class="hero-sub">Coaching and programmes for organisations navigating change — individual, leadership and team work grounded in The CEIBA Method&trade;.</p>
+      <div class="hero-actions">
+        <a href="#enquiry" class="btn btn-gold">Get in Touch</a>
+        <a href="#offer" class="btn btn-outline-light">What I offer</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- STAKES -->
+  <section class="stakes">
+    <div class="stakes-in">
+      <div class="stakes-left reveal">
+        <p>Organisations going through change need more than strategy. <em>Real transformation happens through people</em> — when they are grounded, resilient and clear about what they&rsquo;re capable of.</p>
+      </div>
+      <div class="stakes-right reveal">
+        <p>Change programmes fail not because the strategy is wrong, but because the people living it haven&rsquo;t had the support to navigate what it demands of them. Uncertainty, shifting roles, new leadership, cultural pressure — these things land personally, and they affect performance.</p>
+        <p>I work with organisations to create exactly the conditions in which people can grow through change rather than just survive it.</p>
+        <div class="stakes-stat">
+          <div class="stat-item">
+            <div class="stat-num">25+</div>
+            <div class="stat-label">Years working with organisations</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">ICF</div>
+            <div class="stat-label">Qualified coach</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">NLP</div>
+            <div class="stat-label">Master practitioner</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT I OFFER -->
+  <section class="offer" id="offer">
+    <div class="offer-head reveal">
+      <span class="kicker">What I Offer</span>
+      <h2>Three ways to work together</h2>
+    </div>
+    <div class="offer-grid">
+      <div class="offer-card reveal">
+        <span class="offer-card-num">01</span>
+        <span class="offer-card-sub">Employees &amp; Individuals</span>
+        <h3>Individual coaching</h3>
+        <p>One-to-one coaching for employees navigating professional or personal transition — grounded in The CEIBA Method&trade; and tailored entirely to the individual.</p>
+        <ul>
+          <li>Employees navigating role or career change</li>
+          <li>Anyone managing significant life transition alongside work</li>
+          <li>Building confidence, clarity and direction</li>
+          <li>Online or face to face</li>
+        </ul>
+      </div>
+      <div class="offer-card reveal">
+        <span class="offer-card-num">02</span>
+        <span class="offer-card-sub">Managers &amp; Senior Leaders</span>
+        <h3>Leadership development</h3>
+        <p>One-to-one coaching for managers and leaders building the capability to lead change effectively — grounded, clear and able to bring their people with them.</p>
+        <ul>
+          <li>Leading through uncertainty and organisational change</li>
+          <li>Building team cohesion and trust</li>
+          <li>Developing authentic leadership presence</li>
+          <li>Managing performance through transition</li>
+        </ul>
+      </div>
+      <div class="offer-card reveal">
+        <span class="offer-card-num">03</span>
+        <span class="offer-card-sub">Teams &amp; Wider Culture</span>
+        <h3>Group programmes</h3>
+        <p>Structured group work and wellbeing initiatives for teams going through change — building the shared resilience and psychological safety that lasting performance requires.</p>
+        <ul>
+          <li>Group programmes for teams in transition</li>
+          <li>Wellbeing and resilience initiatives</li>
+          <li>Cultural shift and values alignment</li>
+          <li>Ongoing support that builds lasting change</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CEIBA -->
+  <section class="why">
+    <div class="why-in">
+      <div class="why-left reveal">
+        <span class="kicker">Why CEIBA</span>
+        <h2>Not training. Not therapy. Something more useful than either.</h2>
+        <p>CEIBA coaching is grounded in a simple insight: the capacity for growth, resilience and performance already exists in people — it just needs the right conditions to emerge. I don&rsquo;t prescribe outcomes. I build the foundations.</p>
+        <p>The CEIBA Method works from the inside out — establishing identity, confidence and grounding first, then building the strength and capability that makes real change possible and lasting.</p>
+      </div>
+      <div class="reveal">
+        <div class="why-pillars">
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+            <div>
+              <h4>Grounded in real experience</h4>
+              <p>25 years working across management, leadership, wellbeing and business — including my own experience navigating significant change.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div>
+              <h4>Measurable, lasting outcomes</h4>
+              <p>Clarity, confidence, resilience and direction — qualities that show up in performance, retention and the ability to lead and contribute through change.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+            <div>
+              <h4>Entirely tailored</h4>
+              <p>No fixed programmes, no off-the-shelf solutions. Every engagement is designed around the organisation, its people, and the change it&rsquo;s navigating.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 22c5.5 0 10-4.5 10-10S17.5 2 12 2 2 6.5 2 12s4.5 10 10 10z" stroke="currentColor" stroke-width="1.4"/><path d="M12 8v4l2 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+            <div>
+              <h4>Works alongside existing L&amp;D</h4>
+              <p>CEIBA coaching complements rather than replaces your existing people investment — adding the human, relational layer that makes the rest land.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENQUIRY -->
+  <section class="enquiry" id="enquiry">
+    <div class="enquiry-in">
+      <div class="enquiry-left reveal">
+        <h2>Every engagement begins with a <em>conversation.</em></h2>
+        <p>There&rsquo;s no fixed package and no pricing list — because every organisation is different. Tell me what you&rsquo;re navigating and what outcomes matter, and we&rsquo;ll build something that genuinely fits.</p>
+        <a href="#" class="btn btn-gold" data-open-modal>Let&rsquo;s Talk</a>
+        <p class="enquiry-note">Pricing on application &middot; All initial conversations are without obligation</p>
+      </div>
+      <div class="enquiry-right reveal">
+        <ul class="enquiry-list">
+          <li><span class="dot"></span> Individual coaching for employees</li>
+          <li><span class="dot"></span> Individual coaching for managers &amp; leaders</li>
+          <li><span class="dot"></span> Group programmes for teams in transition</li>
+          <li><span class="dot"></span> Wellbeing and resilience initiatives</li>
+          <li><span class="dot"></span> Structured support for lasting cultural shift</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="cta-bg" aria-hidden="true"></div>
+    <div class="cta-overlay" aria-hidden="true"></div>
+    <div class="cta-inner reveal">
+      <h2>Not sure where to <em>start?</em></h2>
+      <p>The discovery call is free, relaxed and completely without obligation. It&rsquo;s simply a conversation to explore where you are, what you need, and whether CEIBA is the right fit for you.</p>
+      <a href="#" class="btn btn-gold" data-open-modal>Book Your Free Discovery Call</a>
+      <span class="cta-alt"><a href="individuals.html">Looking for individual coaching instead? &rarr;</a></span>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/ceiba/refs/heads/main/Ceiba%20logo%20stacked%202%20(1).png" alt="CEIBA" class="footer-logo" />
+      </div>
+      <nav class="footer-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="index.html#method">The CEIBA Method&trade;</a>
+        <a href="organisations.html">Work With Me</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <div class="footer-social">
+        <a href="mailto:hello@ceibamethod.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="#fff" stroke-width="1.3"/><path d="M4 7l8 6 8-6" stroke="#fff" stroke-width="1.3"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#fff" stroke-width="1.3"/><path d="M8 10.5V17M8 7.6v.01M12 17v-4.2c0-1.3 1-2.3 2.2-2.3s2.2 1 2.2 2.3V17M12 10.5V17" stroke="#fff" stroke-width="1.3" stroke-linecap="round"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="#fff" stroke-width="1.3"/><circle cx="12" cy="12" r="4" stroke="#fff" stroke-width="1.3"/><circle cx="17" cy="7" r="1" fill="#fff"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 CEIBA &middot; hello@ceibamethod.com</span>
+      <span><a href="#">Privacy Policy</a> &middot; <a href="#">Terms</a> &middot; <a href="https://www.franks-media.co.uk" target="_blank" rel="noopener">Website designed by Franks Media</a></span>
+    </div>
+  </footer>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="bookingModal" aria-hidden="true">
+    <div class="modal-scrim" data-modal-close></div>
+    <div class="modal-box" role="dialog" aria-modal="true">
+      <button class="modal-close" id="modalCloseBtn"><svg viewBox="0 0 24 24" fill="none"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+      <div id="modalFormWrap">
+        <div class="modal-kicker">CEIBA</div>
+        <h3 class="modal-title">Get in touch</h3>
+        <p class="modal-sub">Tell me about your organisation and what you&rsquo;re navigating. I&rsquo;ll be in touch within one working day.</p>
+        <form id="bookingForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div class="modal-field"><label for="bf-name">Name</label><input type="text" id="bf-name" name="name" required autocomplete="name" /></div>
+          <div class="modal-field"><label for="bf-org">Organisation</label><input type="text" id="bf-org" name="organisation" /></div>
+          <div class="modal-field"><label for="bf-email">Email</label><input type="email" id="bf-email" name="email" required autocomplete="email" /></div>
+          <div class="modal-field"><label for="bf-message">What are you navigating?</label><textarea id="bf-message" name="message" placeholder="Tell me a little about your organisation and what support you&rsquo;re looking for…"></textarea></div>
+          <input type="hidden" name="_subject" value="Organisational enquiry — CEIBA website" />
+          <button type="submit" class="btn btn-gold modal-submit">Send Enquiry</button>
+          <p class="modal-note">Pricing on application &middot; All conversations without obligation</p>
+        </form>
+      </div>
+      <div class="modal-status" id="modalSuccess">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z" stroke="currentColor" stroke-width="1.3"/><path d="M8 12.5l2.7 2.7L16 9.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h4>Thank you</h4>
+        <p>Your enquiry has been sent. I&rsquo;ll be in touch within one working day.</p>
+      </div>
+      <div class="modal-status error" id="modalError">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.3"/><path d="M12 8v5M12 16h.01" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+        <h4>Something went wrong</h4>
+        <p>Please try again or email <a href="mailto:hello@ceibamethod.com" style="color:var(--forest-mid)">hello@ceibamethod.com</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const nav=document.getElementById('mainNav');
+    window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60);},{passive:true});
+    const hamburger=document.getElementById('hamburger'),mobMenu=document.getElementById('mobMenu'),mobClose=document.getElementById('mobClose');
+    const closeMob=()=>{mobMenu.classList.remove('open');};
+    hamburger.addEventListener('click',()=>mobMenu.classList.add('open'));
+    mobClose.addEventListener('click',closeMob);
+    mobMenu.querySelectorAll('[data-close]').forEach(a=>a.addEventListener('click',closeMob));
+    const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+    const modal=document.getElementById('bookingModal'),modalFormWrap=document.getElementById('modalFormWrap'),modalSuccess=document.getElementById('modalSuccess'),modalError=document.getElementById('modalError'),bookingForm=document.getElementById('bookingForm');
+    let lastFocused=null;
+    function openModal(e){if(e)e.preventDefault();lastFocused=document.activeElement;modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';modalFormWrap.style.display='';modalSuccess.classList.remove('show');modalError.classList.remove('show');setTimeout(()=>document.getElementById('bf-name').focus(),350);}
+    function closeModal(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';if(lastFocused)lastFocused.focus();}
+    document.querySelectorAll('[data-open-modal]').forEach(el=>el.addEventListener('click',openModal));
+    document.getElementById('modalCloseBtn').addEventListener('click',closeModal);
+    modal.querySelectorAll('[data-modal-close]').forEach(el=>el.addEventListener('click',closeModal));
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))closeModal();});
+    bookingForm.addEventListener('submit',async function(e){
+      e.preventDefault();const btn=bookingForm.querySelector('.modal-submit');const orig=btn.textContent;btn.textContent='Sending…';btn.disabled=true;
+      try{const res=await fetch(bookingForm.action,{method:'POST',body:new FormData(bookingForm),headers:{'Accept':'application/json'}});
+        if(res.ok){modalFormWrap.style.display='none';modalSuccess.classList.add('show');bookingForm.reset();}
+        else{modalFormWrap.style.display='none';modalError.classList.add('show');}
+      }catch{modalFormWrap.style.display='none';modalError.classList.add('show');}
+      finally{btn.textContent=orig;btn.disabled=false;}
+    });
+  </script>
+</body>
+</html>
