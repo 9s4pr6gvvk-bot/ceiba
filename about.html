@@ -10,36 +10,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
 <style>
   *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
-
   :root{
-    --bg:        #F4EFE3;
-    --bg-warm:   #EFE8D8;
-    --bg-alt:    #EAE2CE;
-    --white:     #FBF9F3;
-    --forest:    #1F4434;
-    --forest-deep:#16352A;
-    --forest-mid:#3A6B52;
-    --sage:      #9CBBA4;
-    --sage-soft: #C3D4C4;
-    --text:      #232A24;
-    --muted:     #5E665C;
-    --subtle:    #6E746A;
-    --border:    #D8CDB4;
-    --border-lt: #E6DDC8;
-    --gold:      #C08A3E;
-    --gold-deep: #946022;
-    --gold-soft: #D9B98B;
-    --max: 1240px;
-    --ease: cubic-bezier(.22,.61,.36,1);
+    --bg:#F4EFE3; --bg-warm:#EFE8D8; --bg-alt:#EAE2CE; --white:#FBF9F3;
+    --forest:#1F4434; --forest-deep:#16352A; --forest-mid:#3A6B52;
+    --sage:#9CBBA4; --sage-soft:#C3D4C4; --text:#232A24; --muted:#5E665C;
+    --subtle:#6E746A; --border:#D8CDB4; --border-lt:#E6DDC8;
+    --gold:#C08A3E; --gold-deep:#946022; --gold-soft:#D9B98B;
+    --max:1240px; --ease:cubic-bezier(.22,.61,.36,1);
   }
-
   html{ scroll-behavior:smooth; scroll-padding-top:190px; }
-  body{
-    font-family:'Outfit',sans-serif; font-weight:300;
-    background:var(--bg); color:var(--text);
-    line-height:1.72; overflow-x:hidden;
-    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
-  }
+  body{ font-family:'Outfit',sans-serif; font-weight:300; background:var(--bg); color:var(--text); line-height:1.72; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
   h1,h2,h3,h4{ font-family:'Cormorant Garamond',serif; font-weight:500; color:var(--text); }
   em{ font-style:italic; color:var(--gold); }
   a{ color:inherit; }
@@ -48,9 +28,11 @@
 
   .reveal{ opacity:0; transform:translateY(22px); transition:opacity .9s var(--ease), transform .9s var(--ease); }
   .reveal.in{ opacity:1; transform:none; }
-  @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1 !important; transform:none !important; } }
+  .reveal[data-d="1"]{ transition-delay:.1s; }
+  .reveal[data-d="2"]{ transition-delay:.2s; }
+  @media (prefers-reduced-motion:reduce){ .reveal{ opacity:1 !important; transform:none !important; } }
 
-  /* ── UTILITY BAR ── */
+  /* UTILITY BAR */
   .util{ background:var(--forest-deep); color:rgba(255,255,255,.62); font-size:11.5px; letter-spacing:.08em; }
   .util-in{ max-width:var(--max); margin:0 auto; padding:8px 40px; display:flex; justify-content:space-between; align-items:center; gap:20px; }
   .util a{ color:rgba(255,255,255,.78); text-decoration:none; transition:color .2s; }
@@ -58,10 +40,10 @@
   .util-right{ display:flex; gap:22px; align-items:center; }
   .util-tag{ text-transform:uppercase; letter-spacing:.18em; font-size:10px; color:var(--gold-soft); }
 
-  /* ── NAV ── */
+  /* NAV */
   nav.main{ position:sticky; top:0; z-index:100; background:transparent; border-bottom:1px solid transparent; isolation:isolate; }
-  nav.main::before{ content:''; position:absolute; top:0; left:0; right:0; bottom:-46px; z-index:0; pointer-events:none; background:linear-gradient(to bottom, rgba(244,239,227,.98) 0%, rgba(244,239,227,.84) 38%, rgba(244,239,227,.40) 68%, rgba(244,239,227,0) 100%); opacity:1; transition:opacity .45s cubic-bezier(.22,.61,.36,1); }
-  nav.main::after{ content:''; position:absolute; inset:0; z-index:0; pointer-events:none; background:rgba(244,239,227,.98); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid var(--border); box-shadow:0 10px 40px -16px rgba(31,68,52,.22); opacity:0; transition:opacity .45s cubic-bezier(.22,.61,.36,1); }
+  nav.main::before{ content:''; position:absolute; top:0; left:0; right:0; bottom:-46px; z-index:0; pointer-events:none; background:linear-gradient(to bottom, rgba(244,239,227,.98) 0%, rgba(244,239,227,.84) 38%, rgba(244,239,227,.40) 68%, rgba(244,239,227,0) 100%); opacity:1; transition:opacity .45s var(--ease); }
+  nav.main::after{ content:''; position:absolute; inset:0; z-index:0; pointer-events:none; background:rgba(244,239,227,.98); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid var(--border); box-shadow:0 10px 40px -16px rgba(31,68,52,.22); opacity:0; transition:opacity .45s var(--ease); }
   nav.main.scrolled::before{ opacity:0; }
   nav.main.scrolled::after{ opacity:1; }
   .nav-inner{ position:relative; z-index:1; max-width:var(--max); margin:0 auto; padding:0 40px; height:190px; display:flex; align-items:center; justify-content:space-between; gap:40px; transition:height .45s var(--ease); }
@@ -92,25 +74,22 @@
   .mob-menu a.mob-cta{ font-family:'Outfit',sans-serif; font-size:.8rem; letter-spacing:.16em; text-transform:uppercase; border:1px solid var(--gold); color:var(--gold-soft); padding:14px 30px; border-radius:2px; }
   .mob-close{ position:absolute; top:26px; right:32px; background:none; border:none; color:rgba(255,255,255,.6); font-size:32px; cursor:pointer; }
 
-  /* ── SHARED ── */
-  .wrap{ max-width:var(--max); margin:0 auto; padding:0 40px; }
+  /* SHARED */
   .kicker{ display:inline-flex; align-items:center; gap:11px; font-size:11px; letter-spacing:.28em; text-transform:uppercase; color:var(--gold-deep); font-weight:500; margin-bottom:20px; }
   .kicker::before{ content:''; width:26px; height:1px; background:var(--gold); opacity:.6; }
   .lede{ font-size:15.5px; font-weight:300; color:var(--muted); line-height:1.95; }
   .lede + .lede{ margin-top:16px; }
   .btn{ display:inline-flex; align-items:center; justify-content:center; font-family:'Outfit',sans-serif; font-size:11px; letter-spacing:.16em; text-transform:uppercase; font-weight:500; text-decoration:none; padding:16px 34px; cursor:pointer; border:none; border-radius:2px; transition:background .25s, transform .2s var(--ease), box-shadow .25s; }
   .btn:hover{ transform:translateY(-2px); }
-  .btn-fill{ background:var(--forest); color:rgba(255,255,255,.96); box-shadow:0 4px 14px -6px rgba(31,68,52,.4); }
-  .btn-fill:hover{ background:var(--forest-mid); }
   .btn-gold{ background:var(--gold); color:#fff; box-shadow:0 4px 14px -6px rgba(192,138,62,.5); }
   .btn-gold:hover{ background:var(--gold-deep); }
 
-  /* ── HERO ── */
+  /* HERO */
   .about-hero{ position:relative; min-height:calc(100vh - 37px); margin-top:-190px; padding-top:190px; display:flex; align-items:center; overflow:hidden; background:#2a2417; }
-  .about-hero-bg{ position:absolute; inset:0; background-size:cover; background-position:center; transform:scale(1.06); animation:heroZoom 26s cubic-bezier(.22,.61,.36,1) forwards; }
+  .about-hero-bg{ position:absolute; inset:0; background-size:cover; background-position:center; transform:scale(1.06); animation:heroZoom 26s var(--ease) forwards; }
   @keyframes heroZoom{ from{ transform:scale(1.06);} to{ transform:scale(1);} }
   .about-hero-scrim{ position:absolute; inset:0; pointer-events:none; background:linear-gradient(105deg, var(--bg) 0%, rgba(244,239,227,.97) 28%, rgba(244,239,227,.78) 46%, rgba(244,239,227,.35) 62%, rgba(244,239,227,0) 78%); }
-  .about-hero-inner{ position:relative; z-index:3; max-width:var(--max); margin:0 auto; padding:40px 40px; width:100%; }
+  .about-hero-inner{ position:relative; z-index:3; max-width:var(--max); margin:0 auto; padding:40px; width:100%; }
   .about-hero-eyebrow{ display:inline-flex; align-items:center; gap:12px; font-size:11px; letter-spacing:.26em; text-transform:uppercase; color:var(--gold-deep); margin-bottom:16px; font-weight:500; }
   .about-hero-eyebrow::before{ content:''; width:26px; height:1px; background:var(--gold); }
   .about-hero h1{ font-size:clamp(2.5rem,4.6vw,4.6rem); line-height:1.04; color:var(--text); margin-bottom:20px; letter-spacing:-.015em; max-width:600px; }
@@ -118,94 +97,99 @@
   .about-hero-sub{ font-size:14.5px; color:var(--muted); letter-spacing:.04em; max-width:440px; line-height:1.8; }
   .about-hero-sub strong{ color:var(--text); font-weight:400; }
 
-  /* ── SECTION 1: THE PROFESSIONAL ── */
+  /* THE PROFESSIONAL */
   .professional{ background:var(--white); border-bottom:1px solid var(--border); }
   .professional-grid{ max-width:var(--max); margin:0 auto; padding:104px 40px 96px; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
   .professional-left h2{ font-size:clamp(1.9rem,2.8vw,2.6rem); line-height:1.2; margin-bottom:32px; }
   .professional-creds{ display:flex; flex-wrap:wrap; gap:10px; margin-top:40px; }
-  .cred-pill{ font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--forest-mid); background:rgba(156,187,164,.18); border:1px solid rgba(156,187,164,.5); padding:8px 16px; border-radius:20px; font-weight:400; }
+  .cred-pill{ font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--forest-mid); background:rgba(156,187,164,.18); border:1px solid rgba(156,187,164,.5); padding:8px 16px; border-radius:20px; }
 
-  /* staggered reveal */
-  .reveal[data-d="1"]{ transition-delay:.09s; }
-  .reveal[data-d="2"]{ transition-delay:.18s; }
-  .reveal[data-d="3"]{ transition-delay:.27s; }
+  /* ══ ORIGIN SCENE — full-bleed cinematic opener ══ */
+  .origin-scene{ position:relative; height:clamp(480px,72vh,820px); overflow:hidden; background:#1a2016; }
+  .origin-scene-img{ position:absolute; inset:0; background-size:cover; background-position:center 35%; transform:scale(1.04); animation:scenePull 22s var(--ease) forwards; filter:saturate(.9) brightness(.68); }
+  @keyframes scenePull{ from{ transform:scale(1.04);} to{ transform:scale(1); } }
+  .origin-scene-overlay{ position:absolute; inset:0; background:linear-gradient(to bottom, rgba(22,35,18,.12) 0%, rgba(22,35,18,.06) 38%, rgba(22,35,18,.55) 70%, rgba(22,35,18,.88) 100%); }
+  .origin-scene-content{ position:absolute; bottom:0; left:0; right:0; max-width:var(--max); margin:0 auto; padding:0 40px 60px; display:flex; align-items:flex-end; justify-content:space-between; gap:48px; }
+  .origin-scene-h{ font-family:'Cormorant Garamond',serif; font-size:clamp(2.4rem,5vw,4.8rem); font-weight:500; line-height:1.04; color:#fff; letter-spacing:-.02em; max-width:14ch; }
+  .origin-scene-h em{ color:var(--gold-soft); font-style:italic; }
+  .origin-scene-tag{ text-align:right; flex-shrink:0; padding-bottom:6px; }
+  .origin-scene-tag span{ display:block; font-size:10px; letter-spacing:.3em; text-transform:uppercase; color:rgba(255,255,255,.45); }
+  .origin-scene-tag span:first-child{ color:var(--gold-soft); font-size:11px; letter-spacing:.2em; margin-bottom:6px; }
 
-  /* ══ ORIGIN STORY ══ */
-  .origin{ background:var(--bg); position:relative; }
-  .origin-grid{ max-width:1180px; margin:0 auto; padding:0 40px; display:grid; grid-template-columns:112px 1fr; }
+  /* ══ STORY: prose + portrait ══ */
+  .story{ background:var(--bg); }
+  .story-top{ max-width:var(--max); margin:0 auto; display:grid; grid-template-columns:1fr 1fr; min-height:580px; }
+  .story-prose{ padding:96px 72px 96px 40px; display:flex; flex-direction:column; justify-content:center; border-right:1px solid var(--border-lt); }
+  .story-prose p{ font-size:15.5px; color:var(--muted); line-height:1.9; max-width:50ch; }
+  .story-prose p + p{ margin-top:22px; }
+  .story-portrait{ position:relative; overflow:hidden; }
+  .story-portrait img{ width:100%; height:100%; object-fit:cover; object-position:center 18%; display:block; transition:transform 1.8s var(--ease); }
+  .story-portrait:hover img{ transform:scale(1.04); }
+  .story-portrait-cap{ position:absolute; bottom:0; left:0; right:0; background:linear-gradient(to top, rgba(22,35,18,.72), transparent); padding:32px 28px 20px; font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:rgba(255,255,255,.62); }
+  .story-portrait-cap::before{ content:''; display:block; width:20px; height:1px; background:var(--gold-soft); margin-bottom:9px; }
 
-  /* left rail: the "trunk" — a hairline with a rotated chapter mark */
-  .origin-rail{ position:relative; }
-  .origin-rail::after{ content:''; position:absolute; left:0; top:0; bottom:0; width:1px; background:linear-gradient(to bottom, transparent, var(--border) 8%, var(--border) 88%, transparent); }
-  .origin-rail-label{ position:sticky; top:230px; writing-mode:vertical-rl; transform:rotate(180deg); font-size:10px; letter-spacing:.34em; text-transform:uppercase; color:var(--muted); white-space:nowrap; padding-left:2px; }
-  .origin-rail-label b{ color:var(--gold-deep); font-weight:500; }
+  /* ══ BELIEF ══ */
+  .belief{ background:var(--forest-deep); }
+  .belief-in{ max-width:var(--max); margin:0 auto; padding:96px 40px 104px; }
 
-  .origin-main{ padding:112px 0 0 64px; }
-  .origin-main h2{ font-size:clamp(2.2rem,3.4vw,3.4rem); line-height:1.08; letter-spacing:-.018em; max-width:16ch; margin-bottom:56px; }
-  .origin-main h2 span{ display:block; color:var(--forest-mid); font-style:italic; }
 
-  /* editorial body: text with an image escaping the measure */
-  .origin-lede{ font-size:16px; color:var(--muted); line-height:1.95; max-width:60ch; }
-  .origin-lede::first-letter{ float:left; font-family:'Cormorant Garamond',serif; font-size:4.6rem; line-height:.82; padding:6px 14px 0 0; color:var(--forest); font-weight:500; }
-  .origin-lede + p{ margin-top:22px; }
-  .origin-main p{ font-size:16px; color:var(--muted); line-height:1.95; max-width:60ch; }
 
-  /* portrait, offset and overlapping the rail */
-  .origin-plate-img{ aspect-ratio:4/5; overflow:hidden; background:var(--bg-warm); }
-  .origin-plate-img img{ width:100%; height:100%; object-fit:cover; object-position:center 20%; transform:scale(1.01); transition:transform 1.4s var(--ease); }
-  .origin-plate:hover .origin-plate-img img{ transform:scale(1.05); }
-  .origin-plate{ position:relative; margin:64px 0 0 -136px; width:calc(100% + 136px); display:grid; grid-template-columns:1.15fr .85fr; gap:0; align-items:start; }
-  .origin-plate-side{ padding:48px 0 0 56px; border-top:1px solid var(--border); display:flex; flex-direction:column; height:100%; }
-  .origin-plate-side p{ font-size:15.5px; color:var(--muted); line-height:1.95; font-weight:300; }
-  .origin-plate-cap{ margin-top:auto; padding-top:36px; font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); }
-  .origin-plate-cap::before{ content:''; display:block; width:26px; height:1px; background:var(--gold); margin-bottom:12px; }
+  /* Single-column philosophy — everything aligned, nothing competing */
+  .belief-body{ max-width:640px; }
+  .belief-eyebrow{ font-size:10px; letter-spacing:.32em; text-transform:uppercase; color:var(--gold-soft); font-weight:500; opacity:.7; margin-bottom:24px; }
+  .belief-pull{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(1.7rem,2.6vw,2.4rem);
+    font-weight:400; line-height:1.3;
+    color:rgba(255,255,255,.95);
+    letter-spacing:-.01em;
+    margin-bottom:36px;
+  }
+  .belief-pull em{ color:var(--gold-soft); font-style:italic; }
+  .belief-note{
+    font-size:16px; color:rgba(255,255,255,.5);
+    line-height:1.95; margin-bottom:32px;
+  }
+  .belief-note strong{ color:rgba(255,255,255,.8); font-weight:400; }
+  .belief-creed{
+    padding-top:32px;
+    border-top:1px solid rgba(255,255,255,.08);
+  }
+  .belief-creed p{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(1.35rem,1.9vw,1.65rem);
+    line-height:1.7; color:rgba(255,255,255,.62);
+    font-weight:400;
+  }
+  .belief-creed p + p{ margin-top:16px; }
+  .belief-creed em{ color:var(--gold-soft); font-style:italic; }
+  .belief-sign{
+    margin-top:44px; padding-top:20px;
+    border-top:1px solid rgba(255,255,255,.08);
+    font-size:10px; letter-spacing:.28em; text-transform:uppercase;
+    color:rgba(255,255,255,.26);
+  }
 
-  /* ══ THE NAMING — scale-contrast reveal ══ */
-  .naming{ background:var(--bg); padding:120px 40px 0; }
-  .naming-in{ max-width:1180px; margin:0 auto; }
-  .naming-said{ font-size:15px; color:var(--muted); line-height:1.9; max-width:44ch; margin-bottom:8px; }
-  .naming-word{ font-family:'Cormorant Garamond',serif; font-weight:600; font-size:clamp(4.5rem,15vw,13rem); line-height:.86; letter-spacing:.01em; color:var(--forest); margin:10px 0 0 -.055em; }
-  .naming-foot{ display:flex; align-items:baseline; justify-content:space-between; gap:24px; margin-top:30px; padding-top:20px; border-top:1px solid var(--border); }
-  .naming-foot span{ font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:var(--muted); }
-  .naming-foot span:last-child{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:15px; letter-spacing:0; text-transform:none; color:var(--forest-mid); }
-
-  /* ══ THE MIRROR — roots as deep as the tree is tall ══ */
-  .mirror{ background:var(--bg); padding:96px 40px 120px; }
-  .mirror-in{ max-width:1180px; margin:0 auto; text-align:center; }
-  .mirror-statement{ font-family:'Cormorant Garamond',serif; font-size:clamp(1.8rem,3.4vw,3rem); line-height:1.25; color:var(--forest); font-weight:500; max-width:22ch; margin:0 auto; }
-  .mirror-horizon{ position:relative; height:1px; background:linear-gradient(to right, transparent, var(--border) 12%, var(--border) 88%, transparent); margin:36px auto; max-width:680px; }
-  .mirror-horizon::after{ content:''; position:absolute; left:50%; top:-3px; width:7px; height:7px; border-radius:50%; background:var(--gold); transform:translateX(-50%); }
-  .mirror-note{ font-size:16px; color:var(--muted); line-height:1.95; max-width:52ch; margin:0 auto; }
-  .mirror-note strong{ color:var(--text); font-weight:400; }
-
-  /* ══ CREED ══ */
-  .creed{ background:var(--forest-deep); padding:112px 40px; }
-  .creed-in{ max-width:1180px; margin:0 auto; display:grid; grid-template-columns:112px 1fr; }
-  .creed-label{ writing-mode:vertical-rl; transform:rotate(180deg); font-size:10.5px; letter-spacing:.32em; text-transform:uppercase; color:var(--gold-soft); white-space:nowrap; align-self:start; opacity:.85; }
-  .creed-body{ padding-left:64px; border-left:1px solid rgba(255,255,255,.12); }
-  .creed-body p{ font-family:'Cormorant Garamond',serif; font-size:clamp(1.45rem,2.3vw,2.15rem); line-height:1.55; color:rgba(255,255,255,.9); font-weight:400; max-width:26ch; }
-  .creed-body p + p{ margin-top:26px; }
-  .creed-body em{ font-style:italic; color:var(--gold-soft); }
-  .creed-sign{ margin-top:48px; padding-top:26px; border-top:1px solid rgba(255,255,255,.12); font-family:'Outfit',sans-serif !important; font-size:10px; letter-spacing:.26em; text-transform:uppercase; color:rgba(255,255,255,.45); max-width:none !important; }
-
-  /* ══ PERSONAL NOTE ══ */
-  .note{ background:var(--bg-warm); padding:112px 0; }
-  .note-in{ max-width:1180px; margin:0 auto; padding:0 40px; display:grid; grid-template-columns:.82fr 1fr; gap:88px; align-items:center; }
-  .note-figs{ position:relative; max-width:400px; }
-  .note-fig{ overflow:hidden; background:var(--bg-alt); aspect-ratio:4/3; box-shadow:0 30px 60px -26px rgba(22,53,42,.3); }
-  .note-fig img{ width:100%; height:100%; object-fit:cover; transform:scale(1.01); transition:transform 1.4s var(--ease); }
-  .note-figs:hover .note-fig img{ transform:scale(1.05); }
-  .note-fig-cap{ margin-top:16px; font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); }
-  .note-ph{ width:100%; height:100%; display:flex; align-items:center; justify-content:center; opacity:.22; }
-  .note-ph svg{ width:38px; height:38px; }
-  .note-body .kicker{ margin-bottom:26px; }
-  .note-body p{ font-size:16px; color:var(--muted); line-height:1.95; margin-bottom:20px; max-width:46ch; }
-  .note-closing{ margin-top:44px; padding-top:36px; border-top:1px solid var(--border); font-family:'Cormorant Garamond',serif; font-size:clamp(1.5rem,2.3vw,2rem); line-height:1.3; color:var(--forest); font-weight:500; }
+  /* ══ PERSONAL NOTE — full-bleed halves ══ */
+  .note{ background:var(--bg-warm); }
+  .note-in{ max-width:var(--max); margin:0 auto; display:grid; grid-template-columns:1fr 1fr; min-height:560px; }
+  .note-visual{ position:relative; overflow:hidden; }
+  .note-visual img{ width:100%; height:100%; object-fit:cover; object-position:center top; display:block; transition:transform 1.4s var(--ease); }
+  .note-visual:hover img{ transform:scale(1.04); }
+  .note-visual-overlay{ position:absolute; inset:0; background:linear-gradient(to top, rgba(22,35,18,.52) 0%, transparent 42%); pointer-events:none; }
+  .note-visual-cap{ position:absolute; bottom:28px; left:28px; right:28px; font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:rgba(255,255,255,.7); }
+  .note-visual-cap::before{ content:''; display:block; width:22px; height:1px; background:var(--gold-soft); margin-bottom:10px; }
+  .note-ph{ width:100%; height:100%; min-height:420px; display:flex; align-items:center; justify-content:center; background:var(--bg-alt); }
+  .note-ph svg{ width:42px; height:42px; opacity:.2; }
+  .note-body{ padding:80px 40px 80px 72px; display:flex; flex-direction:column; justify-content:center; }
+  .note-body .kicker{ margin-bottom:24px; }
+  .note-body p{ font-size:15.5px; color:var(--muted); line-height:1.9; max-width:44ch; margin-bottom:16px; }
+  .note-closing{ margin-top:36px; padding-top:28px; border-top:1px solid var(--border); font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,3vw,2.8rem); line-height:1.25; color:var(--forest); font-weight:500; }
   .note-closing span{ display:block; color:var(--gold-deep); font-style:italic; }
 
-  /* ── CLOSING CTA ── */
+  /* CTA */
   .cta{ position:relative; overflow:hidden; padding:120px 0; text-align:center; }
-  .cta-bg{ position:absolute; inset:0; background-color:#16352a; background-image:url('https://images.unsplash.com/photo-1665345990873-98ff7b05b510?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); background-size:cover; background-position:center 75%; }
+  .cta-bg{ position:absolute; inset:0; background-color:#16352a; background-image:url('https://images.unsplash.com/photo-1665345990873-98ff7b05b510?q=80&w=1400&auto=format&fit=crop'); background-size:cover; background-position:center 75%; }
   .cta-overlay{ position:absolute; inset:0; background:linear-gradient(135deg, rgba(22,53,42,.78), rgba(31,68,52,.7)); }
   .cta-inner{ position:relative; z-index:2; max-width:760px; margin:0 auto; padding:0 40px; }
   .cta h2{ color:#fff; font-size:clamp(2rem,3.4vw,3rem); line-height:1.2; }
@@ -213,11 +197,11 @@
   .cta p{ margin-top:18px; font-size:16px; color:rgba(255,255,255,.78); }
   .cta .btn{ margin-top:34px; }
 
-  /* ── FOOTER ── */
+  /* FOOTER */
   footer{ background:var(--forest-deep); padding:76px 0 34px; }
-  .footer-top{ max-width:var(--max); margin:0 auto; padding:0 40px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:40px; padding-bottom:44px; border-bottom:1px solid rgba(255,255,255,.1); }
+  .footer-top{ max-width:var(--max); margin:0 auto; padding:0 40px 44px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:40px; border-bottom:1px solid rgba(255,255,255,.1); }
   .footer-brand{ display:flex; align-items:center; }
-  .footer-logo{ height:auto; width:210px; display:block; filter:brightness(0) invert(1) opacity(.92); }
+  .footer-logo{ height:auto; width:210px; filter:brightness(0) invert(1) opacity(.92); }
   .footer-nav{ display:flex; gap:26px; flex-wrap:wrap; align-items:center; }
   .footer-nav a{ font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.6); text-decoration:none; transition:color .2s; }
   .footer-nav a:hover{ color:#fff; }
@@ -229,10 +213,10 @@
   .footer-bottom a{ color:rgba(255,255,255,.42); text-decoration:none; }
   .footer-bottom a:hover{ color:#fff; }
 
-  /* ── MODAL ── */
+  /* MODAL */
   .modal-overlay{ position:fixed; inset:0; z-index:300; display:none; align-items:center; justify-content:center; padding:24px; }
   .modal-overlay.open{ display:flex; }
-  .modal-scrim{ position:absolute; inset:0; background:rgba(17,28,22,.7); backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px); opacity:0; transition:opacity .35s var(--ease); }
+  .modal-scrim{ position:absolute; inset:0; background:rgba(17,28,22,.7); backdrop-filter:blur(3px); opacity:0; transition:opacity .35s var(--ease); }
   .modal-overlay.open .modal-scrim{ opacity:1; }
   .modal-box{ position:relative; z-index:1; background:var(--white); width:100%; max-width:480px; max-height:88vh; overflow-y:auto; border-radius:8px; box-shadow:0 40px 80px -20px rgba(17,28,22,.5); padding:48px 40px 40px; opacity:0; transform:translateY(18px) scale(.98); transition:opacity .35s var(--ease), transform .35s var(--ease); }
   .modal-overlay.open .modal-box{ opacity:1; transform:none; }
@@ -255,18 +239,20 @@
   .modal-status h4{ font-family:'Cormorant Garamond',serif; font-size:1.4rem; color:var(--text); margin-bottom:8px; }
   .modal-status p{ font-size:13.5px; color:var(--muted); line-height:1.7; }
   .modal-status.error svg{ color:#B14B3C; }
+  @media (max-width:480px){ .modal-box{ padding:40px 24px 32px; } }
 
-  /* ── RESPONSIVE ── */
+  /* RESPONSIVE */
   @media (max-width:1080px){
-    .nav-links{ display:none; } .nav-cta{ display:none; } .hamburger{ display:flex; }
+    .nav-links,.nav-cta{ display:none; } .hamburger{ display:flex; }
     .professional-grid{ grid-template-columns:1fr; gap:48px; }
-    .origin-grid,.creed-in{ grid-template-columns:1fr; }
-    .origin-rail,.creed-label{ display:none; }
-    .origin-main{ padding:80px 0 0; }
-    .creed-body{ padding-left:0; border-left:none; }
-    .origin-plate{ margin-left:0; width:100%; grid-template-columns:1fr; gap:32px; }
-    .origin-plate-side{ padding:0; }
-    .note-in{ grid-template-columns:1fr; gap:52px; }
+    .story-top{ grid-template-columns:1fr; }
+    .story-prose{ padding:64px 40px; border-right:none; border-bottom:1px solid var(--border-lt); }
+    .story-portrait{ min-height:420px; }
+
+    .belief-in{ padding:64px 40px 80px; }
+    .note-in{ grid-template-columns:1fr; }
+    .note-visual{ min-height:360px; }
+    .note-body{ padding:64px 40px; }
   }
   @media (max-width:640px){
     .util-tag{ display:none; }
@@ -278,24 +264,18 @@
     .about-hero{ min-height:0; margin-top:-150px; padding-top:150px; }
     .about-hero-inner{ padding:48px 20px; }
     .about-hero h1{ font-size:2.7rem; }
-    .origin-grid,.naming,.mirror,.creed,.note-in{ padding-left:24px; padding-right:24px; }
-    .professional-grid{ padding-left:24px; padding-right:24px; }
-    .professional-grid{ padding-top:72px; padding-bottom:64px; }
-    .origin-lede::first-letter{ font-size:3.6rem; }
-    .naming{ padding-top:80px; }
-    .mirror{ padding:72px 24px 88px; }
-    .creed{ padding:80px 24px; }
-    .note{ padding:80px 0; }
-    .naming-foot{ flex-direction:column; align-items:flex-start; gap:8px; }
-    .footer-top{ flex-direction:column; }
-    .footer-bottom{ flex-direction:column; gap:6px; }
+    .professional-grid{ padding:72px 24px 64px; }
+    .origin-scene-content{ padding:0 24px 40px; flex-direction:column; align-items:flex-start; gap:20px; }
+    .origin-scene-h{ font-size:2.4rem; }
+    .origin-scene-tag{ text-align:left; }
+    .belief-pull{ font-size:2rem; }
+    .footer-top,.footer-bottom{ flex-direction:column; gap:6px; }
     .cta{ padding:88px 0; }
   }
 </style>
 </head>
 <body>
 
-  <!-- UTILITY BAR -->
   <div class="util">
     <div class="util-in">
       <a href="mailto:hello@ceibamethod.com">hello@ceibamethod.com</a>
@@ -306,7 +286,6 @@
     </div>
   </div>
 
-  <!-- NAV -->
   <nav class="main" id="mainNav">
     <div class="nav-inner">
       <a href="index.html" class="brand" aria-label="CEIBA home">
@@ -337,7 +316,6 @@
     <a href="#" class="mob-cta" data-open-modal data-close>Book a Discovery Call</a>
   </div>
 
-  <!-- HERO -->
   <header class="about-hero" id="top">
     <div class="about-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1580259679654-9276b39fd2d5?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');" role="img" aria-label="Costa Rica rainforest landscape"></div>
     <div class="about-hero-scrim" aria-hidden="true"></div>
@@ -348,7 +326,7 @@
     </div>
   </header>
 
-  <!-- SECTION 1: THE PROFESSIONAL -->
+  <!-- THE PROFESSIONAL -->
   <section class="professional">
     <div class="professional-grid">
       <div class="reveal">
@@ -362,7 +340,7 @@
           <span class="cred-pill">Wellbeing in the Workplace</span>
         </div>
       </div>
-      <div class="reveal">
+      <div class="reveal" data-d="1">
         <p class="lede">I have spent over two decades working with people navigating change — individuals finding their way through significant life transitions, and organisations supporting their people through uncertainty and growth. As a coach, I've worked across management and leadership, wellbeing, and business — experience that sits alongside my own path as a business owner, a mother and someone who has also navigated her share of difficult life changes.</p>
         <p class="lede">Across all of it, one belief has remained constant: people are more capable than they realise, and real growth always begins from the inside out.</p>
         <p class="lede">I bring both professional experience and genuine personal insight to every coaching relationship. What drives me is simple — helping people reconnect with who they are, find their direction, and move forward with real confidence and clarity.</p>
@@ -370,72 +348,59 @@
     </div>
   </section>
 
-  <!-- ══ ORIGIN STORY ══ -->
-  <section class="origin">
-    <div class="origin-grid">
-      <div class="origin-rail" aria-hidden="true">
-        <div class="origin-rail-label"><b>Where CEIBA Began</b> &nbsp;·&nbsp; Costa Rica</div>
+  <!-- ══ ORIGIN: cinematic scene-setter ══ -->
+  <section class="origin-scene" aria-label="Where CEIBA began">
+    <div class="origin-scene-img" style="background-image:url('https://images.unsplash.com/photo-1580259679654-9276b39fd2d5?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');" aria-hidden="true"></div>
+    <div class="origin-scene-overlay" aria-hidden="true"></div>
+    <div class="origin-scene-content">
+      <h2 class="origin-scene-h reveal">A road in Costa Rica.<em> A moment that stayed.</em></h2>
+      <div class="origin-scene-tag reveal" data-d="1">
+        <span>Where CEIBA Began</span>
+        <span>Costa Rica</span>
       </div>
+    </div>
+  </section>
 
-      <div class="origin-main">
-        <h2 class="reveal">A road in Costa Rica.<span>A moment that stayed.</span></h2>
+  <!-- ══ STORY: prose + portrait ══ -->
+  <section class="story">
+    <div class="story-top">
+      <div class="story-prose reveal">
+        <p>I was travelling solo around Costa Rica — the first time I'd done anything like that since my younger years. I'd arrived mentally exhausted, in the middle of a significant period of change in my own life. I was already building a new business but hadn't yet found the heart of it.</p>
+        <p>One morning I rode my bike down an old road into the forest and came across a huge tree. The roots spread across the ground in every direction, heavy and ancient. The trunk was vast. Looking up, the canopy caught the light, leaves shining right at the top.</p>
+        <p>I mentioned to a local nearby that it was the most impressive tree I&rsquo;d ever seen. She told me its name &mdash; <em>Ceiba.</em> The tree of life.</p>
+      </div>
+      <div class="story-portrait reveal" data-d="1">
+        <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/ceiba/refs/heads/main/real%20ceiba%20tree%202.jpg" alt="The Ceiba tree, Costa Rica" />
+        <div class="story-portrait-cap">Ceiba pentandra &mdash; Costa Rica</div>
+      </div>
+    </div>
+  </section>
 
-        <p class="origin-lede reveal" data-d="1">I was travelling solo around Costa Rica — the first time I'd done anything like that since my younger years. I'd arrived mentally exhausted, in the middle of a significant period of change in my own life. I was already building a new business but hadn't yet found the heart of it.</p>
+  <!-- ══ BELIEF ══ -->
+  <section class="belief">
+    <div class="belief-in reveal">
 
-        <div class="origin-plate reveal" data-d="2">
-          <div class="origin-plate-img">
-            <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/ceiba/refs/heads/main/real%20ceiba%20tree%202.jpg" alt="The Ceiba tree, Costa Rica" />
-          </div>
-          <div class="origin-plate-side">
-            <p>One morning I rode my bike down an old road into the forest and came across a huge tree. The roots spread across the ground in every direction, heavy and ancient. The trunk was vast. Looking up, the canopy caught the light, leaves shining right at the top.</p>
-            <p class="origin-plate-cap">Ceiba pentandra &mdash; Costa Rica</p>
-          </div>
+      <div class="belief-body">
+        <div class="belief-eyebrow">The Insight</div>
+        <p class="belief-pull">The roots go as deep as the tree <em>grows tall.</em></p>
+        <p class="belief-note">Back home, it kept coming to me — that everything visible above the ground reflects what exists beneath it. <strong>You can&rsquo;t separate the two.</strong> That felt true about people too. It became the foundation of everything CEIBA is.</p>
+        <div class="belief-creed">
+          <p>The creativity, the movement, the possibility we want to reach for — all of it depends on the foundations we have built inside ourselves.</p>
+          <p>When change shakes those foundations, <em>everything becomes harder.</em> When we rebuild them, <em>everything becomes possible again.</em></p>
         </div>
+        <p class="belief-sign">That is the work CEIBA does.</p>
       </div>
-    </div>
-  </section>
 
-  <!-- ══ THE NAMING ══ -->
-  <section class="naming">
-    <div class="naming-in reveal">
-      <p class="naming-said">I mentioned to a local nearby that it was the most impressive tree I&rsquo;d ever seen. She told me its name:</p>
-      <div class="naming-word">CEIBA</div>
-      <div class="naming-foot">
-        <span>Ceiba pentandra &nbsp;·&nbsp; Costa Rica</span>
-        <span>&ldquo;the tree of life&rdquo;</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══ THE MIRROR ══ -->
-  <section class="mirror">
-    <div class="mirror-in reveal">
-      <p class="mirror-statement">The roots go as deep as the tree grows tall.</p>
-      <div class="mirror-horizon" aria-hidden="true"></div>
-      <p class="mirror-note">Back home, it kept coming to me — that everything visible above the ground reflects what exists beneath it. <strong>You can&rsquo;t separate the two.</strong> That felt true about people too. It became the foundation of everything CEIBA is.</p>
-    </div>
-  </section>
-
-  <!-- ══ CREED ══ -->
-  <section class="creed">
-    <div class="creed-in">
-      <div class="creed-label" aria-hidden="true">What I Believe</div>
-      <div class="creed-body reveal">
-        <p>The creativity, the movement, the possibility we want to reach for — all of it depends on the foundations we have built inside ourselves.</p>
-        <p>When change shakes those foundations, <em>everything becomes harder.</em> When we rebuild them, <em>everything becomes possible again.</em></p>
-        <p class="creed-sign">That is the work CEIBA does.</p>
-      </div>
     </div>
   </section>
 
   <!-- ══ PERSONAL NOTE ══ -->
   <section class="note">
     <div class="note-in">
-      <div class="note-figs reveal">
-        <div class="note-fig">
-          <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/ceiba/refs/heads/main/me.jpeg" alt="Gerry Spencer outdoors" loading="lazy" />
-        </div>
-        <p class="note-fig-cap">Outdoors — where it all makes sense</p>
+      <div class="note-visual reveal">
+        <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/ceiba/refs/heads/main/me.jpeg" alt="Gerry Spencer outdoors" loading="lazy" />
+        <div class="note-visual-overlay" aria-hidden="true"></div>
+        <div class="note-visual-cap">Outdoors — where it all makes sense</div>
       </div>
       <div class="note-body reveal" data-d="1">
         <span class="kicker">A Personal Note</span>
@@ -446,7 +411,7 @@
     </div>
   </section>
 
-  <!-- CLOSING CTA -->
+  <!-- CTA -->
   <section class="cta" id="contact">
     <div class="cta-bg" aria-hidden="true"></div>
     <div class="cta-overlay" aria-hidden="true"></div>
@@ -506,7 +471,7 @@
       <div class="modal-status" id="modalSuccess">
         <svg viewBox="0 0 24 24" fill="none"><path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z" stroke="currentColor" stroke-width="1.3"/><path d="M8 12.5l2.7 2.7L16 9.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <h4>Thank you</h4>
-        <p>Your request has been sent. I'll be in touch within one working day to arrange a time that works for you.</p>
+        <p>Your request has been sent. I'll be in touch within one working day.</p>
       </div>
       <div class="modal-status error" id="modalError">
         <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.3"/><path d="M12 8v5M12 16h.01" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
@@ -519,7 +484,6 @@
   <script>
     const nav = document.getElementById('mainNav');
     window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); }, { passive:true });
-
     const hamburger = document.getElementById('hamburger');
     const mobMenu = document.getElementById('mobMenu');
     const mobClose = document.getElementById('mobClose');
@@ -527,12 +491,10 @@
     hamburger.addEventListener('click', () => { mobMenu.classList.add('open'); hamburger.setAttribute('aria-expanded','true'); });
     mobClose.addEventListener('click', closeMob);
     mobMenu.querySelectorAll('[data-close]').forEach(a => a.addEventListener('click', closeMob));
-
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold:0.12, rootMargin:'0px 0px -40px 0px' });
+    }, { threshold:0.1, rootMargin:'0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
     const modal = document.getElementById('bookingModal');
     const modalFormWrap = document.getElementById('modalFormWrap');
     const modalSuccess = document.getElementById('modalSuccess');
