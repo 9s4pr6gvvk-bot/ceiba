@@ -93,7 +93,7 @@
   .arrow-link:hover{ color:var(--gold-deep); }
 
   /* ── HERO ── */
-  .hero{ position:relative; min-height:90vh; margin-top:-190px; padding-top:190px; display:flex; align-items:center; overflow:hidden; background:#2a2417; }
+  .hero{ position:relative; min-height:calc(100vh - 37px); margin-top:-190px; padding-top:190px; display:flex; align-items:flex-end; overflow:hidden; background:#2a2417; }
   .hero-bg{ position:absolute; inset:0; background-image:url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); background-size:cover; background-position:center 42%; transform:scale(1.06); animation:heroZoom 26s var(--ease) forwards; }
   @keyframes heroZoom{ from{ transform:scale(1.06);} to{ transform:scale(1);} }
   .hero-scrim{ position:absolute; inset:0; pointer-events:none; background:linear-gradient(105deg, var(--bg) 0%, rgba(244,239,227,.97) 26%, rgba(244,239,227,.74) 44%, rgba(244,239,227,.30) 60%, rgba(244,239,227,0) 76%); }
@@ -423,7 +423,7 @@
       <h2 class="headline">Let's create the conditions for your <em>growth.</em></h2>
       <p>Book a discovery call to explore how we can work together.</p>
       <a href="#" class="btn btn-gold" data-open-modal>Book a Discovery Call</a>
-      <span class="cta-alt"><a href="index.html#organisations">Looking for organisational coaching instead? &rarr;</a></span>
+      <span class="cta-alt"><a href="organisations.html">Looking for organisational coaching instead? &rarr;</a></span>
     </div>
   </section>
 
