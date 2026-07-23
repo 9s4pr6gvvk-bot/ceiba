@@ -106,16 +106,15 @@
   .btn-gold:hover{ background:var(--gold-deep); }
 
   /* ── HERO ── */
-  .about-hero{ position:relative; min-height:100vh; margin-top:-190px; padding-top:190px; display:flex; align-items:center; overflow:hidden; background:#2a2417; }
+  .about-hero{ position:relative; min-height:calc(100vh - 37px); margin-top:-190px; padding-top:190px; display:flex; align-items:center; overflow:hidden; background:#2a2417; }
   .about-hero-bg{ position:absolute; inset:0; background-size:cover; background-position:center; transform:scale(1.06); animation:heroZoom 26s cubic-bezier(.22,.61,.36,1) forwards; }
   @keyframes heroZoom{ from{ transform:scale(1.06);} to{ transform:scale(1);} }
-  .about-hero-scrim{ position:absolute; inset:0; pointer-events:none; background:
-      linear-gradient(105deg, var(--bg) 0%, rgba(244,239,227,.97) 28%, rgba(244,239,227,.78) 46%, rgba(244,239,227,.35) 62%, rgba(244,239,227,0) 78%); }
-  .about-hero-inner{ position:relative; z-index:3; max-width:var(--max); margin:0 auto; padding:80px 40px; width:100%; }
-  .about-hero-eyebrow{ display:inline-flex; align-items:center; gap:12px; font-size:11px; letter-spacing:.26em; text-transform:uppercase; color:var(--gold-deep); margin-bottom:22px; font-weight:500; }
+  .about-hero-scrim{ position:absolute; inset:0; pointer-events:none; background:linear-gradient(105deg, var(--bg) 0%, rgba(244,239,227,.97) 28%, rgba(244,239,227,.78) 46%, rgba(244,239,227,.35) 62%, rgba(244,239,227,0) 78%); }
+  .about-hero-inner{ position:relative; z-index:3; max-width:var(--max); margin:0 auto; padding:40px 40px; width:100%; }
+  .about-hero-eyebrow{ display:inline-flex; align-items:center; gap:12px; font-size:11px; letter-spacing:.26em; text-transform:uppercase; color:var(--gold-deep); margin-bottom:16px; font-weight:500; }
   .about-hero-eyebrow::before{ content:''; width:26px; height:1px; background:var(--gold); }
-  .about-hero h1{ font-size:clamp(2.8rem,5vw,5.2rem); line-height:1.06; color:var(--text); margin-bottom:22px; letter-spacing:-.015em; max-width:600px; }
-  .about-hero h1 em{ color:var(--gold); display:block; }
+  .about-hero h1{ font-size:clamp(2.5rem,4.6vw,4.6rem); line-height:1.04; color:var(--text); margin-bottom:20px; letter-spacing:-.015em; max-width:600px; }
+  .about-hero h1 em{ color:var(--gold); }
   .about-hero-sub{ font-size:14.5px; color:var(--muted); letter-spacing:.04em; max-width:440px; line-height:1.8; }
   .about-hero-sub strong{ color:var(--text); font-weight:400; }
 
@@ -126,45 +125,94 @@
   .professional-creds{ display:flex; flex-wrap:wrap; gap:10px; margin-top:40px; }
   .cred-pill{ font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--forest-mid); background:rgba(156,187,164,.18); border:1px solid rgba(156,187,164,.5); padding:8px 16px; border-radius:20px; font-weight:400; }
 
-  /* ── SECTION 2: WHERE CEIBA BEGAN ── */
-  .ceiba-story{ background:var(--bg); }
-  .ceiba-story-head{ max-width:var(--max); margin:0 auto; padding:104px 40px 64px; }
-  .ceiba-story-head h2{ font-size:clamp(1.9rem,2.8vw,2.6rem); line-height:1.2; max-width:680px; margin-bottom:32px; }
+  /* staggered reveal */
+  .reveal[data-d="1"]{ transition-delay:.09s; }
+  .reveal[data-d="2"]{ transition-delay:.18s; }
+  .reveal[data-d="3"]{ transition-delay:.27s; }
 
-  .ceiba-story-body{ max-width:var(--max); margin:0 auto; padding:0 40px; display:grid; grid-template-columns:1.1fr 1fr; gap:72px; align-items:start; padding-bottom:0; }
-  .story-text p{ font-size:15.5px; color:var(--muted); line-height:1.95; margin-bottom:20px; }
+  /* ══ ORIGIN STORY ══ */
+  .origin{ background:var(--bg); position:relative; }
+  .origin-grid{ max-width:1180px; margin:0 auto; padding:0 40px; display:grid; grid-template-columns:112px 1fr; }
 
-  /* pull quote */
-  .story-pull{ position:relative; padding:56px 56px; background:var(--bg-alt); border-left:3px solid var(--gold); margin:36px 0; border-radius:0 6px 6px 0; }
-  .story-pull blockquote{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.55rem; line-height:1.5; color:var(--forest); font-weight:500; }
+  /* left rail: the "trunk" — a hairline with a rotated chapter mark */
+  .origin-rail{ position:relative; }
+  .origin-rail::after{ content:''; position:absolute; left:0; top:0; bottom:0; width:1px; background:linear-gradient(to bottom, transparent, var(--border) 8%, var(--border) 88%, transparent); }
+  .origin-rail-label{ position:sticky; top:230px; writing-mode:vertical-rl; transform:rotate(180deg); font-size:10px; letter-spacing:.34em; text-transform:uppercase; color:var(--muted); white-space:nowrap; padding-left:2px; }
+  .origin-rail-label b{ color:var(--gold-deep); font-weight:500; }
 
-  /* what I believe box */
-  .believe-box{ background:var(--forest); color:#fff; padding:64px 56px; border-radius:6px; margin-top:40px; }
-  .believe-box .believe-label{ font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold-soft); font-weight:500; margin-bottom:20px; display:block; }
-  .believe-box p{ font-size:15.5px; color:rgba(255,255,255,.82); line-height:1.95; }
+  .origin-main{ padding:112px 0 0 64px; }
+  .origin-main h2{ font-size:clamp(2.2rem,3.4vw,3.4rem); line-height:1.08; letter-spacing:-.018em; max-width:16ch; margin-bottom:56px; }
+  .origin-main h2 span{ display:block; color:var(--forest-mid); font-style:italic; }
 
-  /* sticky image side */
-  .story-image-col{ position:sticky; top:220px; }
-  .story-img-frame{ border-radius:6px; overflow:hidden; box-shadow:0 30px 60px -20px rgba(31,68,52,.3); margin-bottom:24px; aspect-ratio:3/4; }
-  .story-img-frame img{ width:100%; height:100%; object-fit:cover; object-position:center 22%; }
-  .story-img-caption{ font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--subtle); padding-left:4px; }
+  /* editorial body: text with an image escaping the measure */
+  .origin-lede{ font-size:16px; color:var(--muted); line-height:1.95; max-width:60ch; }
+  .origin-lede::first-letter{ float:left; font-family:'Cormorant Garamond',serif; font-size:4.6rem; line-height:.82; padding:6px 14px 0 0; color:var(--forest); font-weight:500; }
+  .origin-lede + p{ margin-top:22px; }
+  .origin-main p{ font-size:16px; color:var(--muted); line-height:1.95; max-width:60ch; }
 
-  /* ── SECTION 3: PERSONAL NOTE ── */
-  .personal{ background:var(--white); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:96px 0; }
-  .personal-in{ max-width:var(--max); margin:0 auto; padding:0 40px; display:grid; grid-template-columns:1fr 1.1fr; gap:72px; align-items:center; }
-  .personal-card{ background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:56px 52px; }
-  .personal-card-title{ font-family:'Cormorant Garamond',serif; font-size:1.6rem; color:var(--text); margin-bottom:22px; font-style:italic; }
-  .personal-card p{ font-size:15.5px; color:var(--muted); line-height:1.95; }
-  .personal-photos{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
-  .personal-photo{ border-radius:6px; overflow:hidden; box-shadow:0 12px 30px -12px rgba(31,68,52,.22); background:var(--bg-alt); aspect-ratio:3/4; display:flex; align-items:center; justify-content:center; }
-  .personal-photo img{ width:100%; height:100%; object-fit:cover; }
-  .personal-photo-placeholder{ opacity:.35; }
-  .personal-photo-placeholder svg{ width:48px; height:48px; }
+  /* portrait, offset and overlapping the rail */
+  .origin-plate{ position:relative; margin:64px 0 0 -136px; width:calc(100% + 136px); display:grid; grid-template-columns:1.15fr .85fr; gap:0; align-items:end; }
+  .origin-plate-img{ aspect-ratio:4/5; overflow:hidden; background:var(--bg-warm); }
+  .origin-plate-img img{ width:100%; height:100%; object-fit:cover; object-position:center 20%; transform:scale(1.01); transition:transform 1.4s var(--ease); }
+  .origin-plate:hover .origin-plate-img img{ transform:scale(1.05); }
+  .origin-plate-side{ padding:0 0 40px 48px; }
+  .origin-plate-side p{ font-size:15px; line-height:1.9; }
+  .origin-plate-cap{ margin-top:26px; font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); }
+  .origin-plate-cap::before{ content:''; display:block; width:26px; height:1px; background:var(--gold); margin-bottom:12px; }
+
+  /* ══ THE NAMING — scale-contrast reveal ══ */
+  .naming{ background:var(--bg); padding:120px 40px 0; }
+  .naming-in{ max-width:1180px; margin:0 auto; }
+  .naming-said{ font-size:15px; color:var(--muted); line-height:1.9; max-width:44ch; margin-bottom:8px; }
+  .naming-word{ font-family:'Cormorant Garamond',serif; font-weight:600; font-size:clamp(4.5rem,15vw,13rem); line-height:.86; letter-spacing:.01em; color:var(--forest); margin:10px 0 0 -.055em; }
+  .naming-foot{ display:flex; align-items:baseline; justify-content:space-between; gap:24px; margin-top:30px; padding-top:20px; border-top:1px solid var(--border); }
+  .naming-foot span{ font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:var(--muted); }
+  .naming-foot span:last-child{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:15px; letter-spacing:0; text-transform:none; color:var(--forest-mid); }
+
+  /* ══ THE MIRROR — roots as deep as the tree is tall ══ */
+  .mirror{ background:var(--bg); padding:96px 40px 120px; }
+  .mirror-in{ max-width:1180px; margin:0 auto; text-align:center; }
+  .mirror-up{ font-family:'Cormorant Garamond',serif; font-size:clamp(1.5rem,2.9vw,2.5rem); line-height:1.3; color:var(--forest); font-weight:500; }
+  .mirror-horizon{ position:relative; height:1px; background:linear-gradient(to right, transparent, var(--border) 12%, var(--border) 88%, transparent); margin:28px auto; max-width:760px; }
+  .mirror-horizon::after{ content:''; position:absolute; left:50%; top:-3px; width:7px; height:7px; border-radius:50%; background:var(--gold); transform:translateX(-50%); }
+  .mirror-down{ font-family:'Cormorant Garamond',serif; font-size:clamp(1.5rem,2.9vw,2.5rem); line-height:1.3; color:var(--forest); font-weight:500; transform:scaleY(-1); opacity:.16; -webkit-mask-image:linear-gradient(to bottom, transparent 0%, #000 100%); mask-image:linear-gradient(to bottom, transparent 0%, #000 100%); }
+  .mirror-note{ margin-top:52px; font-size:16px; color:var(--muted); line-height:1.95; max-width:52ch; margin-left:auto; margin-right:auto; }
+  .mirror-note strong{ color:var(--text); font-weight:400; }
+
+  /* ══ CREED ══ */
+  .creed{ background:var(--forest-deep); padding:112px 40px; }
+  .creed-in{ max-width:1180px; margin:0 auto; display:grid; grid-template-columns:112px 1fr; }
+  .creed-label{ writing-mode:vertical-rl; transform:rotate(180deg); font-size:10.5px; letter-spacing:.32em; text-transform:uppercase; color:var(--gold-soft); white-space:nowrap; align-self:start; opacity:.85; }
+  .creed-body{ padding-left:64px; border-left:1px solid rgba(255,255,255,.12); }
+  .creed-body p{ font-family:'Cormorant Garamond',serif; font-size:clamp(1.45rem,2.3vw,2.15rem); line-height:1.55; color:rgba(255,255,255,.9); font-weight:400; max-width:26ch; }
+  .creed-body p + p{ margin-top:26px; }
+  .creed-body em{ font-style:italic; color:var(--gold-soft); }
+  .creed-sign{ margin-top:48px; padding-top:26px; border-top:1px solid rgba(255,255,255,.12); font-family:'Outfit',sans-serif !important; font-size:10px; letter-spacing:.26em; text-transform:uppercase; color:rgba(255,255,255,.45); max-width:none !important; }
+
+  /* ══ PERSONAL NOTE ══ */
+  .note{ background:var(--bg-warm); padding:112px 0; }
+  .note-in{ max-width:1180px; margin:0 auto; padding:0 40px; display:grid; grid-template-columns:.82fr 1fr; gap:88px; align-items:center; }
+  .note-figs{ position:relative; max-width:400px; }
+  .note-fig{ overflow:hidden; background:var(--bg-alt); aspect-ratio:4/3; box-shadow:0 30px 60px -26px rgba(22,53,42,.3); }
+  .note-fig img{ width:100%; height:100%; object-fit:cover; transform:scale(1.01); transition:transform 1.4s var(--ease); }
+  .note-figs:hover .note-fig img{ transform:scale(1.05); }
+  .note-fig-cap{ margin-top:16px; font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); }
+  .note-ph{ width:100%; height:100%; display:flex; align-items:center; justify-content:center; opacity:.22; }
+  .note-ph svg{ width:38px; height:38px; }
+  .note-body .kicker{ margin-bottom:26px; }
+  .note-body p{ font-size:16px; color:var(--muted); line-height:1.95; margin-bottom:20px; max-width:46ch; }
+  .note-closing{ margin-top:44px; padding-top:36px; border-top:1px solid var(--border); font-family:'Cormorant Garamond',serif; font-size:clamp(1.5rem,2.3vw,2rem); line-height:1.3; color:var(--forest); font-weight:500; }
+  .note-closing span{ display:block; color:var(--gold-deep); font-style:italic; }
 
   /* ── CLOSING CTA ── */
-  .about-cta{ background:var(--bg-alt); border-top:1px solid var(--border); padding:104px 40px; text-align:center; }
-  .about-cta h2{ font-size:clamp(2rem,3.2vw,3rem); line-height:1.15; margin-bottom:20px; }
-  .about-cta p{ font-size:16px; color:var(--muted); max-width:560px; margin:0 auto 36px; line-height:1.85; }
+  .cta{ position:relative; overflow:hidden; padding:120px 0; text-align:center; }
+  .cta-bg{ position:absolute; inset:0; background-color:#16352a; background-image:url('https://images.unsplash.com/photo-1665345990873-98ff7b05b510?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); background-size:cover; background-position:center 75%; }
+  .cta-overlay{ position:absolute; inset:0; background:linear-gradient(135deg, rgba(22,53,42,.78), rgba(31,68,52,.7)); }
+  .cta-inner{ position:relative; z-index:2; max-width:760px; margin:0 auto; padding:0 40px; }
+  .cta h2{ color:#fff; font-size:clamp(2rem,3.4vw,3rem); line-height:1.2; }
+  .cta h2 em{ color:var(--gold-soft); }
+  .cta p{ margin-top:18px; font-size:16px; color:rgba(255,255,255,.78); }
+  .cta .btn{ margin-top:34px; }
 
   /* ── FOOTER ── */
   footer{ background:var(--forest-deep); padding:76px 0 34px; }
@@ -213,9 +261,13 @@
   @media (max-width:1080px){
     .nav-links{ display:none; } .nav-cta{ display:none; } .hamburger{ display:flex; }
     .professional-grid{ grid-template-columns:1fr; gap:48px; }
-    .ceiba-story-body{ grid-template-columns:1fr; gap:48px; }
-    .story-image-col{ position:static; }
-    .personal-in{ grid-template-columns:1fr; gap:44px; }
+    .origin-grid,.creed-in{ grid-template-columns:1fr; }
+    .origin-rail,.creed-label{ display:none; }
+    .origin-main{ padding:80px 0 0; }
+    .creed-body{ padding-left:0; border-left:none; }
+    .origin-plate{ margin-left:0; width:100%; grid-template-columns:1fr; gap:32px; }
+    .origin-plate-side{ padding:0; }
+    .note-in{ grid-template-columns:1fr; gap:52px; }
   }
   @media (max-width:640px){
     .util-tag{ display:none; }
@@ -226,17 +278,19 @@
     nav.main.scrolled .brand-logo.logo-default{ height:58px; }
     .about-hero{ min-height:0; margin-top:-150px; padding-top:150px; }
     .about-hero-inner{ padding:48px 20px; }
-    .about-hero h1{ font-size:2.4rem; }
-    .ceiba-story-head, .about-cta{ padding-left:24px; padding-right:24px; }
-    .professional-grid, .ceiba-story-body, .personal-in{ padding-left:24px; padding-right:24px; }
+    .about-hero h1{ font-size:2.7rem; }
+    .origin-grid,.naming,.mirror,.creed,.note-in{ padding-left:24px; padding-right:24px; }
+    .professional-grid{ padding-left:24px; padding-right:24px; }
     .professional-grid{ padding-top:72px; padding-bottom:64px; }
-    .believe-box{ padding:44px 30px; }
-    .story-pull{ padding:36px 30px; }
-    .personal-card{ padding:40px 28px; }
-    .personal-photos{ grid-template-columns:1fr; }
+    .origin-lede::first-letter{ font-size:3.6rem; }
+    .naming{ padding-top:80px; }
+    .mirror{ padding:72px 24px 88px; }
+    .creed{ padding:80px 24px; }
+    .note{ padding:80px 0; }
+    .naming-foot{ flex-direction:column; align-items:flex-start; gap:8px; }
     .footer-top{ flex-direction:column; }
     .footer-bottom{ flex-direction:column; gap:6px; }
-    .about-cta{ padding:72px 24px; }
+    .cta{ padding:88px 0; }
   }
 </style>
 </head>
@@ -266,7 +320,7 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html" class="active">About</a></li>
         <li><a href="index.html#method">The CEIBA Method&trade;</a></li>
-        <li><a href="index.html#work">Work With Me</a></li>
+        <li><a href="individuals.html">Work With Me</a></li>
         <li><a href="index.html#contact">Contact</a></li>
       </ul>
       <a href="#" class="nav-cta" data-open-modal>Book a Discovery Call</a>
@@ -279,14 +333,14 @@
     <a href="index.html" data-close>Home</a>
     <a href="about.html" data-close>About</a>
     <a href="index.html#method" data-close>The CEIBA Method&trade;</a>
-    <a href="index.html#work" data-close>Work With Me</a>
+    <a href="individuals.html" data-close>Work With Me</a>
     <a href="index.html#contact" data-close>Contact</a>
     <a href="#" class="mob-cta" data-open-modal data-close>Book a Discovery Call</a>
   </div>
 
   <!-- HERO -->
   <header class="about-hero" id="top">
-    <div class="about-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1643400812282-4ef456a7b352?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');" role="img" aria-label="Costa Rica rainforest landscape"></div>
+    <div class="about-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1580259679654-9276b39fd2d5?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');" role="img" aria-label="Costa Rica rainforest landscape"></div>
     <div class="about-hero-scrim" aria-hidden="true"></div>
     <div class="about-hero-inner">
       <span class="about-hero-eyebrow">About Gerry Spencer</span>
@@ -310,77 +364,98 @@
         </div>
       </div>
       <div class="reveal">
-        <p class="lede">I have spent over two decades working with people navigating change — individuals finding their way through significant life transitions, and organisations supporting their people through uncertainty and growth. As a management trainer, a leadership coach, a business owner and a mother, I have worked across every context where human beings need to find their ground again.</p>
+        <p class="lede">I have spent over two decades working with people navigating change — individuals finding their way through significant life transitions, and organisations supporting their people through uncertainty and growth. As a coach, I've worked across management and leadership, wellbeing, and business — experience that sits alongside my own path as a business owner, a mother and someone who has also navigated her share of difficult life changes.</p>
         <p class="lede">Across all of it, one belief has remained constant: people are more capable than they realise, and real growth always begins from the inside out.</p>
         <p class="lede">I bring both professional experience and genuine personal insight to every coaching relationship. What drives me is simple — helping people reconnect with who they are, find their direction, and move forward with real confidence and clarity.</p>
       </div>
     </div>
   </section>
 
-  <!-- SECTION 2: WHERE CEIBA BEGAN -->
-  <section class="ceiba-story">
-    <div class="ceiba-story-head reveal">
-      <span class="kicker">Where CEIBA Began</span>
-      <h2>A road in Costa Rica. An ancient tree.<br />A moment that stayed with me.</h2>
-    </div>
-
-    <div class="ceiba-story-body">
-      <div class="story-text reveal">
-        <p>I was travelling solo around Costa Rica — the first time I had done anything like that since my younger years. I arrived mentally exhausted and in the middle of a significant period of change in my own life. I was already working on a new business but hadn't yet found the heart of what I was building.</p>
-        <p>One morning I rode my bike down an old road and into the dense forest, and I came across a tree that took my breath away. The roots were enormous — spreading across the ground in every direction, heavy and ancient. The trunk was vast. And when I looked up, the canopy was catching the light high above me with the leaves shining right at the top. It was a real moment for me.</p>
-
-        <div class="story-pull">
-          <blockquote>&ldquo;I mentioned to a Costa Rican woman nearby that it was the most amazing tree I had ever seen. She said its name: <em>CEIBA.</em>&rdquo;</blockquote>
-        </div>
-
-        <p>Returning home, it kept coming to me. What struck me was something simple — that everything visible above the ground is a direct reflection of what exists beneath it. The roots go as deep as the tree grows tall. You cannot separate the two.</p>
-        <p>That felt true about people too. And it became the foundation of everything CEIBA is.</p>
-
-        <div class="believe-box">
-          <span class="believe-label">What I believe</span>
-          <p>The creativity, the movement, the possibility we want to reach for — all of it depends on the foundations we have built inside ourselves. The self-knowledge. The grounding. The clarity about who we actually are and what genuinely matters. When change shakes those foundations, everything becomes harder. When we rebuild them, everything becomes possible again. That is the work CEIBA does.</p>
-        </div>
+  <!-- ══ ORIGIN STORY ══ -->
+  <section class="origin">
+    <div class="origin-grid">
+      <div class="origin-rail" aria-hidden="true">
+        <div class="origin-rail-label"><b>Where CEIBA Began</b> &nbsp;·&nbsp; Costa Rica</div>
       </div>
 
-      <div class="story-image-col reveal">
-        <div class="story-img-frame">
-          <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/ceiba/refs/heads/main/IMG_2645.jpg"
-               alt="Gerry Spencer" />
+      <div class="origin-main">
+        <h2 class="reveal">A road in Costa Rica.<span>A moment that stayed.</span></h2>
+
+        <p class="origin-lede reveal" data-d="1">I was travelling solo around Costa Rica — the first time I'd done anything like that since my younger years. I'd arrived mentally exhausted, in the middle of a significant period of change in my own life. I was already building a new business but hadn't yet found the heart of it.</p>
+
+        <div class="origin-plate reveal" data-d="2">
+          <div class="origin-plate-img">
+            <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/ceiba/refs/heads/main/IMG_2645.jpg" alt="Gerry Spencer, founder of CEIBA" />
+          </div>
+          <div class="origin-plate-side">
+            <p>One morning I rode my bike down an old road into the forest and came across a huge tree. The roots spread across the ground in every direction, heavy and ancient. The trunk was vast. Looking up, the canopy caught the light, leaves shining right at the top.</p>
+            <p class="origin-plate-cap">Gerry Spencer &mdash; Founder</p>
+          </div>
         </div>
-        <p class="story-img-caption">Gerry Spencer — founder of CEIBA</p>
       </div>
     </div>
   </section>
 
-  <!-- SECTION 3: PERSONAL NOTE -->
-  <section class="personal">
-    <div class="personal-in">
-      <div class="personal-photos reveal">
-        <div class="personal-photo">
-          <div class="personal-photo-placeholder">
-            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="16" r="8" stroke="#3A6B52" stroke-width="1.5"/><path d="M8 42c0-8.8 7.2-16 16-16s16 7.2 16 16" stroke="#3A6B52" stroke-width="1.5"/></svg>
-          </div>
-        </div>
-        <div class="personal-photo">
-          <div class="personal-photo-placeholder">
-            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="16" r="8" stroke="#3A6B52" stroke-width="1.5"/><path d="M8 42c0-8.8 7.2-16 16-16s16 7.2 16 16" stroke="#3A6B52" stroke-width="1.5"/></svg>
-          </div>
-        </div>
+  <!-- ══ THE NAMING ══ -->
+  <section class="naming">
+    <div class="naming-in reveal">
+      <p class="naming-said">I mentioned to a local nearby that it was the most impressive tree I&rsquo;d ever seen. She told me its name:</p>
+      <div class="naming-word">CEIBA</div>
+      <div class="naming-foot">
+        <span>Ceiba pentandra &nbsp;·&nbsp; Costa Rica</span>
+        <span>&ldquo;the tree of life&rdquo;</span>
       </div>
-      <div class="personal-card reveal">
-        <p class="personal-card-title">A personal note</p>
-        <p>Outside of coaching you will find me outdoors — especially by the sea. Looking for new places and adventure, playing tennis and finding humour in all of those places with family and friends.</p>
-        <p style="margin-top:16px;">I have always loved trees and the quiet majesty of them. The CEIBA was not a coincidence. It was a recognition.</p>
+    </div>
+  </section>
+
+  <!-- ══ THE MIRROR ══ -->
+  <section class="mirror">
+    <div class="mirror-in reveal">
+      <p class="mirror-up">The roots go as deep as the tree grows tall.</p>
+      <div class="mirror-horizon" aria-hidden="true"></div>
+      <p class="mirror-down" aria-hidden="true">The roots go as deep as the tree grows tall.</p>
+      <p class="mirror-note">Back home, it kept coming to me — that everything visible above the ground reflects what exists beneath it. <strong>You can&rsquo;t separate the two.</strong> That felt true about people too. It became the foundation of everything CEIBA is.</p>
+    </div>
+  </section>
+
+  <!-- ══ CREED ══ -->
+  <section class="creed">
+    <div class="creed-in">
+      <div class="creed-label" aria-hidden="true">What I Believe</div>
+      <div class="creed-body reveal">
+        <p>The creativity, the movement, the possibility we want to reach for — all of it depends on the foundations we have built inside ourselves.</p>
+        <p>When change shakes those foundations, <em>everything becomes harder.</em> When we rebuild them, <em>everything becomes possible again.</em></p>
+        <p class="creed-sign">That is the work CEIBA does.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PERSONAL NOTE ══ -->
+  <section class="note">
+    <div class="note-in">
+      <div class="note-figs reveal">
+        <div class="note-fig">
+          <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/ceiba/refs/heads/main/me.jpeg" alt="Gerry Spencer outdoors" loading="lazy" />
+        </div>
+        <p class="note-fig-cap">Outdoors — where it all makes sense</p>
+      </div>
+      <div class="note-body reveal" data-d="1">
+        <span class="kicker">A Personal Note</span>
+        <p>I feel most at home outdoors — by the sea, walking in nature or exploring somewhere new. Travel, adventure, tennis and time spent laughing with family and friends are the moments that help me recharge and stay connected to what matters.</p>
+        <p>I've always been drawn to trees — their strength, resilience and quiet presence. When I encountered the Ceiba tree in Costa Rica, it felt as though I had found the metaphor I'd been searching for.</p>
+        <p class="note-closing">The Ceiba wasn&rsquo;t a coincidence.<span>It was a recognition.</span></p>
       </div>
     </div>
   </section>
 
   <!-- CLOSING CTA -->
-  <section class="about-cta">
-    <div class="reveal">
-      <h2>I&rsquo;d love to have a <em>conversation.</em></h2>
-      <p>The discovery call is free, relaxed and without obligation. Just an honest conversation about where you are and whether CEIBA feels right for you.</p>
-      <a href="#" class="btn btn-fill" data-open-modal>Book Your Free Discovery Call</a>
+  <section class="cta" id="contact">
+    <div class="cta-bg" aria-hidden="true"></div>
+    <div class="cta-overlay" aria-hidden="true"></div>
+    <div class="cta-inner reveal">
+      <h2>Let&rsquo;s create the conditions for your <em>growth.</em></h2>
+      <p>Book a discovery call to explore how we can work together.</p>
+      <a href="#" class="btn btn-gold" data-open-modal>Book a Discovery Call</a>
     </div>
   </section>
 
@@ -394,7 +469,7 @@
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="index.html#method">The CEIBA Method&trade;</a>
-        <a href="index.html#work">Work With Me</a>
+        <a href="individuals.html">Work With Me</a>
         <a href="index.html#contact">Contact</a>
       </nav>
       <div class="footer-social">
