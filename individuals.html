@@ -263,6 +263,112 @@
     .footer-top{ flex-direction:column; }
     .footer-bottom{ flex-direction:column; gap:6px; }
   }
+
+
+  /* ══ METHOD INTRO BAND ══ */
+  .mj-intro{ background:var(--white); border-bottom:1px solid var(--border); padding:72px 0; text-align:center; }
+  .mj-intro-in{ max-width:680px; margin:0 auto; padding:0 40px; }
+  .mj-intro h2{ font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,3vw,2.9rem); line-height:1.15; color:var(--text); margin-bottom:20px; }
+  .mj-intro h2 em{ font-style:italic; color:var(--gold); }
+  .mj-intro-mark{ width:8px; height:8px; border-radius:50%; background:var(--gold); margin:20px auto; position:relative; }
+  .mj-intro-mark::before,.mj-intro-mark::after{ content:''; position:absolute; top:50%; width:36px; height:1px; background:var(--border); }
+  .mj-intro-mark::before{ right:14px; } .mj-intro-mark::after{ left:14px; }
+  .mj-intro p{ font-size:15.5px; color:var(--muted); line-height:1.9; }
+
+  /* ══ METHOD JOURNEY SECTION ══ */
+  .mj{ position:relative; background:var(--forest-deep); overflow:hidden; }
+  .mj-inner{ display:grid; grid-template-columns:320px 1fr; }
+
+  /* Fixed left sidebar — nav only now, no headline */
+  .mj-sidebar{ position:sticky; top:0; height:auto; min-height:78vh; display:flex; flex-direction:column; justify-content:center; padding:56px 48px; border-right:1px solid rgba(255,255,255,.1); z-index:10; }
+  .mj-sidebar-kicker{ font-size:10px; letter-spacing:.32em; text-transform:uppercase; color:var(--gold-soft); margin-bottom:36px; display:flex; align-items:center; gap:14px; }
+  .mj-sidebar-kicker::after{ content:''; flex:1; height:1px; background:rgba(255,255,255,.15); }
+  .mj-counter{ font-family:'Cormorant Garamond',serif; font-size:3.6rem; color:rgba(255,255,255,.14); line-height:1; margin-bottom:40px; letter-spacing:-.02em; }
+  .mj-counter span{ font-size:1.4rem; color:rgba(255,255,255,.24); }
+  .mj-nav{ display:flex; flex-direction:column; gap:0; }
+  .mj-dot{ background:none; border:none; cursor:pointer; padding:11px 0 11px 22px; text-align:left;
+            font-family:'Outfit',sans-serif; font-size:11px; letter-spacing:.18em; text-transform:uppercase;
+            color:rgba(255,255,255,.32); font-weight:500; position:relative; transition:color .35s var(--ease); }
+  .mj-dot::before{ content:''; position:absolute; left:0; top:50%; transform:translateY(-50%);
+                   width:8px; height:1px; background:rgba(255,255,255,.22); transition:all .35s var(--ease); }
+  .mj-dot.active{ color:#fff; }
+  .mj-dot.active::before{ width:14px; background:var(--gold); }
+  .mj-dot:hover:not(.active){ color:rgba(255,255,255,.62); }
+  .mj-controls{ display:flex; gap:0; margin-top:36px; border-top:1px solid rgba(255,255,255,.1); padding-top:28px; }
+  .mj-btn{ background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.2); cursor:pointer;
+            font-family:'Outfit',sans-serif; font-size:10.5px; letter-spacing:.2em; text-transform:uppercase;
+            color:rgba(255,255,255,.82); font-weight:500; transition:background .25s, border-color .25s, color .25s;
+            display:flex; align-items:center; gap:10px; padding:12px 20px; border-radius:2px; }
+  .mj-btn:first-child{ }
+  .mj-btn:last-child{ background:var(--gold); border-color:var(--gold); color:#fff; }
+  .mj-btn:last-child:hover{ background:var(--gold-deep); border-color:var(--gold-deep); }
+  .mj-btn:first-child:hover{ background:rgba(255,255,255,.16); border-color:rgba(255,255,255,.4); color:#fff; }
+  .mj-btn:disabled{ opacity:.22; pointer-events:none; }
+  .mj-btn svg{ width:13px; height:13px; }
+  .mj-progress{ position:absolute; bottom:0; left:0; right:0; height:3px; background:rgba(255,255,255,.1); z-index:5; }
+  .mj-progress-fill{ height:100%; background:var(--gold); width:25%; transition:width .75s var(--ease); }
+
+  /* Slide track */
+  .mj-track-wrap{ position:relative; overflow:hidden; }
+  .mj-track{ display:flex; transition:transform .75s var(--ease); height:100%; }
+
+  /* Slide: editorial two-column — text left, photo right */
+  .mj-slide{ min-width:100%; min-height:78vh; height:auto; position:relative; display:flex; align-items:flex-end; flex-shrink:0; overflow:hidden; }
+  .mj-slide-photo{ position:absolute; inset:0; }
+  .mj-slide-photo-img{ position:absolute; inset:0; background-size:cover; background-position:center; transform:scale(1.08); transition:transform .75s var(--ease); }
+  .mj-track .mj-slide.active .mj-slide-photo-img{ transform:scale(1); }
+  /* Layered scrim: strong bottom band protects text, left fade for depth, gentle top darken */
+  .mj-slide-photo-scrim{ position:absolute; inset:0; background:
+    linear-gradient(to top, rgba(13,28,22,.97) 0%, rgba(13,28,22,.88) 22%, rgba(13,28,22,.55) 50%, rgba(13,28,22,.18) 72%, rgba(13,28,22,.05) 100%),
+    linear-gradient(to right, rgba(13,28,22,.55) 0%, rgba(13,28,22,.25) 35%, rgba(13,28,22,0) 60%); }
+  .mj-slide-num{ position:absolute; right:0; bottom:-20px; font-family:'Cormorant Garamond',serif; font-size:12rem; font-weight:700; color:rgba(255,255,255,.05); line-height:1; letter-spacing:-.04em; pointer-events:none; z-index:1; }
+  .mj-slide-content{ position:relative; z-index:2; padding:40px 56px 48px; width:55%; }
+  .mj-slide-stage{ font-size:10px; letter-spacing:.28em; text-transform:uppercase; color:var(--gold-soft); margin-bottom:14px; font-weight:500; }
+  .mj-slide-name{ font-family:'Cormorant Garamond',serif; font-size:clamp(2.6rem,3.8vw,4.2rem); color:#fff; line-height:.9; letter-spacing:-.02em; margin-bottom:16px; }
+  .mj-slide-divider{ width:36px; height:2px; background:var(--gold); margin-bottom:18px; }
+  .mj-slide-desc{ font-size:15px; color:rgba(255,255,255,.78); line-height:1.85; margin-bottom:18px; max-width:44ch; }
+  .mj-slide-desc-2{ font-size:13.5px; color:rgba(255,255,255,.6); line-height:1.75; margin-bottom:18px; }
+  .mj-slide-ask{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.1rem; color:rgba(255,255,255,.55); line-height:1.4; margin-bottom:20px; max-width:38ch; }
+  .mj-slide-tags{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:24px; }
+  .mj-slide-tag{ font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.55); border:1px solid rgba(255,255,255,.18); padding:6px 14px; border-radius:20px; }
+  .mj-slide-cta{ display:inline-flex; align-items:center; gap:12px; font-size:11px; letter-spacing:.18em; text-transform:uppercase; font-weight:500; color:#fff; text-decoration:none; }
+  .mj-slide-cta .cta-arrow{ width:40px; height:40px; border-radius:50%; border:1px solid rgba(255,255,255,.32); display:flex; align-items:center; justify-content:center; transition:background .25s,border-color .25s; }
+  .mj-slide-cta:hover .cta-arrow{ background:var(--gold); border-color:var(--gold); }
+  .mj-slide-cta svg{ width:14px; height:14px; }
+
+  @media (max-width:1080px){
+    .mj-inner{ grid-template-columns:1fr; }
+    .mj-sidebar{ position:relative; height:auto; min-height:0; padding:36px 32px 32px; border-right:none; border-bottom:1px solid rgba(255,255,255,.1); flex-direction:row; align-items:center; gap:32px; flex-wrap:wrap; }
+    .mj-sidebar-kicker{ margin-bottom:0; font-size:9px; }
+    .mj-counter{ margin-bottom:0; font-size:2.4rem; }
+    .mj-nav{ flex-direction:row; gap:4px; }
+    .mj-dot{ padding:8px 14px 8px 22px; font-size:10px; }
+    .mj-controls{ margin-top:0; border-top:none; padding-top:0; gap:10px; }
+    .mj-slide{ height:auto; min-height:520px; }
+    .mj-slide-content{ width:100%; padding:0 32px 44px; }
+    .mj-slide-name{ font-size:3.2rem; }
+    .mj-slide-num{ font-size:7rem; }
+    .mj-intro-in{ padding-left:24px; padding-right:24px; }
+  }
+  @media (max-width:640px){
+    .mj-intro{ padding:52px 0; }
+    .mj-sidebar{ padding:28px 20px; gap:16px; }
+    .mj-sidebar-kicker{ display:none; }
+    .mj-counter{ font-size:2rem; }
+    .mj-nav{ gap:2px; }
+    .mj-dot{ padding:8px 10px 8px 18px; letter-spacing:.12em; }
+    .mj-btn{ font-size:9.5px; gap:7px; }
+    .mj-btn{ padding:10px 16px; font-size:9.5px; }
+    .mj-slide{ min-height:480px; }
+    .mj-slide-content{ padding:0 20px 36px; }
+    .mj-slide-name{ font-size:2.8rem; }
+    .mj-slide-desc{ font-size:14px; }
+    .mj-slide-ask{ font-size:1.05rem; }
+    .mj-slide-num{ font-size:6rem; }
+    .mj-slide-tags{ gap:6px; }
+    .mj-slide-tag{ font-size:9.5px; padding:5px 11px; }
+  }
+
 </style>
 </head>
 <body>
@@ -363,6 +469,122 @@
         </ul>
       </div>
     </div>
+  </section>
+
+  <!-- METHOD INTRO -->
+  <section class="mj-intro">
+    <div class="mj-intro-in reveal">
+      <span class="kicker">The CEIBA Method&trade;</span>
+      <h2>Grounded enough to grow.<br /><em>Free enough to explore.</em></h2>
+      <div class="mj-intro-mark"></div>
+      <p>Change can shake our sense of who we are, where we&rsquo;re going and what we&rsquo;re capable of. The CEIBA Method&trade; is a collaborative coaching journey that helps you reconnect with yourself, strengthen your foundations and use that grounding as a springboard for growth.</p>
+      <p style="margin-top:16px;">Together, we&rsquo;ll explore where you are now, reconnect with the resources already within you, open up new possibilities and turn insight into meaningful action. The aim isn&rsquo;t simply to feel more grounded — it&rsquo;s to use that grounding to move forward.</p>
+    </div>
+  </section>
+
+  <!-- METHOD JOURNEY -->
+  <section class="mj" id="method">
+    <div class="mj-inner">
+
+      <!-- Sticky sidebar -->
+      <div class="mj-sidebar">
+        <div class="mj-sidebar-kicker">The CEIBA Method&trade;</div>
+        <div class="mj-counter" id="mjCount">01<span>/04</span></div>
+        <nav class="mj-nav" aria-label="Stage navigation">
+          <button class="mj-dot active" data-slide="0">Roots</button>
+          <button class="mj-dot" data-slide="1">Trunk</button>
+          <button class="mj-dot" data-slide="2">Branches</button>
+          <button class="mj-dot" data-slide="3">Leaves</button>
+        </nav>
+        <div class="mj-controls">
+          <button class="mj-btn" id="mjPrev" disabled aria-label="Previous stage"><svg viewBox="0 0 24 24" fill="none"><path d="M19 12H5m0 0l6 6m-6-6l6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Prev</button>
+          <button class="mj-btn" id="mjNext" aria-label="Next stage">Next<svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14m0 0l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+      </div>
+
+      <!-- Slide track -->
+      <div class="mj-track-wrap">
+        <div class="mj-track" id="mjTrack">
+
+          <!-- 01 ROOTS -->
+          <div class="mj-slide active">
+            <div class="mj-slide-content">
+              <span class="mj-slide-num" aria-hidden="true">01</span>
+              <span class="mj-slide-stage">Stage 1 &middot; Reconnect</span>
+              <div class="mj-slide-name">Roots</div>
+              <div class="mj-slide-divider"></div>
+              <p class="mj-slide-desc">Before we can move forward, it can help to understand where we are standing. Together, we&rsquo;ll explore your story, identity, values, strengths and wellbeing, as well as the patterns and beliefs that may be influencing how you see yourself and the choices you make.</p>
+              <p class="mj-slide-desc mj-slide-desc-2" style="margin-top:-8px;">We&rsquo;ll look at what may have become harder to access during periods of change and begin to reconnect with the resources that are already within you.</p>
+              <p class="mj-slide-ask">&ldquo;Who am I? What matters to me? What do I want to reconnect with?&rdquo;</p>
+              <div class="mj-slide-tags"><span class="mj-slide-tag">Reconnect</span><span class="mj-slide-tag">Identity</span><span class="mj-slide-tag">Values</span><span class="mj-slide-tag">Wellbeing</span></div>
+              <a href="individuals.html#pricing" class="mj-slide-cta">Start here<span class="cta-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14m0 0l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+            </div>
+            <div class="mj-slide-photo">
+              <div class="mj-slide-photo-img" style="background-image:url('https://images.unsplash.com/photo-1707139551516-86b228a3e4db?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+              <div class="mj-slide-photo-scrim"></div>
+            </div>
+          </div>
+          <!-- 02 TRUNK -->
+          <div class="mj-slide">
+            <div class="mj-slide-content">
+              <span class="mj-slide-num" aria-hidden="true">02</span>
+              <span class="mj-slide-stage">Stage 2 &middot; Strengthen</span>
+              <div class="mj-slide-name">Trunk</div>
+              <div class="mj-slide-divider"></div>
+              <p class="mj-slide-desc">With greater self-awareness comes the opportunity to build from a stronger foundation. Together, we&rsquo;ll explore confidence, self-trust, resilience and wellbeing, identifying the internal and external resources that support you through uncertainty and change.</p>
+              <p class="mj-slide-desc mj-slide-desc-2" style="margin-top:-8px;">We&rsquo;ll work on building the capacity to stand more confidently in who you are — while developing the strength to move forward even when everything isn&rsquo;t clear.</p>
+              <p class="mj-slide-ask">&ldquo;What do I need to feel strong enough to move forward?&rdquo;</p>
+              <div class="mj-slide-tags"><span class="mj-slide-tag">Strengthen</span><span class="mj-slide-tag">Confidence</span><span class="mj-slide-tag">Resilience</span><span class="mj-slide-tag">Self-trust</span></div>
+              <a href="individuals.html#pricing" class="mj-slide-cta">Begin the journey<span class="cta-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14m0 0l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+            </div>
+            <div class="mj-slide-photo">
+              <div class="mj-slide-photo-img" style="background-image:url('https://images.unsplash.com/photo-1638048257955-e0a31d6d9e61?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+              <div class="mj-slide-photo-scrim"></div>
+            </div>
+          </div>
+          <!-- 03 BRANCHES -->
+          <div class="mj-slide">
+            <div class="mj-slide-content">
+              <span class="mj-slide-num" aria-hidden="true">03</span>
+              <span class="mj-slide-stage">Stage 3 &middot; Explore</span>
+              <div class="mj-slide-name">Branches</div>
+              <div class="mj-slide-divider"></div>
+              <p class="mj-slide-desc">Once we feel more grounded, our perspective can begin to widen. Together, we&rsquo;ll explore new ways of thinking, challenge assumptions and create space for curiosity, creativity and possibility.</p>
+              <p class="mj-slide-desc mj-slide-desc-2" style="margin-top:-8px;">We&rsquo;ll consider what you might do differently, what you would explore if you trusted yourself more, and what possibilities might exist beyond the choices you can currently see.</p>
+              <p class="mj-slide-ask">&ldquo;What could be possible if I allowed myself to explore?&rdquo;</p>
+              <div class="mj-slide-tags"><span class="mj-slide-tag">Explore</span><span class="mj-slide-tag">Curiosity</span><span class="mj-slide-tag">Creativity</span><span class="mj-slide-tag">Possibility</span></div>
+              <a href="individuals.html#pricing" class="mj-slide-cta">Explore with me<span class="cta-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14m0 0l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+            </div>
+            <div class="mj-slide-photo">
+              <div class="mj-slide-photo-img" style="background-image:url('https://images.unsplash.com/photo-1642647653523-9786e736b211?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+              <div class="mj-slide-photo-scrim"></div>
+            </div>
+          </div>
+          <!-- 04 LEAVES -->
+          <div class="mj-slide">
+            <div class="mj-slide-content">
+              <span class="mj-slide-num" aria-hidden="true">04</span>
+              <span class="mj-slide-stage">Stage 4 &middot; Grow</span>
+              <div class="mj-slide-name">Leaves</div>
+              <div class="mj-slide-divider"></div>
+              <p class="mj-slide-desc">Growth becomes meaningful when it begins to show up in our lives. Together, we&rsquo;ll turn insight into movement — exploring the choices you want to make, the changes you want to create and the practical steps that will move you towards what matters.</p>
+              <p class="mj-slide-desc mj-slide-desc-2" style="margin-top:-8px;">We&rsquo;ll experiment, learn from what happens and build the confidence to keep moving forward beyond our work together.</p>
+              <p class="mj-slide-ask">&ldquo;What am I ready to do, create or become?&rdquo;</p>
+              <div class="mj-slide-tags"><span class="mj-slide-tag">Grow</span><span class="mj-slide-tag">Action</span><span class="mj-slide-tag">Movement</span><span class="mj-slide-tag">Transformation</span></div>
+              <a href="individuals.html#pricing" class="mj-slide-cta">Start your journey<span class="cta-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14m0 0l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+            </div>
+            <div class="mj-slide-photo">
+              <div class="mj-slide-photo-img" style="background-image:url('https://images.unsplash.com/photo-1520121401995-928cd50d4e27?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+              <div class="mj-slide-photo-scrim"></div>
+            </div>
+          </div>
+
+
+        </div><!-- /mj-track -->
+        <div class="mj-progress" aria-hidden="true"><div class="mj-progress-fill" id="mjFill"></div></div>
+      </div><!-- /mj-track-wrap -->
+
+    </div><!-- /mj-inner -->
   </section>
 
   <!-- PRICING -->
@@ -526,6 +748,63 @@
       }catch{ modalFormWrap.style.display='none'; modalError.classList.add('show'); }
       finally{ btn.textContent=orig; btn.disabled=false; }
     });
+
+    /* ── METHOD JOURNEY ── */
+    (function(){
+      const track   = document.getElementById('mjTrack');
+      const slides  = track ? Array.from(track.querySelectorAll('.mj-slide')) : [];
+      const dots    = Array.from(document.querySelectorAll('.mj-dot'));
+      const count   = document.getElementById('mjCount');
+      const nextBtn = document.getElementById('mjNext');
+      const prevBtn = document.getElementById('mjPrev');
+      const fill    = document.getElementById('mjFill');
+      let current   = 0;
+      const total   = slides.length;
+      if(!track || !total) return;
+
+      function goTo(i){
+        slides[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = Math.max(0, Math.min(i, total-1));
+        slides[current].classList.add('active');
+        dots[current].classList.add('active');
+        const w = track.parentElement.offsetWidth;
+        track.style.transform = `translateX(-${current * w}px)`;
+        if(count) count.innerHTML = String(current+1).padStart(2,'0') + '<span>/0' + total + '</span>';
+        if(nextBtn) nextBtn.disabled = current === total-1;
+        if(prevBtn) prevBtn.disabled = current === 0;
+        if(fill) fill.style.width = ((current+1)/total*100) + '%';
+      }
+
+      dots.forEach((d,i) => d.addEventListener('click', () => goTo(i)));
+      if(nextBtn) nextBtn.addEventListener('click', () => goTo(current+1));
+      if(prevBtn) prevBtn.addEventListener('click', () => goTo(current-1));
+
+      // keyboard
+      document.addEventListener('keydown', e => {
+        const sect = document.getElementById('method');
+        if(!sect) return;
+        const r = sect.getBoundingClientRect();
+        if(r.top > window.innerHeight || r.bottom < 0) return;
+        if(e.key === 'ArrowRight') goTo(current+1);
+        if(e.key === 'ArrowLeft')  goTo(current-1);
+      });
+
+      // touch swipe
+      let tx = 0;
+      track.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, {passive:true});
+      track.addEventListener('touchend',   e => {
+        const dx = e.changedTouches[0].clientX - tx;
+        if(Math.abs(dx) > 50){ dx < 0 ? goTo(current+1) : goTo(current-1); }
+      }, {passive:true});
+
+      // resize
+      window.addEventListener('resize', () => goTo(current), {passive:true});
+
+      // initial state
+      goTo(0);
+    })();
+
   </script>
 </body>
 </html>
