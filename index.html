@@ -188,46 +188,59 @@
   .m-words{ font-size:12.5px; color:var(--muted); line-height:1.85; margin-bottom:16px; padding-bottom:16px; border-bottom:1px solid var(--border-lt); }
   .m-ask{ font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:500; font-size:1.08rem; color:var(--forest); line-height:1.45; }
 
-  /* ── AUDIENCE (Who I work with) ── */
-  .aud{ display:grid; grid-template-columns:1fr 1fr; background:var(--white); }
-  .aud-panel{ display:grid; grid-template-columns:0.82fr 1fr; min-height:480px; }
-  .aud-panel.org{ grid-template-columns:1fr 0.82fr; }
-  .aud-panel.org .aud-figure{ order:2; }
-  .aud-panel.org .aud-body{ order:1; }
-
-  .aud-figure{ position:relative; overflow:hidden; }
-  .aud-figure-img{ position:absolute; inset:0; background-size:cover; background-position:center; transform:scale(1.05); transition:transform 1.2s var(--ease); }
-  .aud-panel:hover .aud-figure-img{ transform:scale(1.12); }
-  .aud-figure-tone{ position:absolute; inset:0; }
-  .aud-panel.individuals .aud-figure-img{ background-color:#cbbd9d; background-image:url('https://images.unsplash.com/photo-1511376979163-f804dff7ad7b?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); }
-  .aud-panel.individuals .aud-figure-tone{ background:linear-gradient(115deg, rgba(31,68,52,.12), rgba(192,138,62,.18)); }
-  .aud-panel.org .aud-figure-img{ background-color:#16352a; background-image:url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1200&auto=format&fit=crop'); }
-  .aud-panel.org .aud-figure-tone{ background:linear-gradient(115deg, rgba(22,53,42,.55), rgba(22,53,42,.2)); }
-
-  .aud-body{ display:flex; flex-direction:column; justify-content:center; padding:64px 56px; }
-  .aud-panel.individuals .aud-body{ background:var(--white); }
-  .aud-panel.org .aud-body{ background:var(--forest); }
-  .aud-ico{ width:52px; height:52px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:24px; }
-  .aud-panel.individuals .aud-ico{ border:1px solid var(--border); background:var(--bg); }
-  .aud-panel.org .aud-ico{ border:1px solid rgba(156,187,164,.45); background:rgba(255,255,255,.04); }
-  .aud-ico svg{ width:24px; height:24px; }
-  .aud-label{ font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:500; margin-bottom:8px; }
-  .aud-panel.individuals .aud-label{ color:var(--gold-deep); }
-  .aud-panel.org .aud-label{ color:var(--gold-soft); }
-  .aud-title{ font-family:'Cormorant Garamond',serif; font-size:1.75rem; line-height:1.2; margin-bottom:24px; }
-  .aud-panel.individuals .aud-title{ color:var(--text); }
-  .aud-panel.org .aud-title{ color:#fff; }
-  .aud-list{ list-style:none; display:flex; flex-direction:column; gap:0; margin-bottom:26px; }
-  .aud-list li{ display:flex; align-items:center; gap:13px; font-size:14.5px; font-weight:300; padding:11px 0; border-bottom:1px solid; }
-  .aud-panel.individuals .aud-list li{ color:var(--text); border-color:var(--border-lt); }
-  .aud-panel.org .aud-list li{ color:rgba(255,255,255,.9); border-color:rgba(255,255,255,.12); }
-  .aud-list li:last-child{ border-bottom:none; }
-  .aud-list .dot{ width:5px; height:5px; border-radius:50%; flex-shrink:0; }
-  .aud-panel.individuals .aud-list .dot{ background:var(--gold); }
-  .aud-panel.org .aud-list .dot{ background:var(--sage); }
-  .aud-foot{ font-size:13.5px; line-height:1.8; margin-bottom:28px; max-width:360px; }
-  .aud-panel.individuals .aud-foot{ color:var(--muted); }
-  .aud-panel.org .aud-foot{ color:rgba(255,255,255,.72); }
+  /* ── AUDIENCE PANELS ── */
+  .svc-panel{ display:grid; grid-template-columns:1fr 1fr; min-height:320px; }
+  .svc-panel.flip .svc-figure{ order:2; }
+  .svc-panel.flip .svc-body{ order:1; }
+  .svc-figure{ position:relative; overflow:hidden; }
+  .svc-figure-img{ position:absolute; inset:0; background-size:cover; background-position:center; transform:scale(1.05); transition:transform 1.2s var(--ease); }
+  .svc-panel:hover .svc-figure-img{ transform:scale(1.12); }
+  .svc-figure-tone{ position:absolute; inset:0; }
+  /* individual */
+  .svc-panel.indiv .svc-figure-img{ background-image:url('https://images.unsplash.com/photo-1511376979163-f804dff7ad7b?q=80&w=1200&auto=format&fit=crop'); background-color:#cbbd9d; }
+  .svc-panel.indiv .svc-figure-tone{ background:linear-gradient(115deg,rgba(31,68,52,.12),rgba(192,138,62,.18)); }
+  .svc-panel.indiv .svc-body{ background:var(--white); }
+  .svc-panel.indiv .svc-label{ color:var(--gold-deep); }
+  .svc-panel.indiv .svc-title{ color:var(--text); }
+  .svc-panel.indiv .svc-list li{ color:var(--text); border-color:var(--border-lt); }
+  .svc-panel.indiv .svc-list .dot{ background:var(--gold); }
+  .svc-panel.indiv .svc-foot{ color:var(--muted); }
+  /* org */
+  .svc-panel.org .svc-figure-img{ background-image:url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1200&auto=format&fit=crop'); background-color:#16352a; }
+  .svc-panel.org .svc-figure-tone{ background:linear-gradient(115deg,rgba(22,53,42,.55),rgba(22,53,42,.2)); }
+  .svc-panel.org .svc-body{ background:var(--forest); }
+  .svc-panel.org .svc-label{ color:var(--gold-soft); }
+  .svc-panel.org .svc-title{ color:#fff; }
+  .svc-panel.org .svc-list li{ color:rgba(255,255,255,.9); border-color:rgba(255,255,255,.12); }
+  .svc-panel.org .svc-list .dot{ background:var(--sage); }
+  .svc-panel.org .svc-foot{ color:rgba(255,255,255,.72); }
+  .svc-panel.org .arrow-link{ color:#fff; }
+  /* groups — reuses group-teaser vars but via svc classes */
+  .svc-panel.groups .svc-figure-img{ background-image:url('https://images.unsplash.com/photo-1606836559739-7b1d9fbf8a6e?q=80&w=1170&auto=format&fit=crop'); background-color:#2a3d32; background-position:center 30%; }
+  .svc-panel.groups .svc-figure-tone{ background:linear-gradient(115deg,rgba(22,53,42,.45),rgba(22,53,42,.15)); }
+  .svc-panel.groups .svc-body{ background:var(--white); }
+  .svc-panel.groups .svc-label{ color:var(--gold-deep); }
+  .svc-panel.groups .svc-title{ color:var(--text); }
+  .svc-panel.groups .svc-list li{ color:var(--text); border-color:var(--border-lt); }
+  .svc-panel.groups .svc-list .dot{ background:var(--gold); }
+  .svc-panel.groups .svc-foot{ color:var(--muted); }
+  /* shared body */
+  .svc-body{ display:flex; flex-direction:column; justify-content:center; padding:52px 56px; }
+  .svc-label{ font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:500; margin-bottom:8px; }
+  .svc-title{ font-family:'Cormorant Garamond',serif; font-size:1.75rem; line-height:1.2; margin-bottom:20px; }
+  .svc-list{ list-style:none; margin-bottom:22px; }
+  .svc-list li{ display:flex; align-items:center; gap:13px; font-size:14.5px; font-weight:300; padding:9px 0; border-bottom:1px solid; }
+  .svc-list li:last-child{ border-bottom:none; }
+  .svc-list .dot{ width:5px; height:5px; border-radius:50%; flex-shrink:0; }
+  .svc-foot{ font-size:13.5px; line-height:1.8; margin-bottom:24px; }
+  @media (max-width:1080px){
+    .svc-panel{ grid-template-columns:1fr; }
+    .svc-panel.flip .svc-figure{ order:1; }
+    .svc-panel.flip .svc-body{ order:2; }
+    .svc-figure{ min-height:260px; }
+    .svc-body{ padding:48px 40px; }
+  }
+  @media (max-width:640px){ .svc-body{ padding:40px 24px; } }
 
   /* ── ABOUT ── */
   .about{ position:relative; background:var(--white); }
@@ -252,18 +265,9 @@
 
   /* ── PULL QUOTE ── */
   .quote{ position:relative; overflow:hidden; padding:140px 40px; text-align:center; }
-  .quote-bg{ position:absolute; inset:0; background-color:#cfc4a6; background-image:url('https://images.unsplash.com/photo-1545350089-47b3d117a92c?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); background-size:cover; background-position:center; transform:scale(1.05); filter:saturate(.85) brightness(.9); }
+  .quote-bg{ position:absolute; inset:0; background-color:#cfc4a6; background-image:url('https://images.unsplash.com/photo-1643400812282-4ef456a7b352?q=80&w=1974&auto=format&fit=crop'); background-size:cover; background-position:center; transform:scale(1.05); filter:saturate(.85) brightness(.9); }
   .quote-overlay{ position:absolute; inset:0; background:
-      radial-gradient(ellipse 60% 55% at 50% 48%, rgba(40,58,42,.08) 0%, rgba(17,34,27,.22) 65%, rgba(17,34,27,.42) 100%),
-      radial-gradient(circle at 50% 38%, rgba(217,185,139,.1) 0%, rgba(217,185,139,0) 45%),
-      linear-gradient(to bottom,
-        var(--white) 0%,
-        rgba(251,249,243,.5) 16%,
-        rgba(22,40,32,.48) 38%,
-        rgba(17,34,27,.58) 50%,
-        rgba(22,40,32,.48) 62%,
-        rgba(234,226,206,.5) 84%,
-        var(--bg-alt) 100%); }
+      radial-gradient(ellipse 60% 55% at 50% 48%, rgba(17,34,27,.18) 0%, rgba(17,34,27,.52) 100%); }
   .quote-inner{ position:relative; z-index:2; max-width:820px; margin:0 auto; }
   .quote-badge{ width:56px; height:56px; border-radius:50%; background:var(--gold); display:flex; align-items:center; justify-content:center; margin:0 auto 32px; box-shadow:0 12px 28px -6px rgba(0,0,0,.35); }
   .quote-badge svg{ width:23px; height:19px; }
@@ -407,6 +411,8 @@
   @media (prefers-reduced-motion: reduce){
     *, .hero-bg, .aud-figure-img{ animation:none !important; transition:none !important; }
   }
+
+
 </style>
 </head>
 <body>
@@ -541,55 +547,57 @@
     </section>
   </div>
 
-  <!-- AUDIENCE -->
-  <section class="aud">
-    <div class="aud-panel individuals">
-      <div class="aud-figure">
-        <div class="aud-figure-img" aria-hidden="true"></div>
-        <div class="aud-figure-tone" aria-hidden="true"></div>
-      </div>
-      <div class="aud-body reveal">
-        <div class="aud-ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#3A6B52" stroke-width="1.3"/><path d="M5 21c0-4 3-7 7-7s7 3 7 7" stroke="#3A6B52" stroke-width="1.3"/></svg></div>
-        <div class="aud-label">For Individuals</div>
-        <h3 class="aud-title">Reconnect with who you are.</h3>
-        <ul class="aud-list">
-          <li><span class="dot"></span> Life transition &amp; personal growth</li>
-          <li><span class="dot"></span> Feeling stuck and ready to move</li>
-          <li><span class="dot"></span> Divorce, separation &amp; relationship changes</li>
-          <li><span class="dot"></span> Wellbeing &amp; health goals</li>
-          <li><span class="dot"></span> Career transition &amp; reinvention</li>
-          <li><span class="dot"></span> Empty nest &amp; new chapters</li>
-        </ul>
-        <p class="aud-foot">Helping you reconnect with clarity, confidence and possibility.</p>
-        <a href="#work" class="arrow-link">Explore Coaching <span class="ln"></span></a>
-      </div>
+  <!-- INDIVIDUALS -->
+  <section class="svc-panel indiv">
+    <div class="svc-figure"><div class="svc-figure-img" aria-hidden="true"></div><div class="svc-figure-tone" aria-hidden="true"></div></div>
+    <div class="svc-body reveal">
+      <div class="svc-label">For Individuals</div>
+      <h3 class="svc-title">Reconnect with who you are.</h3>
+      <ul class="svc-list">
+        <li><span class="dot"></span> Life transition &amp; personal growth</li>
+        <li><span class="dot"></span> Feeling stuck and ready to move</li>
+        <li><span class="dot"></span> Divorce, separation &amp; relationship changes</li>
+        <li><span class="dot"></span> Wellbeing &amp; health goals</li>
+        <li><span class="dot"></span> Career transition &amp; reinvention</li>
+        <li><span class="dot"></span> Empty nest &amp; new chapters</li>
+      </ul>
+      <p class="svc-foot">Helping you reconnect with clarity, confidence and possibility.</p>
+      <a href="individuals.html" class="arrow-link">Explore Coaching <span class="ln"></span></a>
     </div>
-    <div class="aud-panel org">
-      <div class="aud-figure">
-        <div class="aud-figure-img" aria-hidden="true"></div>
-        <div class="aud-figure-tone" aria-hidden="true"></div>
-      </div>
-      <div class="aud-body reveal">
-        <div class="aud-ico"><svg viewBox="0 0 24 24" fill="none">
-          <circle cx="12" cy="7.2" r="3" stroke="#9CBBA4" stroke-width="1.3"/>
-          <path d="M6.5 19.5c0-3.3 2.5-5.7 5.5-5.7s5.5 2.4 5.5 5.7" stroke="#9CBBA4" stroke-width="1.3"/>
-          <circle cx="4.6" cy="9.4" r="2.1" stroke="#9CBBA4" stroke-width="1.2"/>
-          <path d="M1 18.3c0-2.4 1.6-4.1 3.6-4.1.9 0 1.7.3 2.4.9" stroke="#9CBBA4" stroke-width="1.2"/>
-          <circle cx="19.4" cy="9.4" r="2.1" stroke="#9CBBA4" stroke-width="1.2"/>
-          <path d="M23 18.3c0-2.4-1.6-4.1-3.6-4.1-.9 0-1.7.3-2.4.9" stroke="#9CBBA4" stroke-width="1.2"/>
-        </svg></div>
-        <div class="aud-label">For Organisations</div>
-        <h3 class="aud-title">Help your people thrive through change.</h3>
-        <ul class="aud-list">
-          <li><span class="dot"></span> Navigating organisational change</li>
-          <li><span class="dot"></span> Leadership development &amp; building teams</li>
-          <li><span class="dot"></span> Creating a culture of wellbeing</li>
-          <li><span class="dot"></span> Managing conflict &amp; building resilience</li>
-          <li><span class="dot"></span> New directions</li>
-        </ul>
-        <p class="aud-foot">Helping leaders and teams thrive through change and uncertainty.</p>
-        <a href="#contact" class="arrow-link" style="color:#fff;">Enquire for Teams <span class="ln"></span></a>
-      </div>
+  </section>
+
+  <!-- ORGANISATIONS -->
+  <section class="svc-panel org flip">
+    <div class="svc-figure"><div class="svc-figure-img" aria-hidden="true"></div><div class="svc-figure-tone" aria-hidden="true"></div></div>
+    <div class="svc-body reveal">
+      <div class="svc-label">For Organisations</div>
+      <h3 class="svc-title">Help your people thrive through change.</h3>
+      <ul class="svc-list">
+        <li><span class="dot"></span> Navigating organisational change</li>
+        <li><span class="dot"></span> Leadership development &amp; building teams</li>
+        <li><span class="dot"></span> Creating a culture of wellbeing</li>
+        <li><span class="dot"></span> Managing conflict &amp; building resilience</li>
+        <li><span class="dot"></span> New directions</li>
+      </ul>
+      <p class="svc-foot">Helping leaders and teams thrive through change and uncertainty.</p>
+      <a href="organisations.html" class="arrow-link">Enquire for Teams <span class="ln"></span></a>
+    </div>
+  </section>
+
+  <!-- GROUPS -->
+  <section class="svc-panel groups">
+    <div class="svc-figure"><div class="svc-figure-img" aria-hidden="true"></div><div class="svc-figure-tone" aria-hidden="true"></div></div>
+    <div class="svc-body reveal">
+      <div class="svc-label">For Groups</div>
+      <h3 class="svc-title">The CEIBA Method. <em>Shared.</em></h3>
+      <ul class="svc-list">
+        <li><span class="dot"></span> Small group programme — maximum six people</li>
+        <li><span class="dot"></span> Six to eight weeks online</li>
+        <li><span class="dot"></span> The full CEIBA Method — all four stages</li>
+        <li><span class="dot"></span> Launching Autumn 2026</li>
+      </ul>
+      <p class="svc-foot">All the depth of individual coaching, with the energy and support of shared experience.</p>
+      <a href="groups.html" class="arrow-link">Register Your Interest <span class="ln"></span></a>
     </div>
   </section>
 
@@ -597,9 +605,7 @@
   <section class="about" id="about">
     <div class="about-grid">
       <div class="about-photo">
-        <div class="about-photo-ph" aria-hidden="true">
-          <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="36" r="17" stroke="#3A6B52" stroke-width="1.4"/><path d="M22 86c4-19 14-27 28-27s24 8 28 27" stroke="#3A6B52" stroke-width="1.4"/></svg>
-        </div>
+        <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/ceiba/refs/heads/main/581a482a-f9dd-45ca-b23d-8bf327d22657.JPG" alt="Founder &amp; Coach" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;" />
         <div class="about-photo-frame" aria-hidden="true"></div>
         <div class="about-photo-tag"><span class="ln"></span><span>Founder &amp; Coach</span></div>
       </div>
