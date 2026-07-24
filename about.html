@@ -116,53 +116,58 @@
   .origin-scene-tag span{ display:block; font-size:10px; letter-spacing:.3em; text-transform:uppercase; color:rgba(255,255,255,.45); }
   .origin-scene-tag span:first-child{ color:var(--gold-soft); font-size:11px; letter-spacing:.2em; margin-bottom:6px; }
 
-  /* ══ STORY: prose + portrait ══ */
-  .story{ background:var(--bg); }
-  .story-top{ max-width:var(--max); margin:0 auto; display:grid; grid-template-columns:1fr 1fr; min-height:580px; }
-  .story-prose{ padding:96px 72px 96px 40px; display:flex; flex-direction:column; justify-content:center; border-right:1px solid var(--border-lt); }
-  .story-prose p{ font-size:15.5px; color:var(--muted); line-height:1.9; max-width:50ch; }
-  .story-prose p + p{ margin-top:22px; }
-  .story-portrait{ position:relative; overflow:hidden; }
-  .story-portrait img{ width:100%; height:100%; object-fit:cover; object-position:center 18%; display:block; transition:transform 1.8s var(--ease); }
-  .story-portrait:hover img{ transform:scale(1.04); }
-  .story-portrait-cap{ position:absolute; bottom:0; left:0; right:0; background:linear-gradient(to top, rgba(22,35,18,.72), transparent); padding:32px 28px 20px; font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:rgba(255,255,255,.62); }
-  .story-portrait-cap::before{ content:''; display:block; width:20px; height:1px; background:var(--gold-soft); margin-bottom:9px; }
+  /* ══ STORY: text left, photo right ══ */
+  .story{ position:relative; background:var(--forest-deep); overflow:hidden; }
+  .story-grid{ max-width:var(--max); margin:0 auto; display:grid; grid-template-columns:1fr 1fr; align-items:stretch; min-height:min(88vh,760px); }
+  .story-inner{ display:flex; align-items:center; }
+  .story-panel{ padding:clamp(72px,8vw,112px) clamp(48px,5vw,80px) clamp(72px,8vw,112px) 40px; max-width:600px; }
+  .story-eyebrow{ display:flex; align-items:center; gap:14px; font-size:10px; letter-spacing:.3em; text-transform:uppercase; color:var(--gold-soft); font-weight:500; margin-bottom:32px; }
+  .story-eyebrow::before{ content:''; width:34px; height:1px; background:var(--gold-soft); }
+  .story-chapter{ position:relative; }
+  .story-chapter + .story-chapter{ margin-top:26px; padding-top:26px; border-top:1px solid rgba(255,255,255,.14); }
+  .story-chapter p{ font-size:16px; color:rgba(255,255,255,.78); line-height:1.9; }
+  .story-chapter:first-child p{ font-size:17px; color:rgba(255,255,255,.95); }
+  .story-chapter em{ font-family:'Cormorant Garamond',serif; font-style:italic; color:var(--gold-soft); font-size:1.14em; }
+  .story-cap{ margin-top:40px; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.15rem; color:rgba(255,255,255,.55); display:flex; align-items:center; gap:12px; }
+  .story-cap::before{ content:''; width:20px; height:1px; background:var(--gold-soft); }
+
+  .story-figure{ position:relative; overflow:hidden; }
+  .story-figure img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 30%; transform:scale(1.05); transition:transform 1.8s var(--ease); }
+  .story-figure:hover img{ transform:scale(1.1); }
+  .story-figure-frame{ position:absolute; inset:14px; border:1px solid rgba(255,255,255,.22); pointer-events:none; z-index:2; }
+  .story-figure-tone{ position:absolute; inset:0; background:linear-gradient(105deg, rgba(22,53,42,.35) 0%, rgba(22,53,42,0) 40%); pointer-events:none; }
 
   /* ══ BELIEF ══ */
-  .belief{ background:var(--forest-deep); }
-  /* Root graphic — large, right-anchored, purely atmospheric */
-
-  .belief-in{ max-width:var(--max); margin:0 auto; padding:96px 40px 104px; }
-
-
-
-  /* Single-column philosophy — everything aligned, nothing competing */
-  .belief-body{ max-width:640px; }
-  .belief-eyebrow{ font-size:10px; letter-spacing:.32em; text-transform:uppercase; color:var(--gold-soft); font-weight:500; opacity:.7; margin-bottom:24px; }
+  .belief{ background:var(--forest-deep); position:relative; overflow:hidden; }
+  .belief::before{ content:''; position:absolute; top:0; left:50%; width:1px; height:88px; background:linear-gradient(to bottom, transparent, var(--gold-soft)); opacity:.5; }
+  .belief-in{ position:relative; max-width:760px; margin:0 auto; padding:clamp(96px,11vw,140px) 40px clamp(88px,10vw,120px); text-align:center; }
+  .belief-body{ max-width:none; }
+  .belief-eyebrow{ font-size:10px; letter-spacing:.34em; text-transform:uppercase; color:var(--gold-soft); font-weight:500; opacity:.8; margin-bottom:32px; }
   .belief-pull{
     font-family:'Cormorant Garamond',serif;
-    font-size:clamp(1.7rem,2.6vw,2.4rem);
-    font-weight:400; line-height:1.3;
-    color:rgba(255,255,255,.95);
-    letter-spacing:-.01em;
-    margin-bottom:36px;
+    font-size:clamp(2.2rem,4.4vw,3.6rem);
+    font-weight:500; line-height:1.16;
+    color:#fff; letter-spacing:-.015em;
+    margin:0 auto 40px; max-width:16ch;
   }
   .belief-pull em{ color:var(--gold-soft); font-style:italic; }
-  .belief-note{ font-size:16px; color:rgba(255,255,255,.5); line-height:1.95; margin-bottom:24px; }
-  .belief-note strong{ color:rgba(255,255,255,.8); font-weight:400; }
-  .belief-creed{ padding-top:0; }
+  /* Descending root-line divider under the pull-quote */
+  .belief-rootline{ width:1px; height:64px; margin:0 auto 40px; background:linear-gradient(to bottom, var(--gold), transparent); position:relative; }
+  .belief-rootline::before,.belief-rootline::after{ content:''; position:absolute; top:18px; width:26px; height:1px; background:linear-gradient(to var(--dir,right), var(--gold-soft), transparent); opacity:.6; }
+  .belief-rootline::before{ right:0; transform-origin:right; transform:rotate(32deg); }
+  .belief-rootline::after{ left:0; transform-origin:left; transform:rotate(-32deg); }
+  .belief-note{ font-size:16px; color:rgba(255,255,255,.58); line-height:1.95; margin:0 auto 40px; max-width:52ch; }
+  .belief-note strong{ color:rgba(255,255,255,.88); font-weight:400; }
+  .belief-creed{ max-width:56ch; margin:0 auto; padding-top:40px; border-top:1px solid rgba(255,255,255,.1); }
   .belief-creed p{
-    font-size:16px; color:rgba(255,255,255,.5);
-    line-height:1.95; font-weight:300;
-    font-family:'Outfit',sans-serif;
+    font-size:16.5px; color:rgba(255,255,255,.62);
+    line-height:1.95; font-weight:300; font-family:'Outfit',sans-serif;
   }
   .belief-creed p + p{ margin-top:24px; }
-  .belief-creed em{ color:var(--gold-soft); font-style:italic; }
+  .belief-creed em{ color:var(--gold-soft); font-style:italic; font-family:'Cormorant Garamond',serif; font-size:1.1em; }
   .belief-sign{
-    margin-top:44px; padding-top:20px;
-    border-top:1px solid rgba(255,255,255,.08);
-    font-size:10px; letter-spacing:.28em; text-transform:uppercase;
-    color:rgba(255,255,255,.26);
+    margin-top:52px; font-family:'Cormorant Garamond',serif; font-style:italic;
+    font-size:clamp(1.5rem,2.4vw,2.1rem); color:var(--gold-soft); line-height:1.3;
   }
 
   /* ══ PERSONAL NOTE — full-bleed halves ══ */
@@ -240,9 +245,9 @@
   @media (max-width:1080px){
     .nav-links,.nav-cta{ display:none; } .hamburger{ display:flex; }
     .professional-grid{ grid-template-columns:1fr; gap:48px; }
-    .story-top{ grid-template-columns:1fr; }
-    .story-prose{ padding:64px 40px; border-right:none; border-bottom:1px solid var(--border-lt); }
-    .story-portrait{ min-height:420px; }
+    .story-grid{ grid-template-columns:1fr; }
+    .story-figure{ min-height:420px; }
+    .story-panel{ padding:64px 40px; max-width:none; }
 
     .belief-in{ padding:64px 40px 80px; }
     .note-in{ grid-template-columns:1fr; }
@@ -265,6 +270,10 @@
     .origin-scene-h{ font-size:2.4rem; }
     .origin-scene-tag{ text-align:left; }
     .belief-pull{ font-size:2rem; }
+    .story{ min-height:0; }
+    .story-scrim{ background:linear-gradient(to top, rgba(15,26,14,.92) 0%, rgba(15,26,14,.7) 45%, rgba(15,26,14,.55) 100%); }
+    .story-inner{ padding:80px 22px 72px; }
+    .story-bg{ background-position:center center; }
     .footer-top,.footer-bottom{ flex-direction:column; gap:6px; }
     .cta{ padding:88px 0; }
   }
@@ -357,17 +366,28 @@
     </div>
   </section>
 
-  <!-- ══ STORY: prose + portrait ══ -->
+  <!-- ══ STORY: text left, photo right ══ -->
   <section class="story">
-    <div class="story-top">
-      <div class="story-prose reveal">
-        <p>I was travelling solo around Costa Rica — the first time I'd done anything like that since my younger years. I'd arrived mentally exhausted, in the middle of a significant period of change in my own life. I was already building a new business but hadn't yet found the heart of it.</p>
-        <p>One morning I rode my bike down an old road into the forest and came across a huge tree. The roots spread across the ground in every direction, heavy and ancient. The trunk was vast. Looking up, the canopy caught the light, leaves shining right at the top.</p>
-        <p>I mentioned to a local nearby that it was the most impressive tree I&rsquo;d ever seen. She told me its name &mdash; <em>Ceiba.</em> The tree of life.</p>
+    <div class="story-grid">
+      <div class="story-inner">
+        <div class="story-panel">
+          <div class="story-eyebrow reveal">The Tree</div>
+          <div class="story-chapter reveal" data-d="1">
+            <p>I was travelling solo around Costa Rica — the first time I'd done anything like that since my younger years. I'd arrived mentally exhausted, in the middle of a significant period of change in my own life. I was already building a new business but hadn't yet found the heart of it.</p>
+          </div>
+          <div class="story-chapter reveal" data-d="2">
+            <p>One morning I rode my bike down an old road into the forest and came across a huge tree. The roots spread across the ground in every direction, heavy and ancient. The trunk was vast. Looking up, the canopy caught the light, leaves shining right at the top.</p>
+          </div>
+          <div class="story-chapter reveal" data-d="3">
+            <p>I mentioned to a local nearby that it was the most impressive tree I&rsquo;d ever seen. She told me its name &mdash; <em>Ceiba.</em> The tree of life.</p>
+          </div>
+          <div class="story-cap reveal" data-d="4"><em>Ceiba pentandra</em> &mdash; Costa Rica</div>
+        </div>
       </div>
-      <div class="story-portrait reveal" data-d="1">
+      <div class="story-figure reveal" data-d="1">
         <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/ceiba/refs/heads/main/real%20ceiba%20tree%202.jpg" alt="The Ceiba tree, Costa Rica" />
-        <div class="story-portrait-cap">Ceiba pentandra &mdash; Costa Rica</div>
+        <div class="story-figure-tone" aria-hidden="true"></div>
+        <div class="story-figure-frame" aria-hidden="true"></div>
       </div>
     </div>
   </section>
@@ -375,10 +395,10 @@
   <!-- ══ BELIEF ══ -->
   <section class="belief">
     <div class="belief-in reveal">
-
       <div class="belief-body">
         <div class="belief-eyebrow">The Insight</div>
         <p class="belief-pull">The roots go as deep as the tree <em>grows tall.</em></p>
+        <div class="belief-rootline" aria-hidden="true"></div>
         <p class="belief-note">Back home, it kept coming to me — that everything visible above the ground reflects what exists beneath it. <strong>You can&rsquo;t separate the two.</strong> That felt true about people too. It became the foundation of everything CEIBA is.</p>
         <div class="belief-creed">
           <p>The creativity, the movement, the possibility we want to reach for — all of it depends on the foundations we have built inside ourselves.</p>
@@ -386,7 +406,6 @@
         </div>
         <p class="belief-sign">That is the work CEIBA does.</p>
       </div>
-
     </div>
   </section>
 
