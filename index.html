@@ -153,7 +153,7 @@
 
   .reflect{ position:relative; z-index:2; padding:92px 0 70px; }
   .reflect-in{ max-width:880px; margin:0 auto; padding:0 40px; text-align:center; }
-  .reflect h2{ font-size:clamp(1.9rem,3vw,2.7rem); line-height:1.3; }
+  .reflect h2{ font-size:clamp(1.75rem,2.6vw,2.4rem); line-height:1.3; max-width:540px; margin:0 auto; }
   .reflect-mark{ width:8px; height:8px; border-radius:50%; background:var(--gold); margin:22px auto; position:relative; }
   .reflect-mark::before,.reflect-mark::after{ content:''; position:absolute; top:50%; width:40px; height:1px; background:var(--border); }
   .reflect-mark::before{ right:16px; } .reflect-mark::after{ left:16px; }
@@ -189,7 +189,7 @@
   .m-ask{ font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:500; font-size:1.08rem; color:var(--forest); line-height:1.45; }
 
   /* ── AUDIENCE PANELS ── */
-  .svc-panel{ display:grid; grid-template-columns:1fr 1fr; min-height:320px; }
+  .svc-panel{ display:grid; grid-template-columns:1fr 1fr; min-height:380px; }
   .svc-panel.flip .svc-figure{ order:2; }
   .svc-panel.flip .svc-body{ order:1; }
   .svc-figure{ position:relative; overflow:hidden; }
@@ -229,8 +229,8 @@
   .svc-label{ font-size:11px; letter-spacing:.24em; text-transform:uppercase; font-weight:500; margin-bottom:8px; }
   .svc-title{ font-family:'Cormorant Garamond',serif; font-size:1.75rem; line-height:1.2; margin-bottom:20px; }
   .svc-list{ list-style:none; margin-bottom:22px; }
-  .svc-list li{ display:flex; align-items:center; gap:13px; font-size:14.5px; font-weight:300; padding:9px 0; border-bottom:1px solid; }
-  .svc-list li:last-child{ border-bottom:none; }
+  .svc-list li{ display:flex; align-items:center; gap:13px; font-size:14.5px; font-weight:300; padding:9px 0; border-top:1px solid; }
+  .svc-list li:first-child{ border-top:none; }
   .svc-list .dot{ width:5px; height:5px; border-radius:50%; flex-shrink:0; }
   .svc-foot{ font-size:13.5px; line-height:1.8; margin-bottom:24px; }
   @media (max-width:1080px){
@@ -413,6 +413,22 @@
   }
 
 
+  /* ── NAV DROPDOWN ── */
+  .nav-links li.has-drop{ position:relative; }
+  .nav-drop{ position:absolute; top:calc(100% + 6px); left:50%; transform:translateX(-50%) translateY(4px); min-width:200px; background:var(--white); border:1px solid var(--border); border-radius:4px; box-shadow:0 16px 40px -12px rgba(31,68,52,.18); padding:8px 0; opacity:0; pointer-events:none; transition:opacity .22s var(--ease), transform .22s var(--ease); z-index:200; }
+  /* invisible bridge fills gap between link and dropdown */
+  .nav-drop::before{ content:''; position:absolute; top:-12px; left:0; right:0; height:12px; }
+  .nav-links li.has-drop:hover .nav-drop,
+  .nav-links li.has-drop:focus-within .nav-drop{ opacity:1; pointer-events:auto; transform:translateX(-50%) translateY(0); }
+  .nav-drop a{ display:block; padding:10px 20px; font-size:11px; letter-spacing:.13em; text-transform:uppercase; color:var(--muted); text-decoration:none; font-weight:500; transition:color .2s, background .2s; white-space:nowrap; }
+  .nav-drop a:hover{ color:var(--forest); background:var(--bg); }
+  .nav-drop-divider{ height:1px; background:var(--border-lt); margin:6px 0; }
+  .nav-links li.has-drop > a{ position:relative; }
+  .nav-links li.has-drop > a::after{ display:none !important; }
+  .nav-links li.has-drop > a .chev{ display:inline-block; margin-left:5px; opacity:.5; font-style:normal; transition:transform .22s var(--ease); }
+  .nav-links li.has-drop:hover > a .chev{ transform:rotate(180deg); }
+  .mob-sub{ display:flex; flex-direction:column; align-items:center; gap:.6rem; margin-top:-.4rem; }
+  .mob-sub a{ font-family:'Outfit',sans-serif !important; font-size:.95rem !important; color:rgba(255,255,255,.6) !important; }
 </style>
 </head>
 <body>
@@ -441,7 +457,13 @@
         <li><a href="#top" class="active">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="#method">The CEIBA Method&trade;</a></li>
-        <li><a href="#work">Work With Me</a></li>
+        <li class="has-drop"><a href="#work">Work With Me <em class="chev">&#8964;</em></a>
+          <div class="nav-drop">
+            <a href="individuals.html">For Individuals</a>
+            <a href="organisations.html">For Organisations</a>
+            <a href="groups.html">Group Programme</a>
+          </div>
+        </li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <a href="#" class="nav-cta" data-open-modal>Book a Discovery Call</a>
@@ -455,6 +477,11 @@
     <a href="about.html" data-close>About</a>
     <a href="#method" data-close>The CEIBA Method&trade;</a>
     <a href="#work" data-close>Work With Me</a>
+    <div class="mob-sub">
+      <a href="individuals.html" data-close>Individuals</a>
+      <a href="organisations.html" data-close>Organisations</a>
+      <a href="groups.html" data-close>Groups</a>
+    </div>
     <a href="#contact" data-close>Contact</a>
     <a href="#" class="mob-cta" data-open-modal data-close>Book a Discovery Call</a>
   </div>
@@ -490,6 +517,32 @@
         <p class="lede">Whether facing personal transition, leading through uncertainty or navigating organisational change, meaningful growth begins with clarity, trust and strong foundations.</p>
       </div>
     </section>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-grid">
+      <div class="about-photo">
+        <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/ceiba/refs/heads/main/581a482a-f9dd-45ca-b23d-8bf327d22657.JPG" alt="Founder &amp; Coach" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;" />
+        <div class="about-photo-frame" aria-hidden="true"></div>
+        <div class="about-photo-tag"><span class="ln"></span><span>Founder &amp; Coach</span></div>
+      </div>
+      <div class="about-body reveal">
+        <svg class="about-watermark" viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M50 95V40" stroke="#1F4434" stroke-width="1"/><path d="M50 55C35 45 25 40 12 38M50 55c15-10 25-15 38-17M50 70c-12-7-20-10-30-11M50 70c12-7 20-10 30-11" stroke="#1F4434" stroke-width="1"/><circle cx="50" cy="30" r="20" stroke="#1F4434" stroke-width="1"/></svg>
+        <span class="kicker">About CEIBA</span>
+        <h2 class="headline">Rooted in experience.<br />Focused on what's <em>possible.</em></h2>
+        <p class="lede" style="margin-top:20px;">For years I worked in change management — developing people, motivating teams, helping organisations navigate uncertainty. Then my own life turned upside down, and I discovered that real growth is nothing like a decision. It asks something far more demanding, and far more rewarding.</p>
+        <p class="lede">The resources, the resilience, the strength you need are already inside you. They haven't gone — they've simply become hard to access. That is where CEIBA was born.</p>
+        <div class="about-divider"></div>
+        <div class="about-stats">
+          <div><div class="about-stat-fig">25</div><div class="about-stat-desc">Years of experience</div></div>
+          <div><div class="about-stat-fig">ICF</div><div class="about-stat-desc">Qualified Coach</div></div>
+          <div><div class="about-stat-fig">NLP</div><div class="about-stat-desc">Master Practitioner</div></div>
+        </div>
+        <a href="about.html" class="arrow-link" style="margin-top:30px;">Learn More About Me <span class="ln"></span></a>
+      </div>
+    </div>
+  </section>
 
     <!-- METHOD -->
     <section class="method" id="method">
@@ -545,7 +598,6 @@
         </div>
       </div>
     </section>
-  </div>
 
   <!-- INDIVIDUALS -->
   <section class="svc-panel indiv">
@@ -601,30 +653,6 @@
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <div class="about-grid">
-      <div class="about-photo">
-        <img src="https://raw.githubusercontent.com/9s4pr6gvvk-bot/ceiba/refs/heads/main/581a482a-f9dd-45ca-b23d-8bf327d22657.JPG" alt="Founder &amp; Coach" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;" />
-        <div class="about-photo-frame" aria-hidden="true"></div>
-        <div class="about-photo-tag"><span class="ln"></span><span>Founder &amp; Coach</span></div>
-      </div>
-      <div class="about-body reveal">
-        <svg class="about-watermark" viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M50 95V40" stroke="#1F4434" stroke-width="1"/><path d="M50 55C35 45 25 40 12 38M50 55c15-10 25-15 38-17M50 70c-12-7-20-10-30-11M50 70c12-7 20-10 30-11" stroke="#1F4434" stroke-width="1"/><circle cx="50" cy="30" r="20" stroke="#1F4434" stroke-width="1"/></svg>
-        <span class="kicker">About CEIBA</span>
-        <h2 class="headline">Rooted in experience.<br />Focused on what's <em>possible.</em></h2>
-        <p class="lede" style="margin-top:20px;">For years I worked in change management — developing people, motivating teams, helping organisations navigate uncertainty. Then my own life turned upside down, and I discovered that real growth is nothing like a decision. It asks something far more demanding, and far more rewarding.</p>
-        <p class="lede">The resources, the resilience, the strength you need are already inside you. They haven't gone — they've simply become hard to access. That is where CEIBA was born.</p>
-        <div class="about-divider"></div>
-        <div class="about-stats">
-          <div><div class="about-stat-fig">25</div><div class="about-stat-desc">Years of experience</div></div>
-          <div><div class="about-stat-fig">ICF</div><div class="about-stat-desc">Qualified Coach</div></div>
-          <div><div class="about-stat-fig">NLP</div><div class="about-stat-desc">Master Practitioner</div></div>
-        </div>
-        <a href="about.html" class="arrow-link" style="margin-top:30px;">Learn More About Me <span class="ln"></span></a>
-      </div>
-    </div>
-  </section>
 
   <!-- PULL QUOTE -->
   <section class="quote">
