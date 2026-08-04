@@ -85,22 +85,20 @@
   .arrow-link .ln{ width:30px; height:1px; background:var(--gold); transition:width .3s var(--ease); }
   .arrow-link:hover .ln{ width:44px; }
 
-  /* ── HERO: Dark, architecturally composed ── */
-  .hero{ position:relative; min-height:calc(100vh - 37px); margin-top:-190px; padding-top:190px; display:flex; align-items:flex-end; overflow:hidden; background:var(--forest-deep); }
-  .hero-bg{ position:absolute; inset:0; background-size:cover; background-position:center 40%; background-image:url('https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); transform:scale(1.05); animation:hZoom 28s var(--ease) forwards; }
+  /* ── HERO ── */
+  .hero{ position:relative; background:var(--forest-deep); overflow:hidden; min-height:calc(100vh - 37px); margin-top:-190px; padding-top:190px; display:flex; align-items:flex-end; }
+  .hero-figure-img{ position:absolute; inset:0; background-size:cover; background-position:center 30%; background-image:url('https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); transform:scale(1.05); animation:hZoom 28s var(--ease) forwards; filter:brightness(.9) saturate(.9); }
   @keyframes hZoom{ from{ transform:scale(1.05); } to{ transform:scale(1); } }
   .hero-scrim{ position:absolute; inset:0; pointer-events:none; background:
-    linear-gradient(to top, rgba(17,34,27,.95) 0%, rgba(17,34,27,.72) 38%, rgba(17,34,27,.22) 65%, rgba(17,34,27,.14) 100%),
-    linear-gradient(to right, var(--bg) 0%, rgba(244,239,227,.97) 24%, rgba(244,239,227,.72) 44%, rgba(244,239,227,.22) 60%, rgba(244,239,227,0) 76%),
-    linear-gradient(to bottom, rgba(17,34,27,.5) 0%, rgba(17,34,27,0) 28%); }
-  .hero-inner{ position:relative; z-index:3; max-width:var(--max); margin:0 auto; padding:0 40px 80px; width:100%; }
-  .hero-eyebrow{ display:inline-flex; align-items:center; gap:12px; font-size:10.5px; letter-spacing:.28em; text-transform:uppercase; color:var(--gold-deep); margin-bottom:22px; font-weight:500; }
-  .hero-eyebrow::before{ content:''; width:26px; height:1px; background:var(--gold); }
-  .hero h1{ font-size:clamp(2.6rem,4.8vw,5rem); line-height:1.04; color:#fff; max-width:700px; margin-bottom:22px; letter-spacing:-.018em; }
-  .hero h1 em{ color:var(--gold-soft); }
-  .hero-sub{ font-size:15.5px; color:rgba(255,255,255,.72); max-width:480px; line-height:1.8; margin-bottom:36px; font-weight:300; }
+    linear-gradient(to right, rgba(17,34,27,.92) 0%, rgba(17,34,27,.72) 28%, rgba(17,34,27,.28) 58%, rgba(17,34,27,.04) 80%),
+    linear-gradient(to top, rgba(17,34,27,.82) 0%, rgba(17,34,27,.4) 28%, rgba(17,34,27,0) 56%); }
+  .hero-inner{ position:relative; z-index:3; max-width:var(--max); margin:0 auto; padding:0 40px 96px; width:100%; }
+  .hero-eyebrow{ display:inline-flex; align-items:center; gap:12px; font-size:10px; letter-spacing:.32em; text-transform:uppercase; color:var(--gold-soft); margin-bottom:24px; font-weight:500; }
+  .hero-eyebrow::before{ content:''; width:26px; height:1px; background:var(--gold-soft); }
+  .hero h1{ font-family:'Cormorant Garamond',serif; font-size:clamp(2.4rem,4vw,4.2rem); line-height:1.08; color:#fff; max-width:600px; margin-bottom:20px; letter-spacing:-.015em; font-weight:500; }
+  .hero h1 em{ color:var(--gold-soft); font-style:italic; }
+  .hero-sub{ font-size:15px; color:rgba(255,255,255,.72); max-width:42ch; line-height:1.85; margin-bottom:42px; font-weight:300; }
   .hero-actions{ display:flex; gap:16px; align-items:center; flex-wrap:wrap; }
-
   /* ── PROBLEM / STAKES ── */
   .stakes{ background:var(--forest); }
   .stakes-in{ max-width:var(--max); margin:0 auto; padding:88px 40px; display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:center; }
@@ -126,6 +124,7 @@
   .offer-card h3{ font-size:1.5rem; color:var(--forest); margin-bottom:16px; line-height:1.2; position:relative; }
   .offer-card-sub{ font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-deep); font-weight:500; margin-bottom:28px; display:block; }
   .offer-card p{ font-size:14.5px; color:var(--muted); line-height:1.9; position:relative; }
+  .offer-card-close{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:15px !important; color:var(--forest) !important; margin-top:22px; padding-top:20px; border-top:1px solid var(--border-lt); }
   .offer-card ul{ list-style:none; margin-top:22px; display:flex; flex-direction:column; gap:0; position:relative; }
   .offer-card ul li{ font-size:13.5px; color:var(--muted); padding:10px 0; border-bottom:1px solid var(--border-lt); line-height:1.5; display:flex; gap:10px; align-items:flex-start; }
   .offer-card ul li:last-child{ border-bottom:none; }
@@ -286,7 +285,7 @@
 
   <!-- HERO -->
   <header class="hero">
-    <div class="hero-bg" role="img" aria-label="A professional meeting environment"></div>
+    <div class="hero-figure-img" role="img" aria-label="Professional coaching environment"></div>
     <div class="hero-scrim" aria-hidden="true"></div>
     <div class="hero-inner reveal">
       <span class="hero-eyebrow">For Organisations</span>
@@ -294,7 +293,7 @@
       <p class="hero-sub">Coaching and programmes for organisations navigating change — individual, leadership and team work grounded in The CEIBA Method&trade;.</p>
       <div class="hero-actions">
         <a href="#enquiry" class="btn btn-gold">Get in Touch</a>
-        <a href="#offer" class="btn btn-outline-light">What I offer</a>
+        <a href="#offer" class="arrow-link" style="color:rgba(255,255,255,.8);">What I offer <span class="ln" style="background:rgba(255,255,255,.5);"></span></a>
       </div>
     </div>
   </header>
@@ -303,11 +302,12 @@
   <section class="stakes">
     <div class="stakes-in">
       <div class="stakes-left reveal">
-        <p>Organisations going through change need more than strategy. <em>Real transformation happens through people</em> — when they are grounded, resilient and clear about what they&rsquo;re capable of.</p>
+        <p>People. Performance. Possibility.</p>
       </div>
       <div class="stakes-right reveal">
-        <p>Change programmes fail not because the strategy is wrong, but because the people living it haven&rsquo;t had the support to navigate what it demands of them. Uncertainty, shifting roles, new leadership, cultural pressure — these things land personally, and they affect performance.</p>
-        <p>I work with organisations to create exactly the conditions in which people can grow through change rather than just survive it.</p>
+        <p>Organisations thrive when people feel grounded enough to perform, supported enough to navigate change and empowered enough to grow.</p>
+        <p>CEIBA works with organisations to develop the people at the heart of them — combining coaching, wellbeing and practical development to help individuals and teams build confidence, capability and resilience.</p>
+        <p>Whether you&rsquo;re supporting people through change, developing emerging leaders or creating a culture where people can perform at their best, CEIBA creates the space for meaningful growth.</p>
         <div class="stakes-stat">
           <div class="stat-item">
             <div class="stat-num">25+</div>
@@ -335,39 +335,47 @@
     <div class="offer-grid">
       <div class="offer-card reveal">
         <span class="offer-card-num">01</span>
-        <span class="offer-card-sub">Employees &amp; Individuals</span>
-        <h3>Individual coaching</h3>
-        <p>One-to-one coaching for employees navigating professional or personal transition — grounded in The CEIBA Method&trade; and tailored entirely to the individual.</p>
+        <span class="offer-card-sub">Individual</span>
+        <h3>CEIBA Workplace Coaching Programmes</h3>
+        <p>Tailored one-to-one coaching programmes for employees, managers and leaders — designed around the needs of your people and organisation.</p>
         <ul>
-          <li>Employees navigating role or career change</li>
-          <li>Anyone managing significant life transition alongside work</li>
-          <li>Building confidence, clarity and direction</li>
-          <li>Online or face to face</li>
+          <li>Confidence &amp; wellbeing</li>
+          <li>Performance &amp; capability</li>
+          <li>Navigating role or organisational change</li>
+          <li>Developing strengths &amp; potential</li>
+          <li>Progression and development</li>
+          <li>Building resilience</li>
         </ul>
+        <p class="offer-card-close">Supporting people to thrive, perform and grow.</p>
       </div>
       <div class="offer-card reveal">
         <span class="offer-card-num">02</span>
-        <span class="offer-card-sub">Managers &amp; Senior Leaders</span>
-        <h3>Leadership development</h3>
-        <p>One-to-one coaching for managers and leaders building the capability to lead change effectively — grounded, clear and able to bring their people with them.</p>
+        <span class="offer-card-sub">Leaders</span>
+        <h3>Leadership &amp; People Development</h3>
+        <p>Developing confident leaders and managers who can lead themselves and others effectively.</p>
         <ul>
-          <li>Leading through uncertainty and organisational change</li>
-          <li>Building team cohesion and trust</li>
-          <li>Developing authentic leadership presence</li>
-          <li>Managing performance through transition</li>
+          <li>Leadership confidence</li>
+          <li>Resilience &amp; self-awareness</li>
+          <li>Psychological safety</li>
+          <li>Trust &amp; communication</li>
+          <li>Developing people &amp; performance</li>
+          <li>Team building</li>
         </ul>
+        <p class="offer-card-close">Building the capability to lead with confidence, authenticity and impact.</p>
       </div>
       <div class="offer-card reveal">
         <span class="offer-card-num">03</span>
-        <span class="offer-card-sub">Teams &amp; Wider Culture</span>
-        <h3>Group programmes</h3>
-        <p>Structured group work and wellbeing initiatives for teams going through change — building the shared resilience and psychological safety that lasting performance requires.</p>
+        <span class="offer-card-sub">Organisation</span>
+        <h3>Growth Programmes</h3>
+        <p>Bespoke workshops and programmes designed to strengthen people, teams and organisational culture.</p>
         <ul>
-          <li>Group programmes for teams in transition</li>
-          <li>Wellbeing and resilience initiatives</li>
-          <li>Cultural shift and values alignment</li>
-          <li>Ongoing support that builds lasting change</li>
+          <li>Wellbeing &amp; sustainable performance</li>
+          <li>Resilience &amp; confidence</li>
+          <li>Team connection &amp; collaboration</li>
+          <li>Culture &amp; engagement</li>
+          <li>Growth &amp; transformation</li>
         </ul>
+        <p class="offer-card-close">Creating the conditions for people and organisations to grow.</p>
       </div>
     </div>
   </section>
@@ -377,9 +385,9 @@
     <div class="why-in">
       <div class="why-left reveal">
         <span class="kicker">Why CEIBA</span>
-        <h2>Not training. Not therapy. Something more useful than either.</h2>
-        <p>CEIBA coaching is grounded in a simple insight: the capacity for growth, resilience and performance already exists in people — it just needs the right conditions to emerge. I don&rsquo;t prescribe outcomes. I build the foundations.</p>
-        <p>The CEIBA Method works from the inside out — establishing identity, confidence and grounding first, then building the strength and capability that makes real change possible and lasting.</p>
+        <h2>Creating the conditions for people to perform and grow.</h2>
+        <p>CEIBA coaching is grounded in a simple insight: the capacity for growth, resilience and performance already exists in people — and CEIBA provides the right conditions for this to emerge.</p>
+        <p>The CEIBA Method works from the inside out — establishing identity, confidence and grounding first, then building the strength and capability that enables people to perform, contribute and grow.</p>
       </div>
       <div class="reveal">
         <div class="why-pillars">
