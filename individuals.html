@@ -359,6 +359,21 @@
     .asc-inner-card{ transform:none !important; }
     .asc-stack{ display:flex; flex-direction:column; gap:32px; }
   }
+
+  /* ── NAV DROPDOWN ── */
+  .nav-links li.has-drop{ position:relative; }
+  .nav-drop{ position:absolute; top:calc(100% + 6px); left:50%; transform:translateX(-50%) translateY(4px); min-width:200px; background:var(--white); border:1px solid var(--border); border-radius:4px; box-shadow:0 16px 40px -12px rgba(31,68,52,.18); padding:8px 0; opacity:0; pointer-events:none; transition:opacity .22s var(--ease), transform .22s var(--ease); z-index:200; }
+  .nav-drop::before{ content:''; position:absolute; top:-12px; left:0; right:0; height:12px; }
+  .nav-links li.has-drop:hover .nav-drop,
+  .nav-links li.has-drop:focus-within .nav-drop{ opacity:1; pointer-events:auto; transform:translateX(-50%) translateY(0); }
+  .nav-drop a{ display:block; padding:10px 20px; font-size:11px; letter-spacing:.13em; text-transform:uppercase; color:var(--muted); text-decoration:none; font-weight:500; transition:color .2s, background .2s; white-space:nowrap; }
+  .nav-drop a:hover{ color:var(--forest); background:var(--bg); }
+  .nav-links li.has-drop > a{ position:relative; }
+  .nav-links li.has-drop > a::after{ display:none !important; }
+  .nav-links li.has-drop > a .chev{ display:inline-block; margin-left:5px; opacity:.5; font-style:normal; transition:transform .22s var(--ease); }
+  .nav-links li.has-drop:hover > a .chev{ transform:rotate(180deg); }
+  .mob-sub{ display:flex; flex-direction:column; align-items:center; gap:.6rem; margin-top:-.4rem; }
+  .mob-sub a{ font-family:'Outfit',sans-serif !important; font-size:.95rem !important; color:rgba(255,255,255,.6) !important; }
 </style>
 </head>
 <body>
