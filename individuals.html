@@ -351,26 +351,44 @@
   .asc-foot .btn-gold{ flex-shrink:0; }
 
   @media (max-width:1080px){
-    .asc-grid{ grid-template-columns:1fr; padding:0 24px; gap:0; }
-    .asc-visual{ order:1; position:sticky; top:70px; height:46vh; z-index:3; }
-    .tree-frame{ border-radius:3px; }
-    .tree-edge{ inset:9px; }
-    .tree-hud{ left:20px; top:18px; gap:9px; }
+    /* Mobile: NO pinning. Photo sits inline at the top of the section, copy flows
+       beneath it in normal document order. Nothing overlaps, nothing can break. */
+    .asc-grid{ display:flex; flex-direction:column; align-items:stretch; padding:0 24px; }
+
+    .asc-visual{
+      position:static; order:-1;
+      height:58vh; height:58dvh; min-height:380px;
+      margin:0 -24px 10px; padding:0;
+      display:block; opacity:1; visibility:visible;
+    }
+    .asc-visual-in{ height:100%; width:100%; }
+    .tree-frame{ height:100%; border-radius:0; box-shadow:none; }
+    .tree-photo{ height:150%; width:100%; left:0; right:auto; }
+    .tree-grade{ opacity:.55; }
+    .tree-vig{ background:
+      radial-gradient(ellipse 90% 76% at 50% 46%, rgba(0,0,0,0) 46%, rgba(8,20,14,.5) 100%),
+      linear-gradient(to bottom, rgba(8,20,14,.6) 0%, rgba(8,20,14,0) 26%, rgba(8,20,14,0) 66%, rgba(8,20,14,.7) 100%); }
+
+    .tree-edge{ inset:10px; }
+    .tree-hud{ left:22px; top:18px; gap:9px; }
     .tree-hud-num{ font-size:1.9rem; }
     .tree-hud-txt{ font-size:9px; letter-spacing:.26em; }
-    .tree-elev{ right:16px; top:16%; bottom:16%; }
+    .tree-elev{ right:16px; top:18%; bottom:18%; }
     .tree-cap{ bottom:16px; }
     .tree-cap span{ font-size:.9rem; }
-    /* narrative sits below the pinned photo, one screen per stage */
-    .asc-narrative{ order:2; padding:0 0 8vh; position:relative; z-index:2;
-      background:linear-gradient(to bottom, rgba(15,39,29,0) 0, var(--forest-deep) 40px); }
-    .asc-block{ min-height:0; padding:38px 0 46px; opacity:.35; scroll-margin-top:52vh;
-      border-bottom:1px solid rgba(255,255,255,.08); }
+
+    .asc-narrative{ position:relative; order:1; padding:8px 0 6vh; }
+    .asc-block{
+      min-height:0; padding:30px 0 34px; opacity:1;
+      border-bottom:1px solid rgba(255,255,255,.09);
+    }
     .asc-block:last-child{ border-bottom:none; }
-    .asc-block.active{ opacity:1; }
-    .asc-name{ font-size:2.4rem; margin-bottom:14px; }
-    .asc-ask{ font-size:1.1rem; margin-bottom:18px; max-width:none; }
-    .asc-desc{ max-width:none; }
+    .asc-name{ font-size:2.2rem; margin-bottom:12px; }
+    .asc-ask{ font-size:1.05rem; margin-bottom:16px; max-width:none; padding-left:16px; }
+    .asc-desc{ max-width:none; font-size:14px; }
+    .asc-desc.two{ max-width:none; }
+    .asc-tags{ margin-top:18px; }
+
     .asc-foot{ padding:44px 24px 56px; flex-direction:column; align-items:flex-start; }
   }
   @media (max-width:640px){
@@ -768,11 +786,20 @@
       const hudNum = document.getElementById('hudNum');
       const hudTxt = document.getElementById('hudTxt');
 
+      // show/hide the fixed mobile panel only while the section is on screen
+      new IntersectionObserver(
+        es => es.forEach(e => sec.classList.toggle('in-view', e.isIntersecting)),
+        { rootMargin: '0px 0px -10% 0px', threshold: 0 }
+      ).observe(sec);
+
       const NAMES = ['Roots','Trunk','Branches','Leaves'];
       const NUMS  = ['01','02','03','04'];
 
       // photo is 240% tall: crane from bottom (roots) to top (canopy)
-      const FROM = -58, TO = 0;        // translateY %
+      const isSmall = () => window.matchMedia('(max-width:1080px)').matches;
+      // shorter frame on mobile shows a narrower band, so start less deep
+      let FROM = isSmall() ? -14 : -58, TO = 0;   // translateY %
+      addEventListener('resize', () => { FROM = isSmall() ? -14 : -58; }, {passive:true});
       const SC_FROM = 1.06, SC_TO = 1; // slow push-in
       // ease-out: climbs the trunk quickly, then dwells in the branches/canopy
       const climb = t => 1 - Math.pow(1 - t, 2.1);
@@ -805,9 +832,11 @@
 
         if(isMobile()){
           // Mobile: the narrative drives everything, so photo and copy never drift apart.
-          const nar = sec.querySelector('.asc-narrative');
+          const nar    = sec.querySelector('.asc-narrative');
+          const lastBlk = blocks[blocks.length - 1];
           ScrollTrigger.create({
-            trigger: nar, start:'top 72%', end:'bottom bottom',
+            trigger: nar, start:'top 62%',
+            endTrigger: lastBlk, end:'bottom 62%',
             scrub:0.8, invalidateOnRefresh:true,
             onUpdate: self => apply(self.progress)
           });
@@ -832,8 +861,11 @@
         const nar = sec.querySelector('.asc-narrative');
         function render(){
           if(window.matchMedia('(max-width:1080px)').matches && nar){
-            const n = nar.getBoundingClientRect();
-            apply(cl((innerHeight*0.72 - n.top) / Math.max(n.height, 1)));
+            const bs = sec.querySelectorAll('.asc-block');
+            const first = bs[0].getBoundingClientRect();
+            const last  = bs[bs.length-1].getBoundingClientRect();
+            const span  = Math.max((last.bottom - first.top), 1);
+            apply(cl((innerHeight*0.62 - first.top) / span));
           } else {
             const r = sec.getBoundingClientRect();
             apply(cl(-r.top / Math.max(r.height - innerHeight, 1)));
